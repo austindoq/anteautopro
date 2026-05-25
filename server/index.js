@@ -1,0 +1,17 @@
+import express from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const app = express();
+
+async function main() {
+  await mongoose.connect(process.env.MONGO_URL);
+  console.log("Database Connected");
+}
+
+app.listen(process.env.PORT, () => {
+  console.log("Connection Live");
+  main();
+});
