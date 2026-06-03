@@ -10,62 +10,31 @@
       href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <title>AnteAutoPro.Ca</title>
+    <title>AnteAutoPro.ca</title>
   </head>
   <!-- SPACING/PADDING -->
   <!-- SPACING:2 4 8 16 24 32 64- -->
   <!-- PADDING:2 4 8 16 24 32 64- -->
   <body class="bg-[#f1f3f5] font-[Jost]">
+    <nav
+      class="flex justify-between font-bold text-[#e9ecef] tracking-widest md:tracking-wider bg-[#343a40] py-2 px-2 md:px-4 w-full"
+    >
+      <img src="/assets/images/anteautopro.ca.png" class="max-w-1/3" />
+
+      <a class="hover:cursor-pointer flex items-center"
+        >Customer Tools
+        <img src="/assets/icons/menu-alt-svgrepo-com.svg" class="size-5"
+      /></a>
+    </nav>
     <header
       id="hero"
-      class="flex flex-col items-center h-screen bg-radial from-[#f1f3f5] from-60% to-[#c5f6fa]"
+      class="flex flex-col items-center md:h-[70vh] bg-radial md:bg-[url(/assets/images/temp_hero_image.jpg)] bg-cover from-[#f1f3f5] from-60% to-[#c5f6fa]"
     >
-      <nav
-        class="flex justify-between font-bold text-[#e9ecef] tracking-wider bg-[#343a40] px-4 w-full mb-20"
-      >
-        <a class="hover:cursor-pointer flex items-center tracking-widest"
-          >Book A Viewing
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#e9ecef"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-            <path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-            <path
-              d="M5 17h-2v-6l2 -5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0h-6m-6 -6h15m-6 0v-5"
-            />
-          </svg>
-        </a>
-        <img src="/assets/images/anteautopro.ca.png" class="max-w-1/3" />
-
-        <a class="hover:cursor-pointer flex items-center"
-          >Contact
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#e9ecef"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path
-              d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"
-            />
-          </svg>
-        </a>
-      </nav>
-      <section id="hero-inner" class="w-5xl flex justify-evenly gap-26">
-        <div id="hero-left" class="flex flex-col justify-center gap-10">
+      <section id="hero-inner" class="w-[95%] md:w-5xl mt-10 mb-10">
+        <div
+          id="hero-super-duper-inner"
+          class="flex flex-col justify-center gap-10"
+        >
           <h1 class="text-5xl font-bold">
             I want to help <span class="bg-[#66d9e8] rounded-xl">you</span> find
             your drive
@@ -73,21 +42,22 @@
           <h2 class="text-2xl">
             Whether it's the daily commute, or a weekend cruise
           </h2>
-          <button
-            class="bg-[#3bc9db] w-[70%] rounded-lg shadow-2xl p-2 border-2 border-[#3bc9db] active:bg-[#f1f3f5] active:border-2 active:border-[#66d9e8] hover:cursor-pointer hover:bg-[#66d9e8] font-bold hover:scale-110 ease-in-out duration-150"
-          >
-            Book A Viewing
-          </button>
-        </div>
-        <div id="hero-right">
-          <img
-            src="/assets/images/ollie.png"
-            class="rounded-xl shadow-2xl max-h-[70vh]"
-          />
+          <div id="cta-buttons" class="flex flex-col gap-2">
+            <button
+              class="bg-[#3bc9db] w-[60%] rounded-lg shadow-2xl p-2 border-2 border-[#3bc9db] active:bg-[#f1f3f5] active:border-2 active:border-[#66d9e8] hover:cursor-pointer hover:bg-[#66d9e8] font-bold hover:scale-110 ease-in-out duration-150"
+            >
+              Book A 1-On-1
+            </button>
+            <button
+              class="bg-[#3bc9db] w-[60%] rounded-lg shadow-2xl p-2 border-2 border-[#3bc9db] active:bg-[#f1f3f5] active:border-2 active:border-[#66d9e8] hover:cursor-pointer hover:bg-[#66d9e8] font-bold hover:scale-110 ease-in-out duration-150"
+            >
+              Book A Viewing
+            </button>
+          </div>
         </div>
       </section>
     </header>
-    <main id="stock-grid" class="grid grid-cols-3"></main>
+    <section id="testimonials" class=""></section>
     <footer class="bg-[#343a40]">
       <div class="flex justify-center">
         <span class="text-xl font-semibold text-[#e9ecef] italic"
