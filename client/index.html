@@ -12,52 +12,100 @@
     />
     <title>AnteAutoPro.ca</title>
   </head>
-  <!-- SPACING/PADDING -->
-  <!-- SPACING:2 4 8 16 24 32 64- -->
-  <!-- PADDING:2 4 8 16 24 32 64- -->
   <body class="bg-[#f1f3f5] font-[Jost]">
     <nav
-      class="flex justify-between font-bold text-[#e9ecef] tracking-widest md:tracking-wider bg-[#343a40] py-2 px-2 md:px-4 w-full"
+      class="flex justify-between font-bold text-[#e9ecef] tracking-widest md:tracking-wider bg-[#343a40] py-2 px-2 md:px-4 md:py-0 w-full"
     >
       <img src="/assets/images/anteautopro.ca.png" class="max-w-1/3" />
 
-      <a class="hover:cursor-pointer flex items-center"
+      <a class="hover:cursor-pointer flex items-center text-xl"
         >Customer Tools
         <img src="/assets/icons/menu-alt-svgrepo-com.svg" class="size-5"
       /></a>
     </nav>
     <header
       id="hero"
-      class="flex flex-col items-center md:h-[70vh] bg-radial md:bg-[url(/assets/images/temp_hero_image.jpg)] bg-cover from-[#f1f3f5] from-60% to-[#c5f6fa]"
+      class="min-h-[60vh] md:min-h-[70vh] relative before:content-[''] before:inset-0 before:absolute before:bg-black/30 flex flex-col items-center bg-[url(/assets/images/temp_hero_image.jpg)] md:bg-cover bg-fit bg-center"
     >
-      <section id="hero-inner" class="w-[95%] md:w-5xl mt-10 mb-10">
+      <section id="hero-inner" class="w-[95%] md:max-w-5xl mt-15 mb-15">
         <div
-          id="hero-super-duper-inner"
-          class="flex flex-col justify-center gap-10"
+          id="hero-content"
+          class="flex flex-col justify-center gap-10 relative z-10"
         >
-          <h1 class="text-5xl font-bold">
-            I want to help <span class="bg-[#66d9e8] rounded-xl">you</span> find
-            your drive
+          <h1 class="text-5xl font-bold text-[#f1f3f5]">
+            I want to help
+            <span class="bg-[#1985b4] rounded-2xl px-2">you</span> find your
+            drive
           </h1>
-          <h2 class="text-2xl">
+          <h2 class="text-2xl text-[#f1f3f5] font-semibold">
             Whether it's the daily commute, or a weekend cruise
           </h2>
           <div id="cta-buttons" class="flex flex-col gap-2">
             <button
-              class="bg-[#3bc9db] w-[60%] rounded-lg shadow-2xl p-2 border-2 border-[#3bc9db] active:bg-[#f1f3f5] active:border-2 active:border-[#66d9e8] hover:cursor-pointer hover:bg-[#66d9e8] font-bold hover:scale-110 ease-in-out duration-150"
+              class="bg-[#1985b4] text-[#f1f3f5] active:text-[#e9ecef] md:w-[30%] w-[60%] tracking-wide rounded-lg shadow-2xl p-2 border-2 border-[#1985b4] active:bg-[#26b5ee] active:border-2 active:border-[#26b5ee] hover:cursor-pointer hover:bg-[#1985b4] font-bold hover:scale-105 ease-in-out duration-150"
             >
               Book A 1-On-1
             </button>
             <button
-              class="bg-[#3bc9db] w-[60%] rounded-lg shadow-2xl p-2 border-2 border-[#3bc9db] active:bg-[#f1f3f5] active:border-2 active:border-[#66d9e8] hover:cursor-pointer hover:bg-[#66d9e8] font-bold hover:scale-110 ease-in-out duration-150"
+              class="bg-[#1985b4] text-[#f1f3f5] active:text-[#e9ecef] md:w-[30%] w-[60%] tracking-wide rounded-lg shadow-2xl p-2 border-2 border-[#1985b4] active:bg-[#26b5ee] active:border-2 active:border-[#26b5ee] hover:cursor-pointer hover:bg-[#1985b4] font-bold hover:scale-105 ease-in-out duration-150"
             >
-              Book A Viewing
+              Book A Free Appraisal
             </button>
           </div>
         </div>
       </section>
     </header>
-    <section id="testimonials" class=""></section>
+    <main class="bg-radial from-[#f1f3f5] from-30% to-slate-300">
+      <section id="testimonials" class="flex justify-center">
+        <div
+          id="testimonials-inner"
+          class="w-[95%] md:max-w-5xl mt-8 mb-8 flex flex-col md:flex-row gap-4 md:gap-8"
+        >
+          <div
+            id="testimonial1"
+            class="md:w-1/3 border-2 border-[#343a40] md:p-2 p-4 rounded-lg shadow-2xl"
+          >
+            <div id="quote1" class="flex flex-col gap-2 text-center">
+              <h1 class="italic text-lg">
+                <span class="text-2xl text-[#1985b4]">"</span>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quibusdam nostrum ab esse! Quia, fugit mollitia?
+                <span class="text-2xl text-[#1985b4]">"</span>
+              </h1>
+              <h2 class="text-[#1985b4] font-semibold">Ilia Abuladze</h2>
+            </div>
+          </div>
+          <div
+            id="testimonial2"
+            class="md:w-1/3 border-2 border-[#343a40] md:p-2 p-4 rounded-lg shadow-2xl"
+          >
+            <div id="quote2" class="flex flex-col gap-2 text-center">
+              <h1 class="italic text-lg">
+                <span class="text-2xl text-[#1985b4]">"</span>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Numquam ea nesciunt sed fugiat sapiente.
+                <span class="text-2xl text-[#1985b4]">"</span>
+              </h1>
+              <h2 class="text-[#1985b4] font-semibold">Ilia Abuladze</h2>
+            </div>
+          </div>
+          <div
+            id="testimonial3"
+            class="md:w-1/3 border-2 border-[#343a40] md:p-2 p-4 rounded-lg shadow-2xl"
+          >
+            <div id="quote3" class="flex flex-col gap-2 text-center">
+              <h1 class="italic text-lg">
+                <span class="text-2xl text-[#1985b4]">"</span>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quibusdam nostrum ab esse! Quia, fugit mollitia?
+                <span class="text-2xl text-[#1985b4]">"</span>
+              </h1>
+              <h2 class="text-[#1985b4] font-semibold">Ilia Abuladze</h2>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
     <footer class="bg-[#343a40]">
       <div class="flex justify-center">
         <span class="text-xl font-semibold text-[#e9ecef] italic"
@@ -81,3 +129,14 @@
     </footer>
   </body>
 </html>
+<!-- SPACING/PADDING -->
+<!-- SPACING:2 4 8 16 24 32 64- -->
+<!-- PADDING:2 4 8 16 24 32 64- -->
+<!--text-[#f1f3f5]  -->
+<!-- border-[#343a40] -->
+<!-- HONDA blue #1985b4 -->
+<!-- Active blue #26b5ee -->
+<!-- HONDA red #e3173e -->
+<!-- rounded-lg for most rounding -->
+<!-- max-w-5xl medium breakpoint for main sections -->
+<!-- MOBILE Width: w-[95%] -->
