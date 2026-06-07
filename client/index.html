@@ -203,18 +203,23 @@
                   The 2026 Honda Civic
                 </h1>
                 <p id="post-body" class="italic tracking-wide text-xl">
-                  Alot of times when I'm driving my car, I see other cars on the
-                  roadways. The cars, as well as the people driving them, remind
-                  me of a cousin I used to have. Steve. He was kinda weird but
-                  was usually pretty chill. Anyways, he would go down to the
-                  lake at his parents lake house really early in the morining
-                  with a bucket full of vegetables and start trying to skip them
-                  like you would skip a stone.<br />
-                  Im talkin' onions and peppers and shit. <br />Lorem ipsum
-                  dolor sit amet consectetur adipisicing elit. Iure minima
-                  voluptatum nesciunt obcaecati maxime culpa et sunt, voluptates
-                  illum! Inventore molestiae tenetur sit hic. Laborum commodi
-                  sit pariatur fugit impedit.<br />
+                  Discover the 2026 Honda Civic—where style, efficiency, and
+                  innovation come together in one exceptional compact sedan. At
+                  our dealership, we're excited to introduce the latest Civic,
+                  featuring a refreshed design, advanced driver-assistance
+                  technology, and a refined interior built for comfort and
+                  connectivity. Whether you're commuting through the city or
+                  heading out on a weekend adventure, the 2026 Civic delivers
+                  responsive performance, impressive fuel economy, and the
+                  reliability Honda is known for. With a modern infotainment
+                  system, enhanced safety features, and a sleek, athletic
+                  appearance, this Civic is designed to elevate every drive.
+                  Available in a variety of trims to suit your lifestyle and
+                  budget, the 2026 Honda Civic continues its tradition of
+                  offering outstanding value without compromise. Visit our
+                  showroom today to experience the next generation of Civic for
+                  yourself and see why it remains one of Canada's most popular
+                  vehicles year after year.
                 </p>
               </div>
             </article>
@@ -227,7 +232,7 @@
     >
       <div
         id="footer-inner"
-        class="flex flex-col md:flex-row gap-8 max-w-3/4 justify-center items-center py-4"
+        class="flex flex-col md:flex-row gap-2 md:gap-16 w-[95%] md:max-w-3/4 justify-center items-center pt-4 pb-16 md:pb-4"
       >
         <div
           id="main-contacts"
@@ -246,7 +251,7 @@
         </div>
         <div
           id="alt-contacts"
-          class="flex flex-col justify-center items-center gap-4"
+          class="flex flex-col justify-center items-center gap-4 pb-4 md:pb-0"
         >
           <h1 class="text-2xl text-[#e9ecef] italic tracking-wide">
             Connect another way:
@@ -272,6 +277,66 @@
         </div>
       </div>
     </footer>
+    <!-- 1-On-1 MODAL -->
+    <div
+      id="1on1-modal"
+      class="fixed inset-0 bg-black/30 z-50 flex justify-center items-center hidden"
+    >
+      <div
+        id="modal-inner"
+        class="w-[95%] md:max-w-4xl bg-white rounded-lg border-4 border-[#1985b4] py-8 px-16"
+      >
+        <h1 class="text-4xl font-semibold text-[#1985b4] text-center mb-8">
+          Book A 1-On-1
+        </h1>
+        <form
+          id="1on1-form"
+          class="flex flex-col gap-8 text-2xl justify-center"
+        >
+          <div id="name-input-group" class="flex gap-4">
+            <label for="name" class="font-semibold">Name</label>
+            <input
+              id="name"
+              name="name"
+              placeholder="Name"
+              type="text"
+              class="border-1 w-full border-[#343a40] rounded-md p-1"
+            />
+          </div>
+          <div id="phone-input-group" class="flex gap-4">
+            <label for="phone" class="font-semibold">Phone</label>
+            <input
+              id="phone"
+              name="phone"
+              placeholder="555-555-5555"
+              type="tel"
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+              class="border-1 w-full border-[#343a40] rounded-md p-1"
+            />
+          </div>
+          <div id="email-input-group" class="flex gap-4">
+            <label for="email" class="font-semibold">Email</label>
+            <input
+              id="email"
+              name="email"
+              placeholder="example@gmail.com"
+              type="email"
+              class="border-1 w-full border-[#343a40] rounded-md p-1"
+            />
+          </div>
+          <div id="date-input-group" class="flex gap-4">
+            <label for="date" class="font-semibold">Date</label>
+            <input type="date" />
+          </div>
+          <button
+            type="submit"
+            class="bg-[#1985b4] rounded-lg text-[#f1f3f5] font-semibold"
+          >
+            SUBMIT
+          </button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
 <!-- SPACING/PADDING -->
@@ -285,3 +350,4 @@
 <!-- rounded-lg for most rounding -->
 <!-- max-w-5xl medium breakpoint for main sections -->
 <!-- MOBILE Width: w-[95%] -->
+<!-- MODAL Width:   w-[95%]  // md:max-w-4xl -->
