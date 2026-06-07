@@ -14,7 +14,7 @@
   </head>
   <body class="bg-[#f1f3f5] font-[Jost]">
     <nav
-      class="flex flex-col md:flex-row md:justify-between font-bold text-[#e9ecef] tracking-widest md:tracking-wider bg-[#343a40] py-2 px-4 w-full"
+      class="sticky top-0 z-100 flex flex-col md:flex-row md:justify-between font-bold text-[#e9ecef] tracking-widest md:tracking-wider bg-[#343a40] py-2 px-4 w-full border-b-2 border-b-[#e3173e]"
     >
       <div id="logo" class="flex justify-center md:justify-normal">
         <img src="/assets/images/anteautopro.ca.png" class="md:max-w-1/2" />
@@ -40,7 +40,7 @@
     </nav>
     <header
       id="hero"
-      class="min-h-[60vh] md:min-h-[70vh] relative before:content-[''] before:inset-0 before:absolute before:bg-black/30 flex flex-col items-center bg-[url(/assets/images/temp_hero_image.jpg)] md:bg-cover bg-fit bg-center border-t-2 border-t-[#e3173e]"
+      class="min-h-[60vh] md:min-h-[70vh] relative before:content-[''] before:inset-0 before:absolute before:bg-black/30 flex flex-col items-center bg-[url(/assets/images/temp_hero_image.jpg)] md:bg-cover bg-fit bg-center"
     >
       <section id="hero-inner" class="w-[95%] md:max-w-7xl mt-15 mb-15">
         <div
@@ -169,7 +169,7 @@
       ></div>
       <section
         id="blog"
-        class="max-w-[95%] md:max-w-7xl mx-auto flex justify-center mt-8 mb-8"
+        class="max-w-[95%] md:max-w-7xl mx-auto flex justify-center mt-8 mb-16"
       >
         <div id="blog-inner" class="w-full">
           <div
@@ -215,7 +215,6 @@
                   voluptatum nesciunt obcaecati maxime culpa et sunt, voluptates
                   illum! Inventore molestiae tenetur sit hic. Laborum commodi
                   sit pariatur fugit impedit.<br />
-                  AHAAA
                 </p>
               </div>
             </article>
@@ -223,25 +222,54 @@
         </div>
       </section>
     </main>
-    <footer class="bg-[#343a40]">
-      <div class="flex justify-center">
-        <span class="text-xl font-semibold text-[#e9ecef] italic"
-          >Connect another way:</span
+    <footer
+      class="bg-[#343a40] w-full flex justify-center border-t-2 border-t-[#1985b4]"
+    >
+      <div
+        id="footer-inner"
+        class="flex flex-col md:flex-row gap-8 max-w-3/4 justify-center items-center py-4"
+      >
+        <div
+          id="main-contacts"
+          class="flex flex-col gap-2 text-[#e9ecef] tracking-wide"
         >
-      </div>
-      <div class="flex gap-4 justify-center">
-        <a
-          target="_blank"
-          href="https://www.vancouverhonda.com/en"
-          class="hover:cursor-pointer"
-          ><img src="/assets/icons/honda-white.svg" class="h-[50px]"
-        /></a>
-        <a
-          target="_blank"
-          href="https://www.instagram.com/ante_auto_pro/"
-          class="hover:cursor-pointer"
-          ><img src="/assets/icons/instagram-white.svg" class="h-[50px]"
-        /></a>
+          <div id="email-group" class="flex gap-2 items-center justify-start">
+            <img src="/assets/icons/contact.svg" class="size-10" />
+            <span class="text-[#e3173e] text-5xl">•</span>
+            <p id="contact-email" class="text-xl">anteautopro@gmail.com</p>
+          </div>
+          <div id="phone-group" class="flex gap-2 justify-start items-center">
+            <img src="./assets/icons/phone.svg" class="size-10" />
+            <span class="text-[#e3173e] text-5xl">•</span>
+            <p id="contact-phone" class="text-xl">604-555-5555</p>
+          </div>
+        </div>
+        <div
+          id="alt-contacts"
+          class="flex flex-col justify-center items-center gap-4"
+        >
+          <h1 class="text-2xl text-[#e9ecef] italic tracking-wide">
+            Connect another way:
+          </h1>
+          <div id="alt-contacts-links" class="flex gap-8">
+            <a
+              target="_blank"
+              href="https://www.vancouverhonda.com/en"
+              class="hover:cursor-pointer"
+              ><img
+                src="/assets/icons/honda-white.svg"
+                class="h-[40px] scale-120"
+            /></a>
+            <a
+              target="_blank"
+              href="https://www.instagram.com/ante_auto_pro/"
+              class="hover:cursor-pointer"
+              ><img
+                src="/assets/icons/instagram-white.svg"
+                class="h-[40px] scale-120"
+            /></a>
+          </div>
+        </div>
       </div>
     </footer>
   </body>
