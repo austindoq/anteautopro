@@ -280,63 +280,96 @@
     <!-- 1-On-1 MODAL -->
     <div
       id="1on1-modal"
-      class="fixed inset-0 bg-black/30 z-50 flex justify-center items-center hidden"
+      class="fixed inset-0 bg-black/30 z-102 flex justify-center items-center"
     >
       <div
         id="modal-inner"
-        class="w-[95%] md:max-w-4xl bg-white rounded-lg border-4 border-[#1985b4] py-8 px-16"
+        class="relative w-[95%] md:max-w-4xl bg-radial from-[#f1f3f5] from-95% to-[#1985b4] rounded-lg border-4 border-[#1985b4] py-4 md:py-8 px-16"
       >
-        <h1 class="text-4xl font-semibold text-[#1985b4] text-center mb-8">
-          Book A 1-On-1
-        </h1>
+        <div id="modal-header" class="mb-8 md:mb-12 flex flex-col gap-2">
+          <h1 class="text-3xl md:text-5xl font-bold text-[#1985b4] text-center">
+            Book A 1-On-1
+          </h1>
+          <p class="text-lg md:text-2xl text-center">
+            Come by in person to get a better look or discuss options!
+          </p>
+          <div
+            id="location-info"
+            class="flex flex-col md:flex-row justify-center items-center text-lg md:text-xl text-center md:"
+          >
+            <a
+              href="https://www.google.com/maps/place/850+SW+Marine+Dr,+Vancouver,+BC+V6P+5Z1/@49.2056565,-123.1293107,1136m"
+              target="_blank"
+              class="hover:cursor-pointer underline italic flex items-center"
+            >
+              <img src="/assets/icons/pin.svg" class="size-6" />
+              <p>
+                850 Southwest Marine Drive, Vancouver, British Columbia, V6P 5Z1
+              </p>
+            </a>
+          </div>
+        </div>
         <form
-          id="1on1-form"
-          class="flex flex-col gap-8 text-2xl justify-center"
+          class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-4 md:gap-8 items-center text-xl md:text-2xl"
         >
-          <div id="name-input-group" class="flex gap-4">
-            <label for="name" class="font-semibold">Name</label>
-            <input
-              id="name"
-              name="name"
-              placeholder="Name"
-              type="text"
-              class="border-1 w-full border-[#343a40] rounded-md p-1"
-            />
-          </div>
-          <div id="phone-input-group" class="flex gap-4">
-            <label for="phone" class="font-semibold">Phone</label>
-            <input
-              id="phone"
-              name="phone"
-              placeholder="555-555-5555"
-              type="tel"
-              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-              class="border-1 w-full border-[#343a40] rounded-md p-1"
-            />
-          </div>
-          <div id="email-input-group" class="flex gap-4">
-            <label for="email" class="font-semibold">Email</label>
-            <input
-              id="email"
-              name="email"
-              placeholder="example@gmail.com"
-              type="email"
-              class="border-1 w-full border-[#343a40] rounded-md p-1"
-            />
-          </div>
-          <div id="date-input-group" class="flex gap-4">
-            <label for="date" class="font-semibold">Date</label>
-            <input type="date" />
-          </div>
+          <label for="name" class="font-semibold justify-self-start"
+            >Name</label
+          >
+          <input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Name"
+            class="border-1 border-[#343a40] rounded-lg p-1 w-full"
+          />
+
+          <label for="phone" class="font-semibold justify-self-start"
+            >Phone</label
+          >
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            placeholder="Phone"
+            class="border-1 border-[#343a40] rounded-lg p-1 w-full"
+            pattern="[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}"
+          />
+
+          <label for="email" class="font-semibold justify-self-start"
+            >Email</label
+          >
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Email"
+            class="border-1 border-[#343a40] rounded-lg p-1 w-full"
+          />
+
+          <label for="date" class="font-semibold justify-self-start"
+            >Date</label
+          >
+          <input
+            id="datePickerInput"
+            type="date"
+            class="border-1 border-[#343a40] rounded-lg p-1 w-full"
+          />
           <button
             type="submit"
-            class="bg-[#1985b4] rounded-lg text-[#f1f3f5] font-semibold"
+            class="col-span-2 bg-[#1985b4] tracking-widest p-2 rounded-lg font-bold text-[#f1f3f5] active:bg-[#26b5ee] hover:cursor-pointer hover:bg-[#1985b4] hover:scale-105 ease-in-out duration-150"
           >
             SUBMIT
           </button>
         </form>
+        <div
+          id="closeButton"
+          class="text-[#343a40] text-2xl md:text-3xl font-bold absolute top-2 md:top-4 md:right-8 right-4 hover:cursor-pointer"
+        >
+          X
+        </div>
       </div>
     </div>
+    <!-- Consultation MODAL -->
   </body>
 </html>
 <!-- SPACING/PADDING -->
