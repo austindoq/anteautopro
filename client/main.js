@@ -1,16 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
   const els = {
-    "1on1Button": document.getElementById("1on1Button"),
+    consultationButton: document.getElementById("consultationButton"),
     appraisalButton: document.getElementById("appraisalButton"),
-    "1on1Modal": document.getElementById("1on1Modal"),
+    consultationModal: document.getElementById("consultationModal"),
     appraisalModal: document.getElementById("appraisalModal"),
     closeButton: document.getElementById("closeButton"),
     datePickerInputs: document.querySelectorAll(".datePickerInput"),
     closeButtons: document.querySelectorAll(".closeButton"),
+    consultationSubmitButton: document.getElementById(
+      "consultationSubmitButton",
+    ),
+    appraisalSubmitButton: document.getElementById("appraisalSubmitButton"),
   };
 
-  els["1on1Button"].addEventListener("click", (event) => {
-    els["1on1Modal"].classList.remove("hidden");
+  els.consultationButton.addEventListener("click", (event) => {
+    els.consultationModal.classList.remove("hidden");
   });
 
   els.appraisalButton.addEventListener("click", (event) => {
@@ -29,8 +33,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  els.consultationSubmitButton.addEventListener("click", (event) => {
+    console.log("Ea");
+  });
+
+  // console.log(new Date("2026-06-15"));
+
   function closeModals() {
-    els["1on1Modal"].classList.add("hidden");
+    els.consultationModal.classList.add("hidden");
     els.appraisalModal.classList.add("hidden");
   }
 });

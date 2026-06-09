@@ -63,7 +63,7 @@
             class="flex flex-col self-center md:self-auto gap-8"
           >
             <button
-              id="1on1Button"
+              id="consultationButton"
               class="bg-[#1985b4] text-xl md:text-4xl text-[#f1f3f5] active:text-[#e9ecef] md:w-[40%] tracking-wide rounded-lg p-4 md:p-2 border-2 border-[#1985b4] active:bg-[#26b5ee] active:border-2 active:border-[#26b5ee] hover:cursor-pointer hover:bg-[#1985b4] font-bold hover:scale-105 ease-in-out duration-150"
             >
               Book A 1-On-1
@@ -279,9 +279,9 @@
         </div>
       </div>
     </footer>
-    <!-- 1-On-1 MODAL -->
+    <!-- Consultation MODAL -->
     <div
-      id="1on1Modal"
+      id="consultationModal"
       class="fixed inset-0 bg-black/30 z-103 flex justify-center items-center hidden"
     >
       <div
@@ -312,12 +312,14 @@
           </div>
         </div>
         <form
+          id="consultationForm"
           class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-4 md:gap-8 items-center text-xl md:text-2xl"
         >
           <label for="name" class="font-semibold justify-self-start"
             >Name</label
           >
           <input
+            required
             id="name"
             name="name"
             type="text"
@@ -329,6 +331,7 @@
             >Phone</label
           >
           <input
+            required
             id="phone"
             name="phone"
             type="tel"
@@ -341,6 +344,7 @@
             >Email</label
           >
           <input
+            required
             id="email"
             name="email"
             type="email"
@@ -352,11 +356,13 @@
             >Date</label
           >
           <input
+            required
             id="datePickerInput"
             type="date"
             class="datePickerInput border-1 border-[#343a40] rounded-lg p-1 w-full hover:cursor-pointer"
           />
           <button
+            id="consultationSubmitButton"
             type="submit"
             class="col-span-2 bg-[#1985b4] tracking-widest p-2 rounded-lg font-bold text-[#f1f3f5] active:bg-[#26b5ee] hover:cursor-pointer hover:bg-[#1985b4] hover:scale-105 ease-in-out duration-150"
           >
@@ -403,6 +409,7 @@
           </div>
         </div>
         <form
+          id="appraisalForm"
           class="flex w-full flex-col md:grid md:grid-cols-2 md:gap-x-8 gap-y-2 md:gap-4 items-center text-xl md:text-2xl"
         >
           <div class="grid grid-cols-[1fr_4fr] w-full">
@@ -410,6 +417,7 @@
               >Name</label
             >
             <input
+              required
               id="name"
               name="name"
               type="text"
@@ -423,6 +431,7 @@
               >Phone</label
             >
             <input
+              required
               id="phone"
               name="phone"
               type="tel"
@@ -437,6 +446,7 @@
               >Email</label
             >
             <input
+              required
               id="email"
               name="email"
               type="email"
@@ -450,6 +460,7 @@
               >Date</label
             >
             <input
+              required
               id="datePickerInput"
               type="date"
               class="datePickerInput border-1 border-[#343a40] rounded-lg p-1 w-full"
@@ -472,6 +483,7 @@
             >
               <h1 class="font-semibold hidden md:inline-block">Make</h1>
               <select
+                required
                 class="text-center border-1 border-[#343a40] rounded-lg mt-2"
               >
                 <option value="" disabled selected>Select a Make</option>
@@ -518,6 +530,7 @@
             <div id="vehicle-model" class="flex flex-col text-center">
               <h1 class="font-semibold hidden md:inline-block">Model</h1>
               <input
+                required
                 type="text"
                 placeholder="Model"
                 class="p-2 border-1 border-[#343a40] rounded-lg"
@@ -526,6 +539,7 @@
             <div id="vehicle-year" class="flex flex-col text-center">
               <h1 class="font-semibold hidden md:inline-block">Year</h1>
               <input
+                required
                 type="text"
                 placeholder="Year"
                 class="p-2 border-1 border-[#343a40] rounded-lg"
@@ -533,6 +547,7 @@
             </div>
           </div>
           <button
+            id="appraisalSubmitButton"
             type="submit"
             class="col-span-2 w-full bg-[#1985b4] tracking-widest p-2 rounded-lg font-bold text-[#f1f3f5] active:bg-[#26b5ee] hover:cursor-pointer hover:bg-[#1985b4] hover:scale-105 ease-in-out duration-150"
           >
