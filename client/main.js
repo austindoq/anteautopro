@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
     appraisalButton: document.getElementById("appraisalButton"),
     consultationModal: document.getElementById("consultationModal"),
     appraisalModal: document.getElementById("appraisalModal"),
+    consultationForm: document.getElementById("consultationForm"),
+    appraisalForm: document.getElementById("appraisalForm"),
     closeButton: document.getElementById("closeButton"),
     datePickerInputs: document.querySelectorAll(".datePickerInput"),
     closeButtons: document.querySelectorAll(".closeButton"),
@@ -33,8 +35,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  els.consultationSubmitButton.addEventListener("click", (event) => {
-    console.log("Ea");
+  els.consultationForm.addEventListener("submit", async (event) => {
+    const formValues = Object.fromEntries(new FormData(els.consultationForm));
+
+    const response = await fetch("/api/consultation", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formValues),
+    });
+
+    const responseData = await response.json();
+
+    alert(responseData.message);
   });
 
   // console.log(new Date("2026-06-15"));
