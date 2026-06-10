@@ -15,26 +15,33 @@ document.addEventListener("DOMContentLoaded", () => {
     appraisalSubmitButton: document.getElementById("appraisalSubmitButton"),
   };
 
+  // USER EVENTS ==============================================
+
+  //SHOW CONSULTATION FORM
   els.consultationButton.addEventListener("click", (event) => {
     els.consultationModal.classList.remove("hidden");
   });
 
+  //SHOW APPRAISAL FORM
   els.appraisalButton.addEventListener("click", (event) => {
     els.appraisalModal.classList.remove("hidden");
   });
 
+  //ACTIVATE DATE SHOWPICKER
   els.datePickerInputs.forEach((datePickerInput) => {
     datePickerInput.addEventListener("click", (event) => {
       datePickerInput.showPicker();
     });
   });
 
+  //CLOSE MODAL
   els.closeButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
       closeModals();
     });
   });
 
+  //CONSULTATION SUBMIT FORM
   els.consultationForm.addEventListener("submit", async (event) => {
     const formValues = Object.fromEntries(new FormData(els.consultationForm));
 
@@ -49,8 +56,22 @@ document.addEventListener("DOMContentLoaded", () => {
     alert(responseData.message);
   });
 
-  // console.log(new Date("2026-06-15"));
+  //APPRAISAL SUBMIT FORM
+  els.appraisalForm.addEventListener("submit", async (event) => {
+    const formValues = Object.fromEntries(new FormData(els.appraisalForm));
 
+    const response = await fetch("/api/appraisal", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formValues),
+    });
+
+    const responseData = await response.json();
+
+    alert(responseData.message);
+  });
+
+  //UTILITY FUNCTIONS =======================================
   function closeModals() {
     els.consultationModal.classList.add("hidden");
     els.appraisalModal.classList.add("hidden");

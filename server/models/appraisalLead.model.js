@@ -2,8 +2,8 @@ import { Schema, model } from "mongoose";
 
 const appraisalLeadSchema = new Schema(
   {
-    name: { type: String, required: true },
-    phone: { type: Stirng, required: true },
+    name: { type: String, required: true, lowercase: true, trim: true },
+    phone: { type: String, required: true },
     email: { type: String, required: true },
     date: { type: String, required: true },
     make: { type: String, required: true },
