@@ -2,10 +2,10 @@ import { Schema, model } from "mongoose";
 
 const consultationLeadSchema = new Schema(
   {
-    name: { type: String, required: true },
-    phone: { type: String, required: true },
-    email: { type: String, required: true },
-    date: { type: String, required: true },
+    name: { type: String, required: true, lowercase: true, trim: true },
+    phone: { type: String, required: true, trim: true },
+    email: { type: String, required: true, lowercase: true, trim: true },
+    date: { type: String, required: true, trim: true },
   },
   { timestamps: true },
 );

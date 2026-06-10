@@ -15,7 +15,7 @@ async function createConsultationLead(req, res) {
     consultationLeadModel.create({ name, phone, email, date });
     res
       .status(200)
-      .json({ message: `1-on-1 booked successfully for ${date}!` });
+      .json({ message: `1-on-1 booked successfully for ${date}! ✅` });
   } catch (error) {
     console.log(error);
     res.status(500).json(`Could not save to database: ${error}`);

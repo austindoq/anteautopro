@@ -16,7 +16,7 @@ async function createAppraisalLead(req, res) {
 
     res
       .status(200)
-      .json({ message: `Appraisal booked successfully for ${date}!` });
+      .json({ message: `Appraisal booked successfully for ${date}! ✅` });
   } catch (error) {
     console.log(error);
     res.status(500).json(`Could not save to database: ${error}`);
