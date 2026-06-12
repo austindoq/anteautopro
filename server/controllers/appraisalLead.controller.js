@@ -1,4 +1,5 @@
 import appraisalLeadModel from "../models/appraisalLead.model.js";
+import { sendAppraisalEmails } from "../services/emailService.js";
 
 async function createAppraisalLead(req, res) {
   //Validate incoming data
@@ -12,10 +13,18 @@ async function createAppraisalLead(req, res) {
 
   //Create appraisal document
   try {
-    appraisalLeadModel.create({ name, phone, email, date, make, model, year });
-
-    res
-      .status(200)
+    await appraisalLeadModel.create({
+      name,
+      phone,
+      email,
+      date,
+      make,
+      model,
+      year,
+    });
+    await sendAppraisalEmails({ name, phone, email, date, make, model, year });
+    await res
+      .status(201)
       .json({ message: `Appraisal booked successfully for ${date}! ✅` });
   } catch (error) {
     console.log(error);

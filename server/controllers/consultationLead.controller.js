@@ -1,4 +1,5 @@
 import consultationLeadModel from "../models/consultationLead.model.js";
+import { sendConsultationEmails } from "../services/emailService.js";
 
 async function createConsultationLead(req, res) {
   //Validate incoming data
@@ -10,12 +11,15 @@ async function createConsultationLead(req, res) {
     });
   }
 
-  //Create consultation document
   try {
-    consultationLeadModel.create({ name, phone, email, date });
-    res
-      .status(200)
-      .json({ message: `1-on-1 booked successfully for ${date}! ✅` });
+    //Create consultation document
+    await consultationLeadModel.create({ name, phone, email, date });
+
+    //Send confirmation emails through Resend
+    await sendConsultationEmails({ name, phone, email, date });
+    res.status(201).json({
+      message: `1-on-1 booked successfully for ${date}! ✅ A confirmation email has been sent to ${email}.`,
+    });
   } catch (error) {
     console.log(error);
     res.status(500).json(`Could not save to database: ${error}`);
