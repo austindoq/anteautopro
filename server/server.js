@@ -3,9 +3,9 @@ import express from "express";
 import mongoose from "mongoose";
 import connectDb from "./config/db.js";
 import apiRouter from "./routes/api.routes.js";
+import adminRouter from "./routes/admin.routes.js";
 import session from "express-session";
 import MongoStore from "connect-mongo";
-import isAuthenticated from "./middleware/isAuthenticated.js";
 
 const app = express();
 
@@ -28,7 +28,7 @@ app.use(
 );
 
 app.use("/api", apiRouter);
-app.use("/admin", isAuthenticated);
+app.use("/admin", adminRouter);
 
 app.listen(process.env.PORT, () => {
   console.log("Connection Live");

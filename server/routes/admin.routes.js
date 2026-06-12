@@ -1,11 +1,10 @@
 import { Router } from "express";
+import { isAdmin, serveDashboard } from "../controllers/admin.controller";
+import { isAuthenticated } from "../middleware/auth";
+const router = Router();
 
-const isAuthenticated = (req, res, next) => {
-  if (req.session.isLoggedIn) {
-    return next();
-  } else {
-    res.redirect("/login.html");
-  }
-};
+router.get("/login", serveLogin);
+router.post("/login", isAdmin);
+router.get("/dashboard", isAuthenticated, serveDashboard);
 
-router.get("/dashboard", isAuthenticated);
+export default router;
