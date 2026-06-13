@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Login</title>
+  </head>
+  <body
+    class="h-screen flex flex-col justify-between bg-radial from-[#f1f3f5] from-30% to-slate-300"
+  >
+    <nav
+      class="sticky top-0 z-100 flex flex-col md:flex-row md:justify-between font-bold text-[#e9ecef] tracking-widest md:tracking-wider bg-[#343a40] px-4 py-2 w-full border-b-2 border-b-[#e3173e]"
+    >
+      <div
+        id="nav-options"
+        class="flex gap-4 md:gap-8 justify-evenly md:justify-normal"
+      >
+        <a
+          href="/index.html"
+          class="hover:cursor-pointer flex items-center text-2xl text-[#e9ecef]"
+          >Home <img src="/assets/icons/home.svg" class="size-7 mx-0.5"
+        /></a>
+      </div>
+    </nav>
+    <main id="login" class="flex justify-center w-full">
+      <section
+        id="login-inner"
+        class="max-w-5xl border-1 border-[#343a40] bg-[#343a40] rounded-xl shadow-xl"
+      >
+        <form id="loginForm" class="p-4 flex flex-col gap-4 w-full">
+          <input
+            name="username"
+            placeholder="Enter username"
+            class="rounded-lg border p-2 border-[#343a40] bg-[#e9ecef]"
+          />
+          <input
+            name="password"
+            type="password"
+            placeholder="Enter password"
+            class="rounded-lg border p-2 border-[#343a40] bg-[#e9ecef]"
+          />
+        </form>
+      </section>
+    </main>
+    <footer
+      class="h-[10vh] bg-[url(/assets/images/anteautopro_footer_banner.png)] w-full flex justify-center border-t-2 border-t-[#1985b4]"
+    ></footer>
+  </body>
+</html>

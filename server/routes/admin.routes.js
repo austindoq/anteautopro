@@ -1,8 +1,12 @@
 import { Router } from "express";
-import { isAdmin, serveDashboard } from "../controllers/admin.controller";
-import { isAuthenticated } from "../middleware/auth";
+import {
+  serveLogin,
+  isAdmin,
+  serveDashboard,
+} from "../controllers/admin.controller.js";
+import { isAuthenticated } from "../middleware/auth.js";
 const router = Router();
-
+console.log("admin router loaded");
 router.get("/login", serveLogin);
 router.post("/login", isAdmin);
 router.get("/dashboard", isAuthenticated, serveDashboard);

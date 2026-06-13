@@ -1,11 +1,11 @@
 import { fileURLToPath } from "url";
 import { join, dirname } from "path";
 
-//Prepare the relative path value
+//Prepare the relative path value to serve auth protected views to admin
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dir(__filename);
+const __dirname = dirname(__filename);
 
-export const serverLogin = (req, res) => {
+export const serveLogin = (req, res) => {
   if (req.session.isLoggedIn) {
     return res.redirect("/admin/dashboard");
   } else {

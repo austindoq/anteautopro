@@ -10,7 +10,6 @@ import MongoStore from "connect-mongo";
 const app = express();
 
 //Middleware
-app.use(express.static("client"));
 app.use(express.json());
 app.use(
   session({
@@ -29,6 +28,8 @@ app.use(
 
 app.use("/api", apiRouter);
 app.use("/admin", adminRouter);
+
+app.use(express.static("client"));
 
 app.listen(process.env.PORT, () => {
   console.log("Connection Live");
