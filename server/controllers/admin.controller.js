@@ -14,7 +14,6 @@ export const serveLogin = (req, res) => {
 };
 
 export const isAdmin = (req, res) => {
-  console.log(req.body);
   if (
     req.body.username === process.env.ADMIN_USERNAME &&
     req.body.password === process.env.ADMIN_PASSWORD
