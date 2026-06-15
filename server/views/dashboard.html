@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="/dashboard.js"></script>
     <title>🛹Admin Dashboard🛹</title>
   </head>
   <body
@@ -45,20 +46,23 @@
           <div class="flex flex-col">
             <label for="imageURL" class="font-bold px-2 pt-2">Image URL</label>
             <input
+              id="imageURL"
               type="text"
               name="imageURL"
               placeholder="Paste image URL here"
+              required
               class="rounded-lg p-2 border-1 border-[#343a40]"
             />
           </div>
           <div class="flex flex-col">
             <label class="font-bold px-2 pt-2">Title</label
             ><input
+              id="title"
               type="text"
               name="title"
               placeholder="Title"
               minlength="3"
-              maxlength="60"
+              maxlength="75"
               required
               class="rounded-lg p-2 border-1 border-[#343a40]"
             />
@@ -66,18 +70,21 @@
           <div>
             <label class="font-bold px-2 pt-2">Body</label
             ><textarea
+              id="body"
               required
               name="body"
+              minlength="5"
+              maxlength="1000"
               placeholder="Write your blog post here..."
               class="w-full h-48 resize-none border-1 border-[#343a40] rounded-lg p-2"
             ></textarea>
           </div>
           <button
-            id="submitButton"
+            id="postButton"
             type="submit"
-            class="bg-[#1985b4] w-full tracking-widest p-2 rounded-lg font-bold text-[#f1f3f5] active:bg-[#26b5ee] hover:cursor-pointer hover:bg-[#1985b4] hover:scale-105 ease-in-out duration-150"
+            class="bg-[#1985b4] w-full tracking-widest p-2 rounded-lg font-bold text-[#f1f3f5] active:bg-[#26b5ee] hover:cursor-pointer hover:bg-[#1985b4] hover:scale-103 ease-in-out duration-150"
           >
-            ENTER
+            POST
           </button>
         </form>
       </section>
