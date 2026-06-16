@@ -1,5 +1,6 @@
 import blogModel from "../models/blog.model.js";
 
+//CREATE A BLOG POST
 export const createBlogPost = async (req, res) => {
   const { title, body, imageURL } = req.body;
 
@@ -20,6 +21,7 @@ export const createBlogPost = async (req, res) => {
   }
 };
 
+//RETRIEVE ALL BLOG POSTS
 export const getAllBlogPosts = async (req, res) => {
   try {
     const blogPosts = await blogModel.find().sort({ createdAt: -1 });
@@ -32,5 +34,17 @@ export const getAllBlogPosts = async (req, res) => {
   }
 };
 
-// export const deleteBlogPost = async (req, res) => {
-// };
+//DELETE A BLOG POST
+export const deleteBlogPost = async (req, res) => {
+  const { blogId } = req.params;
+  try {
+    await blogModel.findByIdAndDelete(blogId);
+
+    return res.status(200).json({ message: `Blog post has been deleted.` });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      message: `Could not delete the blog post from the database: ${error}`,
+    });
+  }
+};
