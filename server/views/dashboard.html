@@ -32,10 +32,10 @@
         /></a>
       </div>
     </nav>
-    <main class="flex justify-center w-full">
+    <main class="flex flex-col items-center justify-center w-full">
       <section
         id="blogCreationSection"
-        class="flex flex-col gap-4 border-2 border-[#343a40] w-full max-w-[95%] md:max-w-4xl p-4 rounded-lg shadow-xl"
+        class="flex flex-col gap-4 border-2 border-[#343a40] w-full max-w-[95%] md:max-w-5xl p-4 rounded-lg shadow-xl mt-15 mb-15"
       >
         <h1
           class="font-bold text-center text-2xl w-full border-b-2 border-b-[#1985b4]"
@@ -88,9 +88,19 @@
           </button>
         </form>
       </section>
+      <section id="blog-post-area" class="w-full flex justify-center">
+        <div id="blog-post-area-inner" class="w-full max-w-[95%] md:max-w-5xl">
+          <h1 id="section-header" class="text-4xl mb-4 font-bold">
+            Posted Blogs
+          </h1>
+          <div id="blogContentArea" class="flex flex-col gap-8 mb-15"></div>
+        </div>
+      </section>
     </main>
     <footer
-      class="h-[10vh] bg-[url(/assets/images/anteautopro_footer_banner.png)] w-full flex justify-center border-t-2 border-t-[#1985b4]"
-    ></footer>
+      class="bg-[url(/assets/images/anteautopro_footer_banner.png)] bg-cover w-full flex justify-center border-t-2 border-t-[#1985b4]"
+    >
+      <div class="h-[10vh]"></div>
+    </footer>
   </body>
 </html>

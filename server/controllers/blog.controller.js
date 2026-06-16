@@ -20,5 +20,17 @@ export const createBlogPost = async (req, res) => {
   }
 };
 
+export const getAllBlogPosts = async (req, res) => {
+  try {
+    const blogPosts = await blogModel.find().sort({ createdAt: -1 });
+    return res.status(200).send(blogPosts);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      message: `There was an error while retrieving blog posts: ${error}`,
+    });
+  }
+};
+
 // export const deleteBlogPost = async (req, res) => {
 // };
