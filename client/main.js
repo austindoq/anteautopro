@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               <div id="post-text" class="p-8 flex flex-col gap-2">
                 <h1
                   id="post-title"
-                  class="text-2xl font-bold text-[#e3173e] tracking-wide bg-[#f1f3f5] w-fit text-center md:text-start rounded-lg p-2"
+                  class="text-2xl font-bold text-[#e3173e] tracking-wide bg-[#f1f3f5] w-fit text-center md:text-start rounded-lg py-2 px-1"
                 >
                 ${responseData.mostRecentBlogPost.title}
                 </h1>
