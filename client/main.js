@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             >
               <img
                 src="${responseData.mostRecentBlogPost.imageURL}"
+                class="h-48 md:h-64 w-full object-cover rounded-tl-xl rounded-tr-xl mr-8"
               />
               <div id="post-text" class="p-8 flex flex-col gap-2">
                 <h1
