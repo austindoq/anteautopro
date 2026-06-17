@@ -317,7 +317,7 @@
         </div>
         <form
           id="consultationForm"
-          class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-4 md:gap-8 items-center text-xl md:text-2xl"
+          class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 items-center text-xl md:text-2xl"
         >
           <label for="name" class="font-semibold justify-self-start"
             >Name</label
@@ -365,6 +365,18 @@
             type="date"
             class="datePickerInput border-1 border-[#343a40] rounded-lg p-1 w-full hover:cursor-pointer"
           />
+          <div id="description-container" class="flex flex-col col-span-2">
+            <label class="font-semibold justify-self-start"
+              >Brief description of what we'll be covering:</label
+            >
+            <textarea
+              name="description"
+              id="description"
+              minlength="5"
+              maxlength="300"
+              class="w-full h-24 resize-none border-1 border-[#343a40] rounded-lg p-2 text-xl"
+            ></textarea>
+          </div>
           <button
             id="consultationSubmitButton"
             type="submit"

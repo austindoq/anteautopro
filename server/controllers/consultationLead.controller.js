@@ -3,7 +3,7 @@ import { sendConsultationEmails } from "../services/emailService.js";
 
 async function createConsultationLead(req, res) {
   //Validate incoming data
-  const { name, phone, email, date } = req.body;
+  const { name, phone, email, date, description = "None" } = req.body;
 
   if (!name || !phone || !email || !date) {
     return res.status(400).json({
@@ -13,10 +13,16 @@ async function createConsultationLead(req, res) {
 
   try {
     //Create consultation document
-    await consultationLeadModel.create({ name, phone, email, date });
+    await consultationLeadModel.create({
+      name,
+      phone,
+      email,
+      date,
+      description,
+    });
 
     //Send confirmation emails through Resend
-    await sendConsultationEmails({ name, phone, email, date });
+    await sendConsultationEmails({ name, phone, email, date, description });
     res.status(201).json({
       message: `1-on-1 booked successfully for ${date}! ✅ A confirmation email has been sent to ${email}.`,
     });

@@ -74,6 +74,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   //CONSULTATION SUBMIT FORM
   els.consultationForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
     const formValues = Object.fromEntries(new FormData(els.consultationForm));
 
     const response = await fetch("/api/consultation", {
@@ -89,6 +91,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   //APPRAISAL SUBMIT FORM
   els.appraisalForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
     const formValues = Object.fromEntries(new FormData(els.appraisalForm));
 
     const response = await fetch("/api/appraisal", {
