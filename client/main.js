@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const els = {
     consultationButton: document.getElementById("consultationButton"),
     appraisalButton: document.getElementById("appraisalButton"),
@@ -13,7 +13,37 @@ document.addEventListener("DOMContentLoaded", () => {
       "consultationSubmitButton",
     ),
     appraisalSubmitButton: document.getElementById("appraisalSubmitButton"),
+    blogContainer: document.getElementById("blogContainer"),
   };
+
+  //POPULATE MOST RECENT BLOG POST
+  async function getMostRecentBlog() {
+    const response = await fetch("/api/mostRecentBlogPost");
+    const responseData = await response.json();
+    const mostRecentBlogPost = `<article
+              id="most-recent-post"
+              class="w-full text-[#f1f3f5] bg-[#343a40] rounded-xl"
+            >
+              <img
+                src="${responseData.mostRecentBlogPost.imageURL}"
+              />
+              <div id="post-text" class="p-8 flex flex-col gap-2">
+                <h1
+                  id="post-title"
+                  class="text-2xl font-bold text-[#e3173e] tracking-wide bg-[#f1f3f5] w-fit text-center md:text-start rounded-lg p-2"
+                >
+                ${responseData.mostRecentBlogPost.title}
+                </h1>
+                <p id="post-body" class="italic tracking-wide text-xl py-2">
+                  ${responseData.mostRecentBlogPost.body}
+                </p>
+              </div>
+            </article>`;
+
+    els.blogContainer.innerHTML = mostRecentBlogPost;
+  }
+
+  await getMostRecentBlog();
 
   // USER EVENTS ==============================================
 

@@ -5,14 +5,16 @@ import { join, dirname } from "path";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+//Serve admin login view
 export const serveLogin = (req, res) => {
   if (req.session.isLoggedIn) {
     return res.redirect("/admin/dashboard");
   } else {
-    res.sendFile(join(__dirname, "../views/login.html"));
+    return res.sendFile(join(__dirname, "../views/login.html"));
   }
 };
 
+//Check if username and password are correct
 export const isAdmin = (req, res) => {
   if (
     req.body.username === process.env.ADMIN_USERNAME &&
@@ -22,10 +24,24 @@ export const isAdmin = (req, res) => {
     req.session.isLoggedIn = true;
     return res.status(200).sendFile(join(__dirname, "../views/dashboard.html"));
   } else {
-    return res.status(401).redirect("/admin/login");
+    return res.status(401).sendFile(join(__dirname, "../views/login.html"));
   }
 };
 
+//Serve admin dashboard view
 export const serveDashboard = (req, res) => {
   res.sendFile(join(__dirname, "../views/dashboard.html"));
+};
+
+//Logout by destroying session, will need to login to access dashboard again
+export const logout = (req, res) => {
+  try {
+    req.session.destroy();
+    return res.status(200).sendFile(join(__dirname, "../views/login.html"));
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(500)
+      .json({ message: `Could not delete session: ${error}` });
+  }
 };

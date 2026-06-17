@@ -3,6 +3,7 @@ import {
   serveLogin,
   isAdmin,
   serveDashboard,
+  logout,
 } from "../controllers/admin.controller.js";
 import {
   createBlogPost,
@@ -13,6 +14,7 @@ const router = Router();
 
 router.get("/login", serveLogin);
 router.post("/login", isAdmin);
+router.get("/logout", isAuthenticated, logout);
 router.get("/dashboard", isAuthenticated, serveDashboard);
 router.post("/createBlog", isAuthenticated, createBlogPost);
 router.delete("/deleteBlog/:blogId", isAuthenticated, deleteBlogPost);

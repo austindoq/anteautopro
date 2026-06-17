@@ -48,3 +48,16 @@ export const deleteBlogPost = async (req, res) => {
     });
   }
 };
+
+//GRAB MOST RECENT BLOG POST
+export const mostRecentBlogPost = async (req, res) => {
+  try {
+    const mostRecent = await blogModel.findOne().sort({ createdAt: -1 });
+    return res.status(200).json({ mostRecentBlogPost: mostRecent });
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(500)
+      .json({ message: `Could not retrieve most recent blog post: ${error}` });
+  }
+};
