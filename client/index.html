@@ -55,9 +55,7 @@
         >
           <h1 class="text-5xl/15 md:text-7xl/15 font-bold text-[#f1f3f5]">
             I want to help
-            <span class="bg-[#1985b4] rounded-2xl md:rounded-4xl px-2"
-              >you</span
-            >
+            <span class="text-[#e3173e] font-extrabold italic">you</span>
             find your drive
           </h1>
           <h2 class="text-2xl md:text-4xl text-[#f1f3f5] font-semibold">
@@ -283,7 +281,7 @@
         </div>
       </div>
     </footer>
-    <!-- Consultation MODAL -->
+    <!-- Consultation(1-on-1) MODAL -->
     <div
       id="consultationModal"
       class="fixed inset-0 bg-black/30 z-103 flex justify-center items-center hidden"
@@ -317,9 +315,17 @@
         </div>
         <form
           id="consultationForm"
-          class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 items-center text-center text-xl md:text-2xl"
+          class="md:grid md:grid-cols-[auto_1fr] md:gap-x-4 md:gap-y-2 items-center flex flex-col gap-2 text-xl md:text-2xl"
         >
-          <label for="name" class="font-semibold justify-self-start"
+          <h1
+            id="booking-info-header"
+            class="text-[#1985b4] col-span-2 font-semibold md:mt-4 -mb-2 italic underline"
+          >
+            Booking Info
+          </h1>
+          <label
+            for="name"
+            class="font-semibold justify-self-start hidden md:inline-block"
             >Name</label
           >
           <input
@@ -331,7 +337,9 @@
             class="border-1 border-[#343a40] rounded-lg p-1 w-full"
           />
 
-          <label for="phone" class="font-semibold justify-self-start"
+          <label
+            for="phone"
+            class="font-semibold justify-self-start hidden md:inline-block"
             >Phone</label
           >
           <input
@@ -343,7 +351,9 @@
             class="border-1 border-[#343a40] rounded-lg p-1 w-full"
           />
 
-          <label for="email" class="font-semibold justify-self-start"
+          <label
+            for="email"
+            class="font-semibold justify-self-start hidden md:inline-block"
             >Email</label
           >
           <input
@@ -355,7 +365,9 @@
             class="border-1 border-[#343a40] rounded-lg p-1 w-full"
           />
 
-          <label for="date" class="font-semibold justify-self-start"
+          <label
+            for="date"
+            class="font-semibold justify-self-start hidden md:inline-block"
             >Date</label
           >
           <input
@@ -365,9 +377,13 @@
             type="date"
             class="datePickerInput border-1 border-[#343a40] rounded-lg p-1 w-full hover:cursor-pointer"
           />
-          <div id="description-container" class="flex flex-col col-span-2">
-            <label class="font-semibold justify-self-start"
-              >Brief description of what we'll be covering:</label
+          <div
+            id="description-container"
+            class="flex w-full flex-col md:col-span-2"
+          >
+            <label
+              class="font-semibold justify-self-start text-[#1985b4] underline italic"
+              >Brief description of what we'll be covering</label
             >
             <textarea
               name="description"
@@ -380,7 +396,7 @@
           <button
             id="consultationSubmitButton"
             type="submit"
-            class="col-span-2 bg-[#1985b4] tracking-widest p-2 rounded-lg font-bold text-[#f1f3f5] active:bg-[#26b5ee] hover:cursor-pointer hover:bg-[#1985b4] hover:scale-105 ease-in-out duration-150"
+            class="col-span-2 relative overflow-hidden bg-[#1985b4] tracking-widest p-2 rounded-lg font-bold text-[#f1f3f5] active:bg-[#26b5ee] hover:cursor-pointer hover:bg-[#1985b4] hover:scale-105 ease-in-out duration-150 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-[#f1f3f5]/35 before:via-transparent before:to-transparent"
           >
             SUBMIT
           </button>
@@ -399,9 +415,12 @@
     >
       <div
         id="modal-inner"
-        class="relative max-h-screen w-[95%] md:max-w-5xl bg-radial from-[#f1f3f5] from-95% to-[#1985b4] rounded-lg border-4 border-[#1985b4] py-2 px-8 md:py-8 md:px-16"
+        class="relative max-h-screen w-[95%] md:max-w-5xl bg-radial from-[#f1f3f5] from-95% to-[#1985b4] rounded-lg border-4 border-[#1985b4] py-4 px-8 md:py-8 md:px-16"
       >
-        <div id="modal-header" class="mb-4 md:mb-12 flex flex-col gap-2">
+        <div
+          id="modal-header"
+          class="mb-4 md:mb-12 flex flex-col gap-1 md:gap-2"
+        >
           <h1 class="text-3xl md:text-5xl font-bold text-[#1985b4] text-center">
             Book A Free Appraisal
           </h1>
@@ -428,8 +447,16 @@
           id="appraisalForm"
           class="flex w-full flex-col md:grid md:grid-cols-2 md:gap-x-8 gap-y-2 md:gap-4 items-center text-xl md:text-2xl"
         >
-          <div class="grid grid-cols-[1fr_4fr] w-full">
-            <label for="name" class="font-semibold justify-self-start"
+          <h1
+            id="booking-info-header"
+            class="text-[#1985b4] col-span-2 font-semibold md:mt-4 -mb-2 italic underline"
+          >
+            Booking Info
+          </h1>
+          <div class="md:grid md:grid-cols-[1fr_4fr] w-full">
+            <label
+              for="name"
+              class="font-semibold justify-self-start hidden md:inline-block"
               >Name</label
             >
             <input
@@ -442,8 +469,10 @@
             />
           </div>
 
-          <div class="grid grid-cols-[1fr_4fr] w-full">
-            <label for="phone" class="font-semibold justify-self-start"
+          <div class="md:grid md:grid-cols-[1fr_4fr] w-full">
+            <label
+              for="phone"
+              class="font-semibold justify-self-start hidden md:inline-block"
               >Phone</label
             >
             <input
@@ -456,8 +485,10 @@
             />
           </div>
 
-          <div class="grid grid-cols-[1fr_4fr] w-full">
-            <label for="email" class="font-semibold justify-self-start"
+          <div class="md:grid md:grid-cols-[1fr_4fr] w-full">
+            <label
+              for="email"
+              class="font-semibold justify-self-start hidden md:inline-block"
               >Email</label
             >
             <input
@@ -470,8 +501,10 @@
             />
           </div>
 
-          <div class="grid grid-cols-[1fr_4fr] w-full">
-            <label for="date" class="font-semibold justify-self-start"
+          <div class="md:grid md:grid-cols-[1fr_4fr] w-full">
+            <label
+              for="date"
+              class="font-semibold justify-self-start hidden md:inline-block"
               >Date</label
             >
             <input
@@ -568,7 +601,7 @@
           <button
             id="appraisalSubmitButton"
             type="submit"
-            class="col-span-2 w-full bg-[#1985b4] tracking-widest p-2 rounded-lg font-bold text-[#f1f3f5] active:bg-[#26b5ee] hover:cursor-pointer hover:bg-[#1985b4] hover:scale-105 ease-in-out duration-150"
+            class="col-span-2 w-full relative overflow-hidden bg-[#1985b4] tracking-widest p-2 rounded-lg font-bold text-[#f1f3f5] active:bg-[#26b5ee] hover:cursor-pointer hover:bg-[#1985b4] hover:scale-105 ease-in-out duration-150 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-[#f1f3f5]/35 before:via-transparent before:to-transparent"
           >
             SUBMIT
           </button>
