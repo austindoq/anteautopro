@@ -6,14 +6,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     appraisalModal: document.getElementById("appraisalModal"),
     consultationForm: document.getElementById("consultationForm"),
     appraisalForm: document.getElementById("appraisalForm"),
-    closeButton: document.getElementById("closeButton"),
     datePickerInputs: document.querySelectorAll(".datePickerInput"),
     closeButtons: document.querySelectorAll(".closeButton"),
+    appraisalSubmitButton: document.getElementById("appraisalSubmitButton"),
+    blogContainer: document.getElementById("blogContainer"),
+    consultationForm: document.getElementById("consultationForm"),
     consultationSubmitButton: document.getElementById(
       "consultationSubmitButton",
     ),
-    appraisalSubmitButton: document.getElementById("appraisalSubmitButton"),
-    blogContainer: document.getElementById("blogContainer"),
+    consultationCloseButton: document.querySelector(
+      "#consultationModal #modal-inner .closeButton",
+    ),
   };
 
   //POPULATE MOST RECENT BLOG POST
@@ -86,7 +89,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const responseData = await response.json();
 
-    alert(responseData.message);
+    els.consultationForm.innerHTML = responseData.message;
+
+    //Hide intial close form button
+    els.consultationCloseButton.classList.add("hidden");
+
+    //Add listener to reload page on new button in confirmation message
+    document
+      .getElementById("continueButton")
+      .addEventListener("click", (event) => {
+        window.location.reload();
+      });
   });
 
   //APPRAISAL SUBMIT FORM
@@ -103,7 +116,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const responseData = await response.json();
 
-    alert(responseData.message);
+    // alert(responseData.message);
   });
 
   //UTILITY FUNCTIONS =======================================
