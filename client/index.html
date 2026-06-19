@@ -415,15 +415,15 @@
     <!-- Appraisal MODAL -->
     <div
       id="appraisalModal"
-      class="fixed inset-0 bg-black/30 z-102 flex justify-center items-center hidden"
+      class="fixed inset-0 bg-black/30 z-102 flex justify-center items-center overfloy-y-hidden hidden"
     >
       <div
         id="modal-inner"
-        class="relative max-h-screen w-[95%] md:max-w-5xl bg-radial from-[#f1f3f5] from-95% to-[#1985b4] rounded-lg border-4 border-[#1985b4] py-4 px-8 md:py-8 md:px-16"
+        class="relative max-h-screen w-[95%] md:max-w-5xl bg-radial my-8 from-[#f1f3f5] from-95% to-[#1985b4] rounded-lg border-4 border-[#1985b4] py-4 px-8 md:py-8 md:px-16"
       >
         <div
           id="modal-header"
-          class="mb-4 md:mb-6 flex flex-col gap-1 md:gap-2"
+          class="mb-1 md:mb-6 flex flex-col gap-0.5 md:gap-2"
         >
           <h1 class="text-3xl md:text-5xl font-bold text-[#1985b4] text-center">
             Book A Free Appraisal
@@ -453,7 +453,7 @@
         ></div>
         <form
           id="appraisalForm"
-          class="flex w-full flex-col md:grid md:grid-cols-2 md:gap-x-8 gap-y-2 md:gap-4 items-center text-xl md:text-2xl"
+          class="flex w-full flex-col md:grid md:grid-cols-2 md:gap-x-8 gap-y-2 md:gap-2 items-center text-xl md:text-2xl"
         >
           <h1
             id="booking-info-header"
@@ -520,96 +520,117 @@
               name="date"
               id="datePickerInput"
               type="date"
-              class="datePickerInput border-1 border-[#343a40] rounded-lg p-1 w-full"
+              class="datePickerInput border-1 border-[#343a40] rounded-lg p-1 text-center w-full"
             />
           </div>
           <!-- CAR INFO SECTION -->
           <h1
             id="car-info-header"
-            class="text-[#1985b4] font-semibold md:mt-4 -mb-4 rounded-lg italic underline"
+            class="text-[#1985b4] col-span-2 font-semibold md:mt-4 -mb-2 rounded-lg italic underline"
           >
             General Vehicle Info
           </h1>
           <div
-            id="car-info"
-            class="col-span-2 w-full grid md:grid-cols-3 gap-2"
+            id="vehicle-accident-status"
+            class="md:grid md:grid-cols-[1fr_4fr] w-full"
           >
-            <div
-              id="vehicle-make"
-              class="flex flex-col text-center justify-center"
+            <h1 class="font-semibold hidden md:inline-block">Status</h1>
+            <select
+              required
+              name="accident"
+              class="text-center border-1 border-[#343a40] rounded-lg w-full"
             >
-              <h1 class="font-semibold hidden md:inline-block">Make</h1>
-              <select
-                required
-                name="make"
-                class="text-center border-1 border-[#343a40] rounded-lg mt-2"
-              >
-                <option value="" disabled selected>Select a Make</option>
-
-                <option value="acura">Acura</option>
-                <option value="alfa-romeo">Alfa Romeo</option>
-                <option value="audi">Audi</option>
-                <option value="bmw">BMW</option>
-                <option value="buick">Buick</option>
-                <option value="cadillac">Cadillac</option>
-                <option value="chevrolet">Chevrolet</option>
-                <option value="chrysler">Chrysler</option>
-                <option value="dodge">Dodge</option>
-                <option value="fiat">Fiat</option>
-                <option value="ford">Ford</option>
-                <option value="genesis">Genesis</option>
-                <option value="gmc">GMC</option>
-                <option value="honda">Honda</option>
-                <option value="hyundai">Hyundai</option>
-                <option value="infiniti">Infiniti</option>
-                <option value="jaguar">Jaguar</option>
-                <option value="jeep">Jeep</option>
-                <option value="kia">Kia</option>
-                <option value="land-rover">Land Rover</option>
-                <option value="lexus">Lexus</option>
-                <option value="lincoln">Lincoln</option>
-                <option value="mazda">Mazda</option>
-                <option value="mercedes-benz">Mercedes-Benz</option>
-                <option value="mini">MINI</option>
-                <option value="mitsubishi">Mitsubishi</option>
-                <option value="nissan">Nissan</option>
-                <option value="pontiac">Pontiac</option>
-                <option value="porsche">Porsche</option>
-                <option value="ram">RAM</option>
-                <option value="subaru">Subaru</option>
-                <option value="suzuki">Suzuki</option>
-                <option value="tesla">Tesla</option>
-                <option value="toyota">Toyota</option>
-                <option value="volkswagen">Volkswagen</option>
-                <option value="volvo">Volvo</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div id="vehicle-model" class="flex flex-col text-center">
-              <h1 class="font-semibold hidden md:inline-block">Model</h1>
-              <input
-                required
-                name="model"
-                type="text"
-                placeholder="Model"
-                class="p-2 border-1 border-[#343a40] rounded-lg"
-              />
-            </div>
-            <div id="vehicle-year" class="flex flex-col text-center">
-              <h1 class="font-semibold hidden md:inline-block">Year</h1>
-              <input
-                required
-                name="year"
-                type="number"
-                placeholder="Year"
-                class="p-2 border-1 border-[#343a40] rounded-lg"
-              />
-            </div>
+              <option value="" disabled selected>Select Status</option>
+              <option value="hasAccident">Has accident history</option>
+              <option value="noAccident">No accident history</option>
+            </select>
           </div>
+          <div id="vehicle-make" class="md:grid md:grid-cols-[1fr_4fr] w-full">
+            <h1 class="font-semibold hidden md:inline-block">Make</h1>
+            <select
+              required
+              name="make"
+              class="text-center border-1 border-[#343a40] rounded-lg w-full"
+            >
+              <option value="" disabled selected>Select a Make</option>
+
+              <option value="acura">Acura</option>
+              <option value="alfa-romeo">Alfa Romeo</option>
+              <option value="audi">Audi</option>
+              <option value="bmw">BMW</option>
+              <option value="buick">Buick</option>
+              <option value="cadillac">Cadillac</option>
+              <option value="chevrolet">Chevrolet</option>
+              <option value="chrysler">Chrysler</option>
+              <option value="dodge">Dodge</option>
+              <option value="fiat">Fiat</option>
+              <option value="ford">Ford</option>
+              <option value="genesis">Genesis</option>
+              <option value="gmc">GMC</option>
+              <option value="honda">Honda</option>
+              <option value="hyundai">Hyundai</option>
+              <option value="infiniti">Infiniti</option>
+              <option value="jaguar">Jaguar</option>
+              <option value="jeep">Jeep</option>
+              <option value="kia">Kia</option>
+              <option value="land-rover">Land Rover</option>
+              <option value="lexus">Lexus</option>
+              <option value="lincoln">Lincoln</option>
+              <option value="mazda">Mazda</option>
+              <option value="mercedes-benz">Mercedes-Benz</option>
+              <option value="mini">MINI</option>
+              <option value="mitsubishi">Mitsubishi</option>
+              <option value="nissan">Nissan</option>
+              <option value="pontiac">Pontiac</option>
+              <option value="porsche">Porsche</option>
+              <option value="ram">RAM</option>
+              <option value="subaru">Subaru</option>
+              <option value="suzuki">Suzuki</option>
+              <option value="tesla">Tesla</option>
+              <option value="toyota">Toyota</option>
+              <option value="volkswagen">Volkswagen</option>
+              <option value="volvo">Volvo</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div id="vehicle-model" class="md:grid md:grid-cols-[1fr_4fr] w-full">
+            <h1 class="font-semibold hidden md:inline-block">Model</h1>
+            <input
+              required
+              name="model"
+              type="text"
+              placeholder="Model"
+              class="p-2 border-1 border-[#343a40] w-full rounded-lg"
+            />
+          </div>
+          <div id="vehicle-year" class="md:grid md:grid-cols-[1fr_4fr] w-full">
+            <h1 class="font-semibold hidden md:inline-block">Year</h1>
+            <input
+              required
+              name="year"
+              type="number"
+              placeholder="Year"
+              class="p-2 border-1 border-[#343a40] w-full rounded-lg"
+            />
+          </div>
+          <div
+            id="vehicle-odometer"
+            class="md:grid md:grid-cols-[1fr_4fr] w-full"
+          >
+            <h1 class="font-semibold hidden md:inline-block">KMs</h1>
+            <input
+              required
+              name="odometer"
+              type="number"
+              placeholder="Odometer (Kms)"
+              class="p-2 border-1 border-[#343a40] w-full rounded-lg"
+            />
+          </div>
+
           <button
             id="appraisalSubmitButton"
             type="submit"
-            class="col-span-2 w-full relative overflow-hidden bg-[#1985b4] tracking-widest p-2 rounded-lg font-bold text-[#f1f3f5] active:bg-[#26b5ee] hover:cursor-pointer hover:bg-[#1985b4] hover:scale-105 ease-in-out duration-150 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-[#f1f3f5]/35 before:via-transparent before:to-transparent"
+            class="col-span-2 w-full relative overflow-hidden bg-[#1985b4] tracking-widest p-2 md:mt-2 rounded-lg font-bold text-[#f1f3f5] active:bg-[#26b5ee] hover:cursor-pointer hover:bg-[#1985b4] hover:scale-105 ease-in-out duration-150 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-[#f1f3f5]/35 before:via-transparent before:to-transparent"
           >
             SUBMIT
           </button>
