@@ -151,7 +151,8 @@ export const sendConsultationEmails = async (leadData) => {
 
 //Appraisal Emails
 export const sendAppraisalEmails = async (leadData) => {
-  const { name, email, phone, date, make, model, year, kilometers } = leadData;
+  const { name, email, phone, date, make, model, year, odometer, accident } =
+    leadData;
   try {
     //Ante's appraisal confirmation email
     await client.emails.send({
@@ -167,10 +168,10 @@ export const sendAppraisalEmails = async (leadData) => {
       <strong>${name}</strong> wants to meet with you on <strong>${date}</strong> for an appraisal of their ${year} ${make} ${model}.
     </p>
     <p style="font-size: 16px; color: #343a40; margin: 0 0 16px 0;">
-      <strong>Kilometers:</strong> ${kilometers}
+      <strong>Kilometers:</strong> ${odometer}
     </p>
     <p style="font-size: 16px; color: #343a40; margin: 0 0 16px 0;">
-      <strong>Description:</strong> ${description}
+      <strong>Status:</strong> ${accident}
     </p>
     <hr style="border: none; border-top: 1px solid #e9ecef; margin: 16px 0;" />
     <h2 style="font-size: 18px; color: #1985b4; margin: 0 0 8px 0;">Contact Info</h2>

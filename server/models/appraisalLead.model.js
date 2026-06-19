@@ -6,9 +6,11 @@ const appraisalLeadSchema = new Schema(
     phone: { type: String, required: true, trim: true },
     email: { type: String, required: true, lowercase: true, trim: true },
     date: { type: String, required: true, trim: true },
-    make: { type: String, required: true, lowercase: true, trim: true },
+    accident: { type: String, required: true, trim: true },
+    make: { type: String, required: true, trim: true },
     model: { type: String, required: true, lowercase: true, trim: true },
     year: { type: Number, required: true, trim: true },
+    odometer: { type: Number, required: true, trim: true },
   },
   { timestamps: true },
 );

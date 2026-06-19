@@ -17,6 +17,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     consultationCloseButton: document.querySelector(
       "#consultationModal #modal-inner .closeButton",
     ),
+    appraisalCloseButton: document.querySelector(
+      "#appraisalModal #modal-inner .closeButton",
+    ),
   };
 
   //POPULATE MOST RECENT BLOG POST
@@ -116,7 +119,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const responseData = await response.json();
 
-    // alert(responseData.message);
+    els.appraisalForm.innerHTML = responseData.message;
+
+    els.appraisalCloseButton.classList.add("hidden");
+
+    document
+      .getElementById("continueButton")
+      .addEventListener("click", (event) => {
+        window.location.reload();
+      });
   });
 
   //UTILITY FUNCTIONS =======================================

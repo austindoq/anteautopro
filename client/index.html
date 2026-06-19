@@ -390,10 +390,11 @@
               >Brief description of what we'll be covering</label
             >
             <textarea
+              required
               name="description"
               id="description"
               minlength="5"
-              maxlength="300"
+              maxlength="350"
               class="w-full h-24 resize-none border-1 border-[#343a40] rounded-lg p-2 text-xl"
             ></textarea>
           </div>
@@ -415,11 +416,11 @@
     <!-- Appraisal MODAL -->
     <div
       id="appraisalModal"
-      class="fixed inset-0 bg-black/30 z-102 flex justify-center items-center overfloy-y-hidden hidden"
+      class="fixed inset-0 bg-black/30 z-102 flex justify-center items-start md:items-center overflow-y-auto hidden"
     >
       <div
         id="modal-inner"
-        class="relative max-h-screen w-[95%] md:max-w-5xl bg-radial my-8 from-[#f1f3f5] from-95% to-[#1985b4] rounded-lg border-4 border-[#1985b4] py-4 px-8 md:py-8 md:px-16"
+        class="relative w-[95%] my-8 md:my-0 md:max-w-5xl bg-radial from-[#f1f3f5] from-95% to-[#1985b4] rounded-lg border-4 border-[#1985b4] py-2 px-8 md:py-8 md:px-16"
       >
         <div
           id="modal-header"
@@ -461,7 +462,7 @@
           >
             Booking Info
           </h1>
-          <div class="md:grid md:grid-cols-[1fr_4fr] w-full">
+          <div class="md:grid md:grid-cols-[1fr_4fr] md:items-center w-full">
             <label
               for="name"
               class="font-semibold justify-self-start hidden md:inline-block"
@@ -477,7 +478,7 @@
             />
           </div>
 
-          <div class="md:grid md:grid-cols-[1fr_4fr] w-full">
+          <div class="md:grid md:grid-cols-[1fr_4fr] md:items-center w-full">
             <label
               for="phone"
               class="font-semibold justify-self-start hidden md:inline-block"
@@ -493,7 +494,7 @@
             />
           </div>
 
-          <div class="md:grid md:grid-cols-[1fr_4fr] w-full">
+          <div class="md:grid md:grid-cols-[1fr_4fr] md:items-center w-full">
             <label
               for="email"
               class="font-semibold justify-self-start hidden md:inline-block"
@@ -509,7 +510,7 @@
             />
           </div>
 
-          <div class="md:grid md:grid-cols-[1fr_4fr] w-full">
+          <div class="md:grid md:grid-cols-[1fr_4fr] md:items-center w-full">
             <label
               for="date"
               class="font-semibold justify-self-start hidden md:inline-block"
@@ -540,9 +541,13 @@
               name="accident"
               class="text-center border-1 border-[#343a40] rounded-lg w-full"
             >
-              <option value="" disabled selected>Select Status</option>
-              <option value="hasAccident">Has accident history</option>
-              <option value="noAccident">No accident history</option>
+              <option value="" disabled selected>Select Accident Status</option>
+              <option value="Has an accident history">
+                Has accident history
+              </option>
+              <option value="Does not have an accident history">
+                No accident history
+              </option>
             </select>
           </div>
           <div id="vehicle-make" class="md:grid md:grid-cols-[1fr_4fr] w-full">
@@ -553,47 +558,49 @@
               class="text-center border-1 border-[#343a40] rounded-lg w-full"
             >
               <option value="" disabled selected>Select a Make</option>
-
-              <option value="acura">Acura</option>
-              <option value="alfa-romeo">Alfa Romeo</option>
-              <option value="audi">Audi</option>
-              <option value="bmw">BMW</option>
-              <option value="buick">Buick</option>
-              <option value="cadillac">Cadillac</option>
-              <option value="chevrolet">Chevrolet</option>
-              <option value="chrysler">Chrysler</option>
-              <option value="dodge">Dodge</option>
-              <option value="fiat">Fiat</option>
-              <option value="ford">Ford</option>
-              <option value="genesis">Genesis</option>
-              <option value="gmc">GMC</option>
-              <option value="honda">Honda</option>
-              <option value="hyundai">Hyundai</option>
-              <option value="infiniti">Infiniti</option>
-              <option value="jaguar">Jaguar</option>
-              <option value="jeep">Jeep</option>
-              <option value="kia">Kia</option>
-              <option value="land-rover">Land Rover</option>
-              <option value="lexus">Lexus</option>
-              <option value="lincoln">Lincoln</option>
-              <option value="mazda">Mazda</option>
-              <option value="mercedes-benz">Mercedes-Benz</option>
-              <option value="mini">MINI</option>
-              <option value="mitsubishi">Mitsubishi</option>
-              <option value="nissan">Nissan</option>
-              <option value="pontiac">Pontiac</option>
-              <option value="porsche">Porsche</option>
-              <option value="ram">RAM</option>
-              <option value="subaru">Subaru</option>
-              <option value="suzuki">Suzuki</option>
-              <option value="tesla">Tesla</option>
-              <option value="toyota">Toyota</option>
-              <option value="volkswagen">Volkswagen</option>
-              <option value="volvo">Volvo</option>
-              <option value="other">Other</option>
+              <option value="Acura">Acura</option>
+              <option value="Alfa Romeo">Alfa Romeo</option>
+              <option value="Audi">Audi</option>
+              <option value="BMW">BMW</option>
+              <option value="Buick">Buick</option>
+              <option value="Cadillac">Cadillac</option>
+              <option value="Chevrolet">Chevrolet</option>
+              <option value="Chrysler">Chrysler</option>
+              <option value="Dodge">Dodge</option>
+              <option value="Fiat">Fiat</option>
+              <option value="Ford">Ford</option>
+              <option value="Genesis">Genesis</option>
+              <option value="GMC">GMC</option>
+              <option value="Honda">Honda</option>
+              <option value="Hyundai">Hyundai</option>
+              <option value="Infiniti">Infiniti</option>
+              <option value="Jaguar">Jaguar</option>
+              <option value="Jeep">Jeep</option>
+              <option value="Kia">Kia</option>
+              <option value="Land Rover">Land Rover</option>
+              <option value="Lexus">Lexus</option>
+              <option value="Lincoln">Lincoln</option>
+              <option value="Mazda">Mazda</option>
+              <option value="Mercedes-Benz">Mercedes-Benz</option>
+              <option value="MINI">MINI</option>
+              <option value="Mitsubishi">Mitsubishi</option>
+              <option value="Nissan">Nissan</option>
+              <option value="Pontiac">Pontiac</option>
+              <option value="Porsche">Porsche</option>
+              <option value="RAM">RAM</option>
+              <option value="Subaru">Subaru</option>
+              <option value="Suzuki">Suzuki</option>
+              <option value="Tesla">Tesla</option>
+              <option value="Toyota">Toyota</option>
+              <option value="Volkswagen">Volkswagen</option>
+              <option value="Volvo">Volvo</option>
+              <option value="Other">Other</option>
             </select>
           </div>
-          <div id="vehicle-model" class="md:grid md:grid-cols-[1fr_4fr] w-full">
+          <div
+            id="vehicle-model"
+            class="md:grid md:grid-cols-[1fr_4fr] md:items-center w-full"
+          >
             <h1 class="font-semibold hidden md:inline-block">Model</h1>
             <input
               required
@@ -603,7 +610,10 @@
               class="p-2 border-1 border-[#343a40] w-full rounded-lg"
             />
           </div>
-          <div id="vehicle-year" class="md:grid md:grid-cols-[1fr_4fr] w-full">
+          <div
+            id="vehicle-year"
+            class="md:grid md:grid-cols-[1fr_4fr] md:items-center w-full"
+          >
             <h1 class="font-semibold hidden md:inline-block">Year</h1>
             <input
               required
@@ -615,14 +625,14 @@
           </div>
           <div
             id="vehicle-odometer"
-            class="md:grid md:grid-cols-[1fr_4fr] w-full"
+            class="md:grid md:grid-cols-[1fr_4fr] md:items-center w-full"
           >
-            <h1 class="font-semibold hidden md:inline-block">KMs</h1>
+            <h1 class="font-semibold hidden md:inline-block">Km</h1>
             <input
               required
               name="odometer"
               type="number"
-              placeholder="Odometer (Kms)"
+              placeholder="Odometer (Km)"
               class="p-2 border-1 border-[#343a40] w-full rounded-lg"
             />
           </div>
