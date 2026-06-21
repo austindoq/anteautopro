@@ -19,32 +19,48 @@
       class="sticky top-0 z-100 flex flex-col md:flex-row md:justify-between font-bold text-[#e9ecef] tracking-widest md:tracking-wider bg-[#343a40] py-2 px-4 w-full border-b-2 border-b-[#e3173e]"
     >
       <div id="logo" class="md:w-1/3 flex justify-center md:justify-normal">
-        <a href="/index.html" class="hover:cursor-pointer">
+        <a href="/index.html" class="hover:cursor-pointer w-fit">
           <img
             src="/assets/images/anteautopro.ca-logo2.png"
-            class="md:max-w-1/2"
+            class="w-128 md:w-64"
           />
         </a>
       </div>
 
       <div
         id="nav-options"
-        class="flex gap-4 md:gap-8 justify-evenly md:justify-normal"
+        class="flex gap-2 md:gap-8 justify-evenly md:justify-normal md:mr-2"
       >
+        <a
+          href="/index.html"
+          class="hover:cursor-pointer flex items-center text-2xl text-[#e9ecef]"
+          >Home
+          <img
+            src="/assets/icons/home.svg"
+            class="hidden md:inline-block size-7 mx-0.5"
+        /></a>
         <a
           href="/blog.html"
           class="hover:cursor-pointer flex items-center text-2xl text-[#e9ecef]"
-          >Blog <img src="/assets/icons/car.svg" class="size-7 mx-0.5"
+          >Blog
+          <img
+            src="/assets/icons/car.svg"
+            class="hidden md:inline-block size-7 mx-0.5"
         /></a>
         <a
           href="/contact.html"
           class="hover:cursor-pointer flex items-center text-2xl text-[#e9ecef]"
-          >Contact <img src="/assets/icons/contact.svg" class="size-7 mx-0.5"
+          >Contact
+          <img
+            src="/assets/icons/contact.svg"
+            class="hidden md:inline-block size-7 mx-0.5"
         /></a>
         <a
           class="hover:cursor-pointer flex items-center text-2xl italic font-extrabold text-[#e3173e]"
           >FAQ
-          <img src="/assets/icons/about-selected.svg" class="size-5 mx-0.5"
+          <img
+            src="/assets/icons/about-selected.svg"
+            class="hidden md:inline-block size-5 mx-0.5"
         /></a>
       </div>
     </nav>
