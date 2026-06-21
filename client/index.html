@@ -457,74 +457,6 @@
           id="appraisalForm"
           class="flex w-full flex-col md:grid md:grid-cols-2 md:gap-x-8 gap-y-2 md:gap-2 items-center text-xl md:text-2xl"
         >
-          <h1
-            id="booking-info-header"
-            class="text-[#1985b4] col-span-2 font-semibold md:mt-4 -mb-2 italic underline"
-          >
-            Booking Info
-          </h1>
-          <div class="md:grid md:grid-cols-[1fr_4fr] md:items-center w-full">
-            <label
-              for="name"
-              class="font-semibold justify-self-start hidden md:inline-block"
-              >Name</label
-            >
-            <input
-              required
-              id="name"
-              name="name"
-              type="text"
-              placeholder="Name"
-              class="border-1 border-[#343a40] rounded-lg p-1 w-full px-2"
-            />
-          </div>
-
-          <div class="md:grid md:grid-cols-[1fr_4fr] md:items-center w-full">
-            <label
-              for="phone"
-              class="font-semibold justify-self-start hidden md:inline-block"
-              >Phone</label
-            >
-            <input
-              required
-              id="phone"
-              name="phone"
-              type="tel"
-              placeholder="Phone"
-              class="border-1 border-[#343a40] rounded-lg p-1 w-full px-2"
-            />
-          </div>
-
-          <div class="md:grid md:grid-cols-[1fr_4fr] md:items-center w-full">
-            <label
-              for="email"
-              class="font-semibold justify-self-start hidden md:inline-block"
-              >Email</label
-            >
-            <input
-              required
-              id="email"
-              name="email"
-              type="email"
-              placeholder="Email"
-              class="border-1 border-[#343a40] rounded-lg p-1 w-full px-2"
-            />
-          </div>
-
-          <div class="md:grid md:grid-cols-[1fr_4fr] md:items-center w-full">
-            <label
-              for="date"
-              class="font-semibold justify-self-start hidden md:inline-block"
-              >Date</label
-            >
-            <input
-              required
-              name="date"
-              id="datePickerInput"
-              type="date"
-              class="datePickerInput border-1 border-[#343a40] rounded-lg p-1 text-center w-full"
-            />
-          </div>
           <!-- CAR INFO SECTION -->
           <h1
             id="car-info-header"
@@ -628,16 +560,84 @@
             id="vehicle-odometer"
             class="md:grid md:grid-cols-[1fr_4fr] md:items-center w-full"
           >
-            <h1 class="font-semibold hidden md:inline-block">Km</h1>
+            <h1 class="font-semibold hidden md:inline-block">Km/Mi</h1>
             <input
               required
               name="odometer"
               type="number"
-              placeholder="Odometer (Km)"
+              placeholder="Odometer Reading"
               class="p-2 border-1 border-[#343a40] w-full rounded-lg"
             />
           </div>
+          <!-- BOOKING INFO SECTION -->
+          <h1
+            id="booking-info-header"
+            class="text-[#1985b4] col-span-2 font-semibold md:mt-4 -mb-2 italic underline"
+          >
+            Booking Info
+          </h1>
+          <div class="md:grid md:grid-cols-[1fr_4fr] md:items-center w-full">
+            <label
+              for="name"
+              class="font-semibold justify-self-start hidden md:inline-block"
+              >Name</label
+            >
+            <input
+              required
+              id="name"
+              name="name"
+              type="text"
+              placeholder="Name"
+              class="border-1 border-[#343a40] rounded-lg p-1 w-full px-2"
+            />
+          </div>
 
+          <div class="md:grid md:grid-cols-[1fr_4fr] md:items-center w-full">
+            <label
+              for="phone"
+              class="font-semibold justify-self-start hidden md:inline-block"
+              >Phone</label
+            >
+            <input
+              required
+              id="phone"
+              name="phone"
+              type="tel"
+              placeholder="Phone"
+              class="border-1 border-[#343a40] rounded-lg p-1 w-full px-2"
+            />
+          </div>
+
+          <div class="md:grid md:grid-cols-[1fr_4fr] md:items-center w-full">
+            <label
+              for="email"
+              class="font-semibold justify-self-start hidden md:inline-block"
+              >Email</label
+            >
+            <input
+              required
+              id="email"
+              name="email"
+              type="email"
+              placeholder="Email"
+              class="border-1 border-[#343a40] rounded-lg p-1 w-full px-2"
+            />
+          </div>
+
+          <div class="md:grid md:grid-cols-[1fr_4fr] md:items-center w-full">
+            <label
+              for="date"
+              class="font-semibold justify-self-start hidden md:inline-block"
+              >Date</label
+            >
+            <input
+              required
+              name="date"
+              id="datePickerInput"
+              type="date"
+              class="datePickerInput border-1 border-[#343a40] rounded-lg p-1 text-center w-full"
+            />
+          </div>
           <button
             id="appraisalSubmitButton"
             type="submit"

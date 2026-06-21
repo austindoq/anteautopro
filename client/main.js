@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     appraisalCloseButton: document.querySelector(
       "#appraisalModal #modal-inner .closeButton",
     ),
+    selectButtons: document.querySelectorAll("select"),
   };
 
   //POPULATE MOST RECENT BLOG POST
@@ -78,6 +79,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 
+  //CENTER ALL SELECT MENUS FOR FULL USER ACCESS
+  els.selectButtons.forEach((select) => {
+    select.addEventListener("focus", () => {
+      select.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  });
   //CONSULTATION SUBMIT FORM
   els.consultationForm.addEventListener("submit", async (event) => {
     event.preventDefault();
