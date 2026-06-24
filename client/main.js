@@ -72,6 +72,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 
+  //SET TODAY'S DATE IN THE PICKER TO TODAY'S DATE
+  els.datePickerInputs.forEach((datePickerInput) => {
+    datePickerInput.valueAsDate = new Date();
+  });
+
   //CLOSE MODAL
   els.closeButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
