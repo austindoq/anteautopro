@@ -11,6 +11,11 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Login</title>
+    <style>
+      body {
+        font-family: "Jost", "Trebuchet MS", Arial, sans-serif;
+      }
+    </style>
   </head>
   <body
     class="h-screen flex flex-col justify-between bg-radial from-[#f1f3f5] from-30% to-slate-300"
@@ -38,7 +43,7 @@
           id="loginForm"
           method="post"
           action="/admin/login"
-          class="p-4 flex flex-col gap-4 w-full"
+          class="p-8 flex flex-col gap-4 w-full"
         >
           <input
             name="username"
