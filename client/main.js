@@ -72,9 +72,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 
-  //SET TODAY'S DATE IN THE PICKER TO TODAY'S DATE
+  //SET TODAY'S DATE IN THE DATE PICKER AS WELL AS MIN DATE VALUE
   els.datePickerInputs.forEach((datePickerInput) => {
     datePickerInput.valueAsDate = new Date();
+    datePickerInput.min = new Date().toISOString().split("T")[0];
   });
 
   //CLOSE MODAL
