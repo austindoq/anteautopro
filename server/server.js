@@ -6,7 +6,7 @@ import apiRouter from "./routes/api.routes.js";
 import adminRouter from "./routes/admin.routes.js";
 import session from "express-session";
 import MongoStore from "connect-mongo";
-import fileURLToPath from "url";
+import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 
 const app = express();
