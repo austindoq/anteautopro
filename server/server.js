@@ -6,8 +6,14 @@ import apiRouter from "./routes/api.routes.js";
 import adminRouter from "./routes/admin.routes.js";
 import session from "express-session";
 import MongoStore from "connect-mongo";
+import fileURLToPath from "url";
+import { dirname, join } from "path";
 
 const app = express();
+
+//Absolute Path
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 //Middleware
 app.use(express.json());
@@ -30,7 +36,7 @@ app.use(
 app.use("/api", apiRouter);
 app.use("/admin", adminRouter);
 
-app.use(express.static("client"));
+app.use(express.static(join(__dirname, "../client")));
 
 app.listen(process.env.PORT, () => {
   console.log("Connection Live");
