@@ -11,7 +11,10 @@ import { dirname, join } from "path";
 
 const app = express();
 
-//Absolute Path
+//Trust Render's proxy
+app.set("trust proxy", 1);
+
+//Absolute Directory Path
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
