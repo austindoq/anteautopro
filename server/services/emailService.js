@@ -8,7 +8,7 @@ export const sendConsultationEmails = async (leadData) => {
   try {
     //Ante's confirmation email
     await client.emails.send({
-      from: "onboarding@resend.dev",
+      from: "ante@anteautopro.ca",
       to: "austindoq@gmail.com",
       subject: "You've got a new lead!",
       html: `<div
@@ -65,8 +65,8 @@ export const sendConsultationEmails = async (leadData) => {
     });
     //Client confirmation email
     await client.emails.send({
-      from: "onboarding@resend.dev",
-      to: "austindoq@gmail.com",
+      from: "ante@anteautopro.ca",
+      to: `${email}`,
       subject: "Booked for a 1-on-1 with Ante",
       html: `<div
       style="
@@ -156,7 +156,7 @@ export const sendAppraisalEmails = async (leadData) => {
   try {
     //Ante's appraisal confirmation email
     await client.emails.send({
-      from: "onboarding@resend.dev",
+      from: "ante@anteautopro.ca",
       to: "austindoq@gmail.com",
       subject: "You've got a new appraisal booking!",
       html: `<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f1f3f5; padding: 24px; border-radius: 8px;">
@@ -182,8 +182,8 @@ export const sendAppraisalEmails = async (leadData) => {
     });
     //Client appraisal confirmation email
     await client.emails.send({
-      from: "onboarding@resend.dev",
-      to: "austindoq@gmail.com",
+      from: "ante@anteautopro.ca",
+      to: `${email}`,
       subject: "Booked for an appraisal with Ante",
       html: `<div
       style="
