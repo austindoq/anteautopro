@@ -10,6 +10,7 @@ import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 //Trust Render's proxy
 app.set("trust proxy", 1);
@@ -41,7 +42,11 @@ app.use("/admin", adminRouter);
 
 app.use(express.static(join(__dirname, "../client")));
 
-app.listen(process.env.PORT, "0.0.0.0", () => {
-  console.log("Connection Live");
+const server = app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Connection Live on port: ${PORT}`);
   connectDb();
 });
+
+// Express Keep Alive Timeoout (ms) Extension for UptimeRobot
+server.keepAliveTimeout = 120000;
+server.headersTimeout = 121000;
