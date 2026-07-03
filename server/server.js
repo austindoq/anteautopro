@@ -41,7 +41,7 @@ app.use("/admin", adminRouter);
 
 app.use(express.static(join(__dirname, "../client")));
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT, "0.0.0.0", () => {
   console.log("Connection Live");
   connectDb();
 });

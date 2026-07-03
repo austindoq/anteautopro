@@ -9,7 +9,7 @@ export const sendConsultationEmails = async (leadData) => {
     //Ante's confirmation email
     await client.emails.send({
       from: "ante@anteautopro.ca",
-      to: "austindoq@gmail.com",
+      to: "athompson@vancouverhonda.com",
       subject: "You've got a new lead!",
       html: `<div
       style="
@@ -157,7 +157,7 @@ export const sendAppraisalEmails = async (leadData) => {
     //Ante's appraisal confirmation email
     await client.emails.send({
       from: "ante@anteautopro.ca",
-      to: "austindoq@gmail.com",
+      to: "athompson@vancouverhonda.com",
       subject: "You've got a new appraisal booking!",
       html: `<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f1f3f5; padding: 24px; border-radius: 8px;">
   <div style="background-color: #1985b4; padding: 16px; border-radius: 8px 8px 0 0;">
