@@ -54,12 +54,12 @@
         </h1>
         <form id="createPostForm" class="p-2">
           <div class="flex flex-col">
-            <label for="imageURL" class="font-bold px-2 pt-2">Image URL</label>
+            <label for="image" class="font-bold px-2 pt-2">Upload Image</label>
             <input
-              id="imageURL"
-              type="text"
-              name="imageURL"
-              placeholder="Paste image URL here"
+              id="image"
+              type="file"
+              name="image"
+              accept="image/*"
               required
               class="rounded-lg p-2 border-1 border-[#343a40]"
             />

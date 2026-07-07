@@ -1,7 +1,7 @@
 //STATIC ELEMENTS
 const els = {
   createPostForm: document.getElementById("createPostForm"),
-  imageURL: document.getElementById("imageURL"),
+  image: document.getElementById("image"),
   title: document.getElementById("title"),
   body: document.getElementById("body"),
   postButton: document.getElementById("postButton"),
@@ -96,13 +96,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   els.createPostForm.addEventListener("submit", async (submitEvent) => {
     submitEvent.preventDefault();
 
-    const formValues = Object.fromEntries(new FormData(els.createPostForm));
+    const formData = new FormData(els.createPostForm);
 
     try {
       const response = await fetch("/admin/createBlog", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formValues),
+        body: formData, //Sending as FormData object because of image upload
       });
 
       const responseData = await response.json();

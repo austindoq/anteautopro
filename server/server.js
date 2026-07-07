@@ -2,12 +2,12 @@ import "./config/env.js";
 import express from "express";
 import mongoose from "mongoose";
 import connectDb from "./config/db.js";
-import apiRouter from "./routes/api.routes.js";
-import adminRouter from "./routes/admin.routes.js";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
+import apiRouter from "./routes/api.routes.js";
+import adminRouter from "./routes/admin.routes.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;

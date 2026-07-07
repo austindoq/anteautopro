@@ -2,7 +2,8 @@ import blogModel from "../models/blog.model.js";
 
 //CREATE A BLOG POST
 export const createBlogPost = async (req, res) => {
-  const { title, body, imageURL } = req.body;
+  const { title, body } = req.body;
+  const imageURL = req.file.secure_url;
 
   if (!title || !body || !imageURL) {
     return res.status(400).json({
