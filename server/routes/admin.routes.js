@@ -25,5 +25,7 @@ router.post(
   createBlogPost,
 );
 router.delete("/deleteBlog/:blogId", isAuthenticated, deleteBlogPost);
+// router.post("/createListing/:listingId")
+// router.delete("/deleteListing/:listingId")
 
 export default router;

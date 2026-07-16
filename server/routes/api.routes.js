@@ -11,5 +11,6 @@ router.post("/consultation", createConsultationLead);
 router.post("/appraisal", createAppraisalLead);
 router.get("/getAllBlogPosts", getAllBlogPosts);
 router.get("/mostRecentBlogPost", mostRecentBlogPost);
-
+// router.get("/allListings")
+// router.get("/mostRecentListings")
 export default router;
