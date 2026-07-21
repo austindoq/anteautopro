@@ -13,7 +13,7 @@
     </style>
   </head>
   <body
-    class="min-h-screen flex flex-col justify-between bg-radial from-[#f1f3f5] from-30% to-slate-300"
+    class="min-h-screen flex flex-col items-center justify-between bg-radial from-[#f1f3f5] from-30% to-slate-300"
   >
     <nav
       class="sticky top-0 z-100 flex flex-col md:flex-row md:justify-between font-bold text-[#e9ecef] tracking-widest md:tracking-wider bg-[#343a40] py-2 px-4 w-full border-b-2 border-b-[#e3173e]"
@@ -42,15 +42,121 @@
         /></a>
       </div>
     </nav>
-    <main class="flex flex-col items-center justify-center w-full">
+    <main
+      class="max-w-[95%] md:max-w-5xl flex flex-col items-center justify-center w-full"
+    >
+      <!-- CREATE TRADE IN VEHICLE  -->
       <section
-        id="blogCreationSection"
-        class="flex flex-col gap-4 border-2 border-[#343a40] w-full max-w-[95%] md:max-w-5xl p-4 rounded-lg shadow-xl mt-15 mb-15"
+        id="inventoryCreationSection"
+        class="flex flex-col gap-4 border-2 border-[#343a40] w-full p-4 rounded-lg shadow-xl mt-15 mb-15"
       >
         <h1
           class="font-bold text-center text-2xl w-full border-b-2 border-b-[#1985b4]"
         >
-          Create A New Blog Post
+          Create A New <span class="text-[#e3173e] text-3xl">Trade In</span>
+        </h1>
+        <form id="createInventoryItemForm" class="p-2">
+          <!-- IMAGE -->
+          <div class="flex flex-col">
+            <label for="image" class="font-bold px-2 pt-2"
+              >Upload Vehicle Image</label
+            >
+            <input
+              id="image"
+              type="file"
+              name="image"
+              accept="image/*"
+              required
+              class="rounded-lg p-2 border-1 border-[#343a40]"
+            />
+          </div>
+          <!-- MAKE -->
+          <div class="flex flex-col">
+            <label class="font-bold px-2 pt-2">Make</label
+            ><input
+              id="make"
+              type="text"
+              name="make"
+              placeholder="Make"
+              minlength="3"
+              maxlength="75"
+              required
+              class="rounded-lg p-2 border-1 border-[#343a40]"
+            />
+          </div>
+          <!-- MODEL -->
+          <div class="flex flex-col">
+            <label class="font-bold px-2 pt-2">Model</label
+            ><input
+              id="model"
+              type="text"
+              name="model"
+              placeholder="Model"
+              minlength="3"
+              maxlength="75"
+              required
+              class="rounded-lg p-2 border-1 border-[#343a40]"
+            />
+          </div>
+          <!-- YEAR -->
+          <div class="flex flex-col">
+            <label class="font-bold px-2 pt-2">Year</label
+            ><input
+              id="year"
+              type="number"
+              name="year"
+              placeholder="Year"
+              minlength="2"
+              maxlength="4"
+              required
+              class="rounded-lg p-2 border-1 border-[#343a40]"
+            />
+          </div>
+          <!-- VIN -->
+          <div class="flex flex-col">
+            <label class="font-bold px-2 pt-2">VIN</label
+            ><input
+              id="vin"
+              type="text"
+              name="vin"
+              placeholder="VIN"
+              minlength="3"
+              maxlength="75"
+              required
+              class="rounded-lg p-2 border-1 border-[#343a40]"
+            />
+          </div>
+          <div>
+            <label class="font-bold px-2 pt-2">Body</label
+            ><textarea
+              id="body"
+              required
+              name="body"
+              minlength="5"
+              maxlength="1000"
+              placeholder="Write about this vehicle here..."
+              class="w-full h-48 resize-none border-1 border-[#343a40] rounded-lg p-2"
+            ></textarea>
+          </div>
+          <button
+            id="createButton"
+            type="submit"
+            class="relative overflow-hidden bg-[#1985b4] w-full tracking-widest p-2 rounded-lg font-bold text-[#f1f3f5] active:bg-[#26b5ee] hover:cursor-pointer hover:bg-[#1985b4] hover:scale-103 ease-in-out duration-150 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-[#f1f3f5]/35 before:via-transparent before:to-transparent"
+          >
+            CREATE
+          </button>
+        </form>
+      </section>
+      <!-- CREATE NEW BLOG POST  -->
+      <section
+        id="blogCreationSection"
+        class="flex flex-col gap-4 border-2 border-[#343a40] w-full p-4 rounded-lg shadow-xl mt-15 mb-15"
+      >
+        <h1
+          class="font-bold text-center text-2xl w-full border-b-2 border-b-[#1985b4]"
+        >
+          Create A New
+          <span class="text-[#1984b4] text-3xl">Blog Post</span>
         </h1>
         <form id="createPostForm" class="p-2">
           <div class="flex flex-col">
