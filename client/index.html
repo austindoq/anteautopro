@@ -46,9 +46,9 @@
   </head>
   <body class="min-h-screen bg-[#f1f3f5]">
     <nav
-      class="sticky top-0 z-100 flex flex-col md:flex-row md:justify-between font-bold text-[#e9ecef] tracking-widest md:tracking-wider bg-[#343a40] py-2 px-4 md:px-8 w-full border-b-2 border-b-[#e3173e]"
+      class="sticky top-0 z-100 flex flex-col md:flex-row md:justify-between font-bold text-[#e9ecef] tracking-widest md:tracking-wider bg-[#343a40] py-2 px-0 md:px-8 w-full border-b-2 border-b-[#e3173e]"
     >
-      <div id="logo" class="md:w-1/3 flex justify-center md:justify-normal">
+      <div id="logo" class="flex justify-center md:justify-normal">
         <img
           src="/assets/images/anteautopro.ca-logo2.png"
           class="w-128 md:w-64"
@@ -56,12 +56,12 @@
         />
       </div>
       <div
-        id="nav-options-top"
-        class="flex gap-4 md:gap-8 justify-evenly md:justify-normal"
+        id="nav-options"
+        class="flex gap-2 md:gap-8 justify-evenly md:justify-normal"
       >
         <div
-          id="nav-options-center"
-          class="flex text-center items-center justify-center text-xl md:text-2xl"
+          id="nav-options-browse-types"
+          class="flex text-center items-center justify-center text-2xl"
         >
           <a
             class="bg-[#e9ecef] text-[#1985b4] px-2 rounded-l-lg border-r-2 border-[#1985b4] flex items-center hover:cursor-pointer"
@@ -72,21 +72,50 @@
             >Trade-Ins</a
           >
         </div>
-        <a
-          href="/blog.html"
-          class="hover:cursor-pointer flex items-center text-2xl text-[#e9ecef]"
-          >Blog <img src="/assets/icons/car.svg" class="size-7 mx-0.5"
-        /></a>
-        <a
-          href="/contact.html"
-          class="hover:cursor-pointer flex items-center text-2xl text-[#e9ecef]"
-          >Contact <img src="/assets/icons/contact.svg" class="size-7 mx-0.5"
-        /></a>
-        <a
-          href="/faq.html"
-          class="hover:cursor-pointer flex items-center text-2xl text-[#e9ecef]"
-          >FAQ <img src="/assets/icons/about.svg" class="size-5 mx-0.5"
-        /></a>
+        <div id="mobileNav" class="md:hidden relative">
+          <button id="dropMenuButton" class="text-4xl">≡</button>
+          <div
+            id="dropMenu"
+            class="absolute min-w-max -right-1 top-0 z-0 mt-12.5 flex flex-col gap-8 p-8 bg-[#343a40] rounded-b-lg"
+          >
+            <a
+              href="/blog.html"
+              class="hover:cursor-pointer w-full flex items-center text-2xl text-[#e9ecef]"
+              ><img src="/assets/icons/car.svg" class="size-7" />Blog</a
+            >
+            <a
+              href="/contact.html"
+              class="hover:cursor-pointer w-full flex items-center text-2xl text-[#e9ecef]"
+            >
+              <img
+                src="/assets/icons/contact.svg"
+                class="size-7 -ml-0.5"
+              />Contact</a
+            >
+            <a
+              href="/faq.html"
+              class="hover:cursor-pointer w-full flex items-center text-2xl text-[#e9ecef]"
+              ><img src="/assets/icons/about.svg" class="size-5" />FAQ</a
+            >
+          </div>
+        </div>
+        <div id="desktopNav" class="hidden md:flex gap-8">
+          <a
+            href="/blog.html"
+            class="hover:cursor-pointer flex items-center text-2xl text-[#e9ecef]"
+            >Blog <img src="/assets/icons/car.svg" class="size-7 mx-0.5"
+          /></a>
+          <a
+            href="/contact.html"
+            class="hover:cursor-pointer flex items-center text-2xl text-[#e9ecef]"
+            >Contact <img src="/assets/icons/contact.svg" class="size-7 mx-0.5"
+          /></a>
+          <a
+            href="/faq.html"
+            class="hover:cursor-pointer flex items-center text-2xl text-[#e9ecef]"
+            >FAQ <img src="/assets/icons/about.svg" class="size-5 mx-0.5"
+          /></a>
+        </div>
       </div>
     </nav>
     <header
