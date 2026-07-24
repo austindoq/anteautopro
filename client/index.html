@@ -64,25 +64,31 @@
           class="flex text-center items-center justify-center text-2xl"
         >
           <a
-            class="bg-[#e9ecef] text-[#1985b4] px-2 rounded-l-lg border-r-2 border-[#1985b4] flex items-center hover:cursor-pointer"
+            class="bg-[#e9ecef] text-[#1985b4] px-2 rounded-l-lg border-r-1 border-[#343a40] flex items-center hover:cursor-pointer"
             >Brand New</a
           >
           <a
-            class="bg-[#e9ecef] text-[#e3173e] px-2 rounded-r-lg flex items-center hover:cursor-pointer"
+            class="bg-[#e9ecef] text-[#e3173e] px-2 rounded-r-lg border-l-1 border-[#343a40] flex items-center hover:cursor-pointer"
             >Trade-Ins</a
           >
         </div>
         <div id="mobileNav" class="md:hidden relative">
-          <button id="dropMenuButton" class="text-4xl">≡</button>
-          <div
+          <button id="dropMenuButton" class="text-4xl ease-in-out duration-150">
+            ≡
+          </button>
+          <divw
             id="dropMenu"
-            class="absolute min-w-max -right-1 top-0 z-0 mt-12.5 flex flex-col gap-8 p-8 bg-[#343a40] rounded-b-lg"
+            class="absolute hidden min-w-max -right-1 top-0 z-0 mt-12.5 flex flex-col gap-4 p-8 bg-[#343a40] rounded-b-lg"
           >
             <a
               href="/blog.html"
               class="hover:cursor-pointer w-full flex items-center text-2xl text-[#e9ecef]"
               ><img src="/assets/icons/car.svg" class="size-7" />Blog</a
             >
+            <div
+              id="partition"
+              class="h-[2px] w-full mx-auto bg-gradient-to-r from-transparent via-[#e9ecef] to-transparent"
+            ></div>
             <a
               href="/contact.html"
               class="hover:cursor-pointer w-full flex items-center text-2xl text-[#e9ecef]"
@@ -92,12 +98,16 @@
                 class="size-7 -ml-0.5"
               />Contact</a
             >
+            <div
+              id="partition"
+              class="h-[2px] w-full mx-auto bg-gradient-to-r from-transparent via-[#e9ecef] to-transparent"
+            ></div>
             <a
               href="/faq.html"
               class="hover:cursor-pointer w-full flex items-center text-2xl text-[#e9ecef]"
               ><img src="/assets/icons/about.svg" class="size-5" />FAQ</a
             >
-          </div>
+          </divw>
         </div>
         <div id="desktopNav" class="hidden md:flex gap-8">
           <a
