@@ -9,6 +9,8 @@ const els = {
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
+  //BRAND NEW/TRADE IN FORM SWAPPING
+
   //BLOG FUNCTIONS
   //GET ALL BLOG CONTENT
   const getAllBlogPosts = async () => {
