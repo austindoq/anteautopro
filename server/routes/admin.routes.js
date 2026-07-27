@@ -11,6 +11,12 @@ import {
 } from "../controllers/blog.controller.js";
 import { isAuthenticated } from "../middleware/auth.js";
 import upload from "../middleware/upload.js";
+import {
+  createBrandNewInventoryItem,
+  createTradeInInventoryItem,
+  deleteBrandNewInventoryItem,
+  deleteTradeInInventoryItem,
+} from "../controllers/inventory.controller.js";
 
 const router = Router();
 
@@ -18,6 +24,8 @@ router.get("/login", serveLogin);
 router.post("/login", isAdmin);
 router.get("/logout", isAuthenticated, logout);
 router.get("/dashboard", isAuthenticated, serveDashboard);
+
+//BLOG
 router.post(
   "/createBlog",
   isAuthenticated,
@@ -25,7 +33,19 @@ router.post(
   createBlogPost,
 );
 router.delete("/deleteBlog/:blogId", isAuthenticated, deleteBlogPost);
-// router.post("/createListing/:listingId")
-// router.delete("/deleteListing/:listingId")
+
+//INVENTORY
+router.post("/createBrandNew", isAuthenticated, createBrandNewInventoryItem);
+router.post("/createTradeIn", isAuthenticated, createTradeInInventoryItem);
+router.delete(
+  "/deleteBrandNew/:inventoryId",
+  isAuthenticated,
+  deleteBrandNewInventoryItem,
+);
+router.delete(
+  "/deleteTradeIn/:inventoryId",
+  isAuthenticated,
+  deleteTradeInInventoryItem,
+);
 
 export default router;
