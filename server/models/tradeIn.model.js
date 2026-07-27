@@ -8,7 +8,7 @@ const tradeInSchema = new Schema(
     year: { type: String, required: true },
     vin: { type: String, required: true },
     description: { type: String, required: true },
-    newStatus: false,
+    newStatus: Boolean,
   },
   { timestamps: true },
 );

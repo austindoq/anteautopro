@@ -3,13 +3,7 @@ import tradeInModel from "../models/tradeIn.model.js";
 
 //Save Brand New Inventory Item
 export const createBrandNewInventoryItem = async (req, res) => {
-  const imageUrl,
-    make,
-    model,
-    year,
-    vin,
-    description,
-    newStatus = req.body;
+  const { imageUrl, make, model, year, vin, description, newStatus } = req.body;
 
   if (
     !imageUrl ||
@@ -62,13 +56,7 @@ export const deleteBrandNewInventoryItem = async (req, res) => {
 
 //Save Trade In Inventory Item
 export const createTradeInInventoryItem = async (req, res) => {
-  const imageUrl,
-    make,
-    model,
-    year,
-    vin,
-    description,
-    newStatus = req.body;
+  const { imageUrl, make, model, year, vin, description, newStatus } = req.body;
 
   if (
     !imageUrl ||
