@@ -13,14 +13,14 @@ const els = {
 
 document.addEventListener("DOMContentLoaded", async () => {
   //INVENTORY FUNCTIONS
-  //BRAND NEW/TRADE IN FORM SWAPPING
+  //BRAND NEW/TRADE IN FORM SWAPPING AND SUBMIT LOGIC
   els.brandNewFormButton.addEventListener("click", (clickEvent) => {
     formContainer.innerHTML = `<h1
             class="font-bold text-center text-2xl w-full border-b-2 border-b-[#1985b4]"
           >
             Create A <span class="text-[#1985b4] text-3xl">Brand New</span> Item
           </h1>
-          <form id="create-inventory-item-form" class="p-2">
+          <form id="createBrandNewForm" class="p-2">
             <!-- IMAGE -->
             <div class="flex flex-col">
               <label for="image" class="font-bold px-2 pt-2"
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 type="file"
                 name="image"
                 accept="image/*"
-                required
+                
                 class="rounded-lg p-2 border-1 border-[#343a40]"
               />
             </div>
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 placeholder="Make"
                 minlength="3"
                 maxlength="75"
-                required
+                required 
                 class="rounded-lg p-2 border-1 border-[#343a40]"
               />
             </div>
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 placeholder="Model"
                 minlength="3"
                 maxlength="75"
-                required
+                required 
                 class="rounded-lg p-2 border-1 border-[#343a40]"
               />
             </div>
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 placeholder="Year"
                 minlength="2"
                 maxlength="4"
-                required
+                required 
                 class="rounded-lg p-2 border-1 border-[#343a40]"
               />
             </div>
@@ -87,22 +87,23 @@ document.addEventListener("DOMContentLoaded", async () => {
                 placeholder="VIN"
                 minlength="3"
                 maxlength="75"
-                required
+                required 
                 class="rounded-lg p-2 border-1 border-[#343a40]"
               />
             </div>
             <div>
               <label class="font-bold px-2 pt-2">Body</label
               ><textarea
-                id="body"
+                id="description"
                 required
-                name="body"
+                name="description"
                 minlength="5"
                 maxlength="1000"
                 placeholder="Write about this vehicle here..."
                 class="w-full h-48 resize-none border-1 border-[#343a40] rounded-lg p-2"
               ></textarea>
             </div>
+            <input id="newStatus" name="newStatus" type="hidden" value="true" />
             <button
               id="createButton"
               type="submit"
@@ -111,6 +112,24 @@ document.addEventListener("DOMContentLoaded", async () => {
               CREATE
             </button>
           </form>`;
+    const createBrandNewForm = document.getElementById("createBrandNewForm");
+    createBrandNewForm.addEventListener("submit", async (submitEvent) => {
+      //SUBMIT LOGIC
+      submitEvent.preventDefault();
+      const formData = new FormData(createBrandNewForm);
+      try {
+        const response = await fetch("/admin/createBrandNew", {
+          method: "POST",
+          body: formData,
+        });
+
+        const responseData = await response.json();
+
+        alert(responseData.message);
+      } catch (error) {
+        console.log(`There's been an error creating this item: ${error}`);
+      }
+    });
   });
 
   els.tradeInFormButton.addEventListener("click", (click) => {

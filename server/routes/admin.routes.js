@@ -35,7 +35,12 @@ router.post(
 router.delete("/deleteBlog/:blogId", isAuthenticated, deleteBlogPost);
 
 //INVENTORY
-router.post("/createBrandNew", isAuthenticated, createBrandNewInventoryItem);
+router.post(
+  "/createBrandNew",
+  isAuthenticated,
+  upload.single("image"),
+  createBrandNewInventoryItem,
+);
 router.post("/createTradeIn", isAuthenticated, createTradeInInventoryItem);
 router.delete(
   "/deleteBrandNew/:inventoryId",

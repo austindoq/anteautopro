@@ -3,10 +3,13 @@ import tradeInModel from "../models/tradeIn.model.js";
 
 //Save Brand New Inventory Item
 export const createBrandNewInventoryItem = async (req, res) => {
-  const { imageUrl, make, model, year, vin, description, newStatus } = req.body;
+  const { make, model, year, vin, description, newStatus } = req.body;
+  const imageUrl = req.file.secure_url;
+  const imagePublicId = req.file.public_id;
 
   if (
     !imageUrl ||
+    !imagePublicId ||
     !make ||
     !model ||
     !year ||
@@ -22,13 +25,13 @@ export const createBrandNewInventoryItem = async (req, res) => {
   try {
     await brandNewModel.create({
       imageUrl,
+      imagePublicId,
       make,
       model,
       year,
       vin,
       description,
       newStatus,
-      w,
     });
     return res
       .status(201)
@@ -56,41 +59,41 @@ export const deleteBrandNewInventoryItem = async (req, res) => {
 
 //Save Trade In Inventory Item
 export const createTradeInInventoryItem = async (req, res) => {
-  const { imageUrl, make, model, year, vin, description, newStatus } = req.body;
+  console.log(req.body);
+  const { make, model, year, vin, description, newStatus } = req.body;
 
-  if (
-    !imageUrl ||
-    !make ||
-    !model ||
-    !year ||
-    !vin ||
-    !description ||
-    !newStatus
-  ) {
-    return res
-      .status(400)
-      .json({ message: "Missing schema field. Cannot save." });
-  }
+  // if (
+  //   !imageUrl ||
+  //   !make ||
+  //   !model ||
+  //   !year ||
+  //   !vin ||
+  //   !description ||
+  //   !newStatus
+  // ) {
+  //   return res
+  //     .status(400)
+  //     .json({ message: "Missing schema field. Cannot save." });
+  // }
 
-  try {
-    await tradeInModel.create({
-      imageUrl,
-      make,
-      model,
-      year,
-      vin,
-      description,
-      newStatus,
-      w,
-    });
-    return res
-      .status(201)
-      .json({ message: `Trade In ${make} Added Successfully!` });
-  } catch (error) {
-    return res
-      .status(500)
-      .json({ message: `Error saving to database: ${error}` });
-  }
+  // try {
+  //   await tradeInModel.create({
+  //     imageUrl,
+  //     make,
+  //     model,
+  //     year,
+  //     vin,
+  //     description,
+  //     newStatus,
+  //   });
+  //   return res
+  //     .status(201)
+  //     .json({ message: `Trade In ${make} Added Successfully!` });
+  // } catch (error) {
+  //   return res
+  //     .status(500)
+  //     .json({ message: `Error saving to database: ${error}` });
+  // }
 };
 
 //Delete Trade In Inventory Item

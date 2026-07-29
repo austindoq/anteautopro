@@ -1,18 +1,20 @@
 import blogModel from "../models/blog.model.js";
+import cloudinary from "../config/cloudinary.js";
 
 //CREATE A BLOG POST
 export const createBlogPost = async (req, res) => {
   const { title, body } = req.body;
   const imageURL = req.file.secure_url;
+  const imagePublicId = req.file.public_id;
 
-  if (!title || !body || !imageURL) {
+  if (!title || !body || !imageURL || !imagePublicId) {
     return res.status(400).json({
-      message: `Title, body, and imageURL are required to create a blog post.`,
+      message: `Title, body, publicId, and imageURL are required to create a blog post.`,
     });
   }
 
   try {
-    await blogModel.create({ title, body, imageURL });
+    await blogModel.create({ title, body, imageURL, imagePublicId });
     return res.status(201).json({ message: `Blog post created successfully!` });
   } catch (error) {
     console.log(error);
@@ -39,6 +41,16 @@ export const getAllBlogPosts = async (req, res) => {
 export const deleteBlogPost = async (req, res) => {
   const { blogId } = req.params;
   try {
+    const blogPost = await blogModel.findById(blogId);
+
+    //Delete blog post image from Cloudinary
+    try {
+      await cloudinary.v2.uploader.destroy(blogPost.imagePublicId);
+    } catch (error) {
+      console.log(`Error deleting image from Cloudinary: ${error}`);
+    }
+
+    //Delete Blog Post
     await blogModel.findByIdAndDelete(blogId);
 
     return res.status(200).json({ message: `Blog post has been deleted.` });
