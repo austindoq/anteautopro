@@ -41,7 +41,12 @@ router.post(
   upload.single("image"),
   createBrandNewInventoryItem,
 );
-router.post("/createTradeIn", isAuthenticated, createTradeInInventoryItem);
+router.post(
+  "/createTradeIn",
+  isAuthenticated,
+  upload.single("image"),
+  createTradeInInventoryItem,
+);
 router.delete(
   "/deleteBrandNew/:inventoryId",
   isAuthenticated,

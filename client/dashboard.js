@@ -127,8 +127,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         alert(responseData.message);
       } catch (error) {
-        console.log(`There's been an error creating this item: ${error}`);
+        alert(`There's been an error creating this item: ${error}`);
       }
+
+      window.location.reload();
     });
   });
 
@@ -138,7 +140,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           >
             Create A <span class="text-[#e3173e] text-3xl">Trade In</span> Item
           </h1>
-          <form id="create-inventory-item-form" class="p-2">
+          <form id="createTradeInForm" class="p-2">
             <!-- IMAGE -->
             <div class="flex flex-col">
               <label for="image" class="font-bold px-2 pt-2"
@@ -212,15 +214,16 @@ document.addEventListener("DOMContentLoaded", async () => {
             <div>
               <label class="font-bold px-2 pt-2">Body</label
               ><textarea
-                id="body"
+                id="description"
                 required
-                name="body"
+                name="description"
                 minlength="5"
                 maxlength="1000"
                 placeholder="Write about this vehicle here..."
                 class="w-full h-48 resize-none border-1 border-[#343a40] rounded-lg p-2"
               ></textarea>
             </div>
+            <input id="newStatus" name="newStatus" type="hidden" value="false" />
             <button
               id="createButton"
               type="submit"
@@ -229,6 +232,29 @@ document.addEventListener("DOMContentLoaded", async () => {
               CREATE
             </button>
           </form>`;
+
+    const createTradeInForm = document.getElementById("createTradeInForm");
+
+    createTradeInForm.addEventListener("submit", async (submitEvent) => {
+      submitEvent.preventDefault();
+
+      const formData = new FormData(createTradeInForm);
+
+      try {
+        const response = await fetch("/admin/createTradeIn", {
+          method: "POST",
+          body: formData,
+        });
+
+        const responseData = await response.json();
+
+        alert(responseData.message);
+      } catch (error) {
+        alert(`There has been an error creating this trade in: ${error}`);
+      }
+
+      window.location.reload();
+    });
   });
 
   //BLOG FUNCTIONS
@@ -334,7 +360,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       await resetBlogContent(els.blogContentArea);
     } catch (error) {
-      console.log(error);
+      alert(`There was an error creating this blog post: ${error}`);
     }
   });
 });

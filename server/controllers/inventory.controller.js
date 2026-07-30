@@ -1,5 +1,6 @@
 import brandNewModel from "../models/brandNew.model.js";
 import tradeInModel from "../models/tradeIn.model.js";
+import cloudinary from "../config/cloudinary.js";
 
 //Save Brand New Inventory Item
 export const createBrandNewInventoryItem = async (req, res) => {
@@ -14,8 +15,7 @@ export const createBrandNewInventoryItem = async (req, res) => {
     !model ||
     !year ||
     !vin ||
-    !description ||
-    !newStatus
+    !description
   ) {
     return res
       .status(400)
@@ -45,10 +45,21 @@ export const createBrandNewInventoryItem = async (req, res) => {
 
 //Delete Brand New Inventory Item
 export const deleteBrandNewInventoryItem = async (req, res) => {
-  const inventoryId = req.params;
+  const { inventoryId } = req.params;
 
   try {
+    const brandNewItem = await brandNewModel.findById(inventoryId);
+
+    try {
+      await cloudinary.v2.upload.destroy(brandNewItem.imagePublicId);
+    } catch (error) {
+      return res.status(500).json({
+        message: `There was an error deleting this vehicle's image hosting image.`,
+      });
+    }
+
     await brandNewModel.findByIdAndDelete(inventoryId);
+
     return res.status(200).json({ message: `Successfully deleted!` });
   } catch (error) {
     return res
@@ -59,41 +70,43 @@ export const deleteBrandNewInventoryItem = async (req, res) => {
 
 //Save Trade In Inventory Item
 export const createTradeInInventoryItem = async (req, res) => {
-  console.log(req.body);
   const { make, model, year, vin, description, newStatus } = req.body;
+  const imageUrl = req.file.secure_url;
+  const imagePublicId = req.file.public_id;
 
-  // if (
-  //   !imageUrl ||
-  //   !make ||
-  //   !model ||
-  //   !year ||
-  //   !vin ||
-  //   !description ||
-  //   !newStatus
-  // ) {
-  //   return res
-  //     .status(400)
-  //     .json({ message: "Missing schema field. Cannot save." });
-  // }
+  if (
+    !imageUrl ||
+    !imagePublicId ||
+    !make ||
+    !model ||
+    !year ||
+    !vin ||
+    !description
+  ) {
+    return res
+      .status(400)
+      .json({ message: "Missing schema field. Cannot save." });
+  }
 
-  // try {
-  //   await tradeInModel.create({
-  //     imageUrl,
-  //     make,
-  //     model,
-  //     year,
-  //     vin,
-  //     description,
-  //     newStatus,
-  //   });
-  //   return res
-  //     .status(201)
-  //     .json({ message: `Trade In ${make} Added Successfully!` });
-  // } catch (error) {
-  //   return res
-  //     .status(500)
-  //     .json({ message: `Error saving to database: ${error}` });
-  // }
+  try {
+    await tradeInModel.create({
+      imageUrl,
+      imagePublicId,
+      make,
+      model,
+      year,
+      vin,
+      description,
+      newStatus,
+    });
+    return res
+      .status(201)
+      .json({ message: `Trade In ${make} Added Successfully!` });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ message: `Error saving to database: ${error}` });
+  }
 };
 
 //Delete Trade In Inventory Item
@@ -101,6 +114,16 @@ export const deleteTradeInInventoryItem = async (req, res) => {
   const inventoryId = req.params;
 
   try {
+    const tradeInItem = await tradeInModel.findById(inventoryId);
+
+    try {
+      await cloudinary.v2.upload.destroy(tradeInItem.imagePublicId);
+    } catch (error) {
+      res.status(500).json({
+        message: `There was an error deleting this vehicle's image hosting image.`,
+      });
+    }
+
     await tradeInModel.findByIdAndDelete(inventoryId);
     return res.status(200).json({ message: `Successfully deleted!` });
   } catch (error) {
