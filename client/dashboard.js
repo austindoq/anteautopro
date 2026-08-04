@@ -5,14 +5,19 @@ const els = {
   title: document.getElementById("title"),
   body: document.getElementById("body"),
   postButton: document.getElementById("postButton"),
-  blogContentArea: document.getElementById("blogContentArea"),
+  dashboardPostedContentArea: document.getElementById(
+    "dashboardPostedContentArea",
+  ),
   formContainer: document.getElementById("formContainer"),
   brandNewFormButton: document.getElementById("brandNewFormButton"),
   tradeInFormButton: document.getElementById("tradeInFormButton"),
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
+  //-------------------------
   //INVENTORY FUNCTIONS
+  //-------------------------
+
   //BRAND NEW/TRADE IN FORM SWAPPING AND SUBMIT LOGIC
   els.brandNewFormButton.addEventListener("click", (clickEvent) => {
     formContainer.innerHTML = `<h1
@@ -77,6 +82,30 @@ document.addEventListener("DOMContentLoaded", async () => {
                 class="rounded-lg p-2 border-1 border-[#343a40]"
               />
             </div>
+            <!-- DRIVE TRAIN -->
+            <div class="flex flex-col">
+              <label class="font-bold px-2 pt-2">Drive</label>
+              <select
+                name="drive"
+                class="rounded-lg p-2 border-1 border-[#343a40]">
+                <option value="Select Drivetrain" disabled selected>- Select Drive -</option>
+                <option value="rwd">RWD</option> 
+                <option value="fwd">FWD</option>
+                <option value="awd">AWD</option>
+                <option value="4wd">4WD</option>
+              </select>
+            </div>
+            <!-- TRANSMISSION -->
+            <div class="flex flex-col">
+              <label class="font-bold px-2 pt-2">TRANSMISSION</label>
+              <select
+                name="transmission"
+                class="rounded-lg p-2 border-1 border-[#343a40]">
+                <option value="select transmission" disabled selected>- Select Manual or Automatic -</option>
+                <option value="manual">Manual</option>
+                <option value="automatic">Automatic</option>
+              </select>
+            </div>
             <!-- VIN -->
             <div class="flex flex-col">
               <label class="font-bold px-2 pt-2">VIN</label
@@ -85,8 +114,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                 type="text"
                 name="vin"
                 placeholder="VIN"
-                minlength="3"
-                maxlength="75"
+                minlength="1"
+                maxlength="17"
                 required 
                 class="rounded-lg p-2 border-1 border-[#343a40]"
               />
@@ -151,7 +180,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 type="file"
                 name="image"
                 accept="image/*"
-                required
+                
                 class="rounded-lg p-2 border-1 border-[#343a40]"
               />
             </div>
@@ -165,7 +194,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 placeholder="Make"
                 minlength="3"
                 maxlength="75"
-                required
+                required 
                 class="rounded-lg p-2 border-1 border-[#343a40]"
               />
             </div>
@@ -179,7 +208,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 placeholder="Model"
                 minlength="3"
                 maxlength="75"
-                required
+                required 
                 class="rounded-lg p-2 border-1 border-[#343a40]"
               />
             </div>
@@ -193,9 +222,45 @@ document.addEventListener("DOMContentLoaded", async () => {
                 placeholder="Year"
                 minlength="2"
                 maxlength="4"
-                required
+                required 
                 class="rounded-lg p-2 border-1 border-[#343a40]"
               />
+            </div>
+            <!-- ODOMETER -->
+            <div class="flex flex-col">
+              <label class="font-bold px-2 pt-2">Odometer</label
+              ><input
+                id="odometer"
+                type="number"
+                name="odometer"
+                placeholder="Odometer"
+                required 
+                class="rounded-lg p-2 border-1 border-[#343a40]"
+              />
+            </div>
+            <!-- DRIVE TRAIN -->
+            <div class="flex flex-col">
+              <label class="font-bold px-2 pt-2">Drive</label>
+              <select
+                name="drive"
+                class="rounded-lg p-2 border-1 border-[#343a40]">
+                <option value="- Select Drivetrain -" disabled selected>- Select Drive -</option>
+                <option value="rwd">RWD</option> 
+                <option value="fwd">FWD</option>
+                <option value="awd">AWD</option>
+                <option value="4wd">4WD</option>
+              </select>
+            </div>
+            <!-- TRANSMISSION -->
+            <div class="flex flex-col">
+              <label class="font-bold px-2 pt-2">TRANSMISSION</label>
+              <select
+                name="transmission"
+                class="rounded-lg p-2 border-1 border-[#343a40]">
+                <option value="select transmission" disabled selected>- Select Manual or Automatic -</option>
+                <option value="manual">Manual</option>
+                <option value="automatic">Automatic</option>
+              </select>
             </div>
             <!-- VIN -->
             <div class="flex flex-col">
@@ -205,9 +270,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                 type="text"
                 name="vin"
                 placeholder="VIN"
-                minlength="3"
-                maxlength="75"
-                required
+                minlength="1"
+                maxlength="17"
+                required 
                 class="rounded-lg p-2 border-1 border-[#343a40]"
               />
             </div>
@@ -223,7 +288,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 class="w-full h-48 resize-none border-1 border-[#343a40] rounded-lg p-2"
               ></textarea>
             </div>
-            <input id="newStatus" name="newStatus" type="hidden" value="false" />
+            <input id="newStatus" name="newStatus" type="hidden" value="true" />
             <button
               id="createButton"
               type="submit"
@@ -257,7 +322,24 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 
+  // GET ALL BRAND NEW VEHICLES
+  const getAllBrandNewItems = async () => {
+    try {
+      const brandNewListingsResponse = await fetch(
+        "/api/getAllBrandNewListings",
+      );
+      const brandNewListingsData = await brandNewListingsResponse.json();
+
+      //POPULATE THE CONTENT AREA!!!!!
+    } catch (error) {
+      console.log(`Error retrieving brand new vehicles: ${error}`);
+    }
+  };
+
+  //-------------------------
   //BLOG FUNCTIONS
+  //-------------------------
+
   //GET ALL BLOG CONTENT
   const getAllBlogPosts = async () => {
     const response = await fetch("/api/getAllBlogPosts");
@@ -270,7 +352,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             >
               <img
                 src="${blog.imageURL}"
-                class="h-48 md:h-64 w-full object-cover rounded-tl-xl rounded-tr-xl mr-8"
+                class="md:h-64 w-full object-cover rounded-tl-xl rounded-tr-xl mr-8"
               />
               <div id="post-text" class="p-8 flex flex-col gap-2">
                 <h1
@@ -289,13 +371,40 @@ document.addEventListener("DOMContentLoaded", async () => {
           X
         </div>
             </article>`;
-      els.blogContentArea.insertAdjacentHTML("beforeend", blogContent);
+      els.dashboardPostedContentArea.insertAdjacentHTML(
+        "beforeend",
+        blogContent,
+      );
     }
   };
 
+  //CREATE A BLOG POST
+  els.createPostForm.addEventListener("submit", async (submitEvent) => {
+    submitEvent.preventDefault();
+
+    const formData = new FormData(els.createPostForm);
+
+    try {
+      const response = await fetch("/admin/createBlog", {
+        method: "POST",
+        body: formData, //Sending as FormData object because of image upload
+      });
+
+      const responseData = await response.json();
+
+      alert(responseData.message);
+
+      els.createPostForm.reset();
+
+      await resetBlogContent(els.dashboardPostedContentArea);
+    } catch (error) {
+      alert(`There was an error creating this blog post: ${error}`);
+    }
+  });
+
   //REFRESH BLOG CONTENT
   const resetBlogContent = async () => {
-    els.blogContentArea.innerHTML = "";
+    els.dashboardPostedContentArea.innerHTML = "";
     await getAllBlogPosts();
     //Requery for array of new delete buttons after blog content refresh
     const deleteButtons = document.querySelectorAll(".deleteButton");
@@ -323,7 +432,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
           alert(responseData.message);
 
-          await resetBlogContent();
+          await resetBlogContent(els.dashboardPostedContentArea);
         } catch (error) {
           console.log(error);
         }
@@ -339,28 +448,4 @@ document.addEventListener("DOMContentLoaded", async () => {
   };
 
   setDeleteButtonEvents(dynamicEls.deleteButtons);
-
-  //CREATE A BLOG POST
-  els.createPostForm.addEventListener("submit", async (submitEvent) => {
-    submitEvent.preventDefault();
-
-    const formData = new FormData(els.createPostForm);
-
-    try {
-      const response = await fetch("/admin/createBlog", {
-        method: "POST",
-        body: formData, //Sending as FormData object because of image upload
-      });
-
-      const responseData = await response.json();
-
-      alert(responseData.message);
-
-      els.createPostForm.reset();
-
-      await resetBlogContent(els.blogContentArea);
-    } catch (error) {
-      alert(`There was an error creating this blog post: ${error}`);
-    }
-  });
 });

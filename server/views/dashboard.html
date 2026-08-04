@@ -129,12 +129,87 @@
           </button>
         </form>
       </section>
-      <section id="blog-post-area" class="w-full flex justify-center">
-        <div id="blog-post-area-inner" class="w-full max-w-[95%] md:max-w-5xl">
-          <h1 id="section-header" class="text-4xl mb-4 font-bold">
-            Posted Blogs
-          </h1>
-          <div id="blogContentArea" class="flex flex-col gap-8 mb-15"></div>
+      <section
+        id="dashboard-database-content-area"
+        class="w-full flex justify-center"
+      >
+        <div
+          id="dashboard-database-content-area-inner"
+          class="w-full max-w-[95%] md:max-w-5xl"
+        >
+          <div id="section-headers" class="flex gap-2">
+            <button
+              id="brandNewButton"
+              class="text-4xl font-bold text-[#1985b4] hover:cursor-pointer"
+            >
+              Brand New
+            </button>
+            <button
+              id="postedTradeInButton"
+              class="text-4xl font-bold text-[#e3173e] hover:cursor-pointer"
+            >
+              Trade In
+            </button>
+            <button
+              id="postedBlogsButton"
+              class="text-4xl font-bold underline bold italic hover:cursor-pointer"
+            >
+              Posted Blogs
+            </button>
+          </div>
+
+          <div
+            id="dashboardPostedContentArea"
+            class="flex flex-col gap-8 mb-15"
+          >
+            <p>Select which postings you would like to see.</p>
+            <div>
+              <!-- --------------------------- -->
+              <article
+                id="${brandNewItem._id}"
+                class="w-full relative bg-[#f1f3f5] text-[#343a40] rounded-xl shadow-xl"
+              >
+                <img
+                  src="/assets/images/test-vehicle-image.jpg"
+                  class="h-100 w-full object-cover rounded-tl-xl rounded-tr-xl"
+                />
+                <div id="vehicle-card-text" class="p-8 flex flex-col gap-2">
+                  <div
+                    id="vehicle-year-and-make"
+                    class="flex text-md font-bold text-[#343a40] tracking-wide w-fit text-center md:text-start rounded-lg"
+                  >
+                    <h1>${brandNewItem.year}&nbsp;</h1>
+                    <h1>${brandNewItem.make}</h1>
+                  </div>
+                  <h1
+                    id="vehicle-model"
+                    class="flex text-xl font-bold text-[#343a40] tracking-wide w-fit text-center md:text-start rounded-lg"
+                  >
+                    ${brandNewItem.model}
+                  </h1>
+                  <h2 id="vehicle-vin">VIN ${brandNewItem.vin}</h2>
+                  <div id="vehicle-stats" class="flex text-md">
+                    <p>
+                      ${brandNewItem.driveTrain} | ${brandNewItem.transmission}
+                      | ${brandNewItem.kms}
+                    </p>
+                  </div>
+                  <p
+                    id="vehicle-description"
+                    class="italic tracking-wide text-lg pt-2"
+                  >
+                    ${brandNewItem.description}
+                  </p>
+                </div>
+                <div
+                  class="deleteButton bg-radial border border-[#343a40] from-[#f1f3f5] from-30% to-slate-300 px-2 py-1 text-[#e3173e] rounded-full text-2xl md:text-3xl font-bold absolute top-2 md:top-4 md:right-4 right-4 hover:cursor-pointer"
+                >
+                  X
+                </div>
+              </article>
+              <!-- ------------------------------- -->
+            </div>
+          </div>
         </div>
       </section>
     </main>

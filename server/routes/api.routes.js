@@ -13,6 +13,6 @@ router.get("/getAllBlogPosts", getAllBlogPosts);
 router.get("/mostRecentBlogPost", mostRecentBlogPost);
 // router.get("/allListings");
 // router.get("/mostRecentListings");
-// router.get("/brandNewListings");
+// router.get("/getAllBrandNewListings");
 // router.get("/tradeInListings");
 export default router;

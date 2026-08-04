@@ -4,7 +4,16 @@ import cloudinary from "../config/cloudinary.js";
 
 //Save Brand New Inventory Item
 export const createBrandNewInventoryItem = async (req, res) => {
-  const { make, model, year, vin, description, newStatus } = req.body;
+  const {
+    make,
+    model,
+    year,
+    drive,
+    transmission,
+    vin,
+    description,
+    newStatus,
+  } = req.body;
   const imageUrl = req.file.secure_url;
   const imagePublicId = req.file.public_id;
 
@@ -14,6 +23,8 @@ export const createBrandNewInventoryItem = async (req, res) => {
     !make ||
     !model ||
     !year ||
+    !drive ||
+    !transmission ||
     !vin ||
     !description
   ) {
@@ -29,6 +40,8 @@ export const createBrandNewInventoryItem = async (req, res) => {
       make,
       model,
       year,
+      drive,
+      transmission,
       vin,
       description,
       newStatus,
@@ -70,7 +83,17 @@ export const deleteBrandNewInventoryItem = async (req, res) => {
 
 //Save Trade In Inventory Item
 export const createTradeInInventoryItem = async (req, res) => {
-  const { make, model, year, vin, description, newStatus } = req.body;
+  const {
+    make,
+    model,
+    year,
+    vin,
+    drive,
+    transmission,
+    odometer,
+    description,
+    newStatus,
+  } = req.body;
   const imageUrl = req.file.secure_url;
   const imagePublicId = req.file.public_id;
 
@@ -80,7 +103,10 @@ export const createTradeInInventoryItem = async (req, res) => {
     !make ||
     !model ||
     !year ||
+    !drive ||
+    !transmission ||
     !vin ||
+    !odometer ||
     !description
   ) {
     return res
@@ -95,7 +121,10 @@ export const createTradeInInventoryItem = async (req, res) => {
       make,
       model,
       year,
+      drive,
+      transmission,
       vin,
+      odometer,
       description,
       newStatus,
     });
@@ -128,5 +157,19 @@ export const deleteTradeInInventoryItem = async (req, res) => {
     return res.status(200).json({ message: `Successfully deleted!` });
   } catch (error) {
     return res.status(500).json({ message: `Error deleting: ${error}` });
+  }
+};
+
+//Retrieve Brand New By Recent
+export const getAllBrandNewMostRecent = async (req, res) => {
+  try {
+    const allBrandNewMostRecent = await brandNewModel
+      .find()
+      .sort({ createdAt: -1 });
+    return res.status(200).send(allBrandNewMostRecent);
+  } catch (error) {
+    return res.status(500).json({
+      message: `There was an error retrieving brand new vehicles from database: ${error}`,
+    });
   }
 };
