@@ -10,7 +10,8 @@ import {
   deleteBlogPost,
 } from "../controllers/blog.controller.js";
 import { isAuthenticated } from "../middleware/auth.js";
-import upload from "../middleware/upload.js";
+import uploadBlog from "../middleware/uploadBlog.js";
+import uploadVehicle from "../middleware/uploadVehicle.js";
 import {
   createBrandNewInventoryItem,
   createTradeInInventoryItem,
@@ -29,7 +30,7 @@ router.get("/dashboard", isAuthenticated, serveDashboard);
 router.post(
   "/createBlog",
   isAuthenticated,
-  upload.single("image"),
+  uploadBlog.single("image"),
   createBlogPost,
 );
 router.delete("/deleteBlog/:blogId", isAuthenticated, deleteBlogPost);
@@ -38,13 +39,13 @@ router.delete("/deleteBlog/:blogId", isAuthenticated, deleteBlogPost);
 router.post(
   "/createBrandNew",
   isAuthenticated,
-  upload.single("image"),
+  uploadVehicle.single("image"),
   createBrandNewInventoryItem,
 );
 router.post(
   "/createTradeIn",
   isAuthenticated,
-  upload.single("image"),
+  uploadVehicle.single("image"),
   createTradeInInventoryItem,
 );
 router.delete(
