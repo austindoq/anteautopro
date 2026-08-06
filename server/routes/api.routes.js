@@ -5,6 +5,10 @@ import {
   getAllBlogPosts,
   mostRecentBlogPost,
 } from "../controllers/blog.controller.js";
+import {
+  getAllBrandNewListings,
+  getAllTradeInListings,
+} from "../controllers/inventory.controller.js";
 const router = Router();
 
 router.post("/consultation", createConsultationLead);
@@ -13,6 +17,6 @@ router.get("/getAllBlogPosts", getAllBlogPosts);
 router.get("/mostRecentBlogPost", mostRecentBlogPost);
 // router.get("/allListings");
 // router.get("/mostRecentListings");
-// router.get("/getAllBrandNewListings");
-// router.get("/tradeInListings");
+router.get("/getAllBrandNewListings", getAllBrandNewListings);
+router.get("/getAllTradeInListings", getAllTradeInListings);
 export default router;

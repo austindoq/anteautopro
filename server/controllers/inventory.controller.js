@@ -64,10 +64,10 @@ export const deleteBrandNewInventoryItem = async (req, res) => {
     const brandNewItem = await brandNewModel.findById(inventoryId);
 
     try {
-      await cloudinary.v2.upload.destroy(brandNewItem.imagePublicId);
+      await cloudinary.v2.uploader.destroy(brandNewItem.imagePublicId);
     } catch (error) {
-      return res.status(500).json({
-        message: `There was an error deleting this vehicle's image hosting image.`,
+      res.status(500).json({
+        message: `There was an error deleting this vehicle's image hosting image: ${error}`,
       });
     }
 
@@ -140,16 +140,15 @@ export const createTradeInInventoryItem = async (req, res) => {
 
 //Delete Trade In Inventory Item
 export const deleteTradeInInventoryItem = async (req, res) => {
-  const inventoryId = req.params;
-
+  const { inventoryId } = req.params;
   try {
     const tradeInItem = await tradeInModel.findById(inventoryId);
 
     try {
-      await cloudinary.v2.upload.destroy(tradeInItem.imagePublicId);
+      await cloudinary.v2.uploader.destroy(tradeInItem.imagePublicId);
     } catch (error) {
       res.status(500).json({
-        message: `There was an error deleting this vehicle's image hosting image.`,
+        message: `There was an error deleting this vehicle's image hosting image: ${error}`,
       });
     }
 
@@ -157,6 +156,34 @@ export const deleteTradeInInventoryItem = async (req, res) => {
     return res.status(200).json({ message: `Successfully deleted!` });
   } catch (error) {
     return res.status(500).json({ message: `Error deleting: ${error}` });
+  }
+};
+
+//GET All Brand New Listings
+export const getAllBrandNewListings = async (req, res) => {
+  try {
+    const allBrandNewListings = await brandNewModel
+      .find()
+      .sort({ createdAt: -1 });
+    return res.status(200).send(allBrandNewListings);
+  } catch (error) {
+    return res.status(500).json({
+      message: `There was an error retrieving listings from database: ${error}`,
+    });
+  }
+};
+
+//GET All Trade In  Listings
+export const getAllTradeInListings = async (req, res) => {
+  try {
+    const allTradeInListings = await tradeInModel
+      .find()
+      .sort({ createdAt: -1 });
+    return res.status(200).send(allTradeInListings);
+  } catch (error) {
+    return res.status(500).json({
+      message: `There was an error retrieving listings from database: ${error}`,
+    });
   }
 };
 

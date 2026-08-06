@@ -4,15 +4,34 @@ const els = {
   image: document.getElementById("image"),
   title: document.getElementById("title"),
   body: document.getElementById("body"),
-  postButton: document.getElementById("postButton"),
-  dashboardPostedContentArea: document.getElementById(
-    "dashboardPostedContentArea",
-  ),
+  postBlogButton: document.getElementById("postBlogButton"),
   formContainer: document.getElementById("formContainer"),
   brandNewFormButton: document.getElementById("brandNewFormButton"),
   tradeInFormButton: document.getElementById("tradeInFormButton"),
+
+  dashboardPostedContentArea: document.getElementById(
+    "dashboardPostedContentArea",
+  ),
+  postedBrandNewButton: document.getElementById("postedBrandNewButton"),
+  postedTradeInButton: document.getElementById("postedTradeInButton"),
+  postedBlogsButton: document.getElementById("postedBlogsButton"),
 };
 
+//DELETION ENDPOINTS
+const deleteEndPoints = {
+  blogPost: "/admin/deleteBlog",
+  brandNewItem: "/admin/deleteBrandNew",
+  tradeInItem: "/admin/deleteTradeIn",
+};
+
+//GET ENDPOINTS
+const getEndPoints = {
+  blogPostings: "/api/getAllBlogPosts",
+  brandNewListings: "/api/getAllBrandNewListings",
+  tradeInListings: "/api/getAllTradeInListings",
+};
+
+//PAGE LOGIC
 document.addEventListener("DOMContentLoaded", async () => {
   //-------------------------
   //INVENTORY FUNCTIONS
@@ -97,7 +116,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             </div>
             <!-- TRANSMISSION -->
             <div class="flex flex-col">
-              <label class="font-bold px-2 pt-2">TRANSMISSION</label>
+              <label class="font-bold px-2 pt-2">Transmission</label>
               <select
                 name="transmission"
                 class="rounded-lg p-2 border-1 border-[#343a40]">
@@ -134,18 +153,28 @@ document.addEventListener("DOMContentLoaded", async () => {
             </div>
             <input id="newStatus" name="newStatus" type="hidden" value="true" />
             <button
-              id="createButton"
+              id="createBrandNewButton"
               type="submit"
               class="relative overflow-hidden bg-[#1985b4] w-full tracking-widest p-2 rounded-lg font-bold text-[#f1f3f5] active:bg-[#26b5ee] hover:cursor-pointer hover:bg-[#1985b4] hover:scale-103 ease-in-out duration-150 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-[#f1f3f5]/35 before:via-transparent before:to-transparent"
             >
               CREATE
             </button>
           </form>`;
+
     const createBrandNewForm = document.getElementById("createBrandNewForm");
+    const createBrandNewButton = document.getElementById(
+      "createBrandNewButton",
+    );
+
     createBrandNewForm.addEventListener("submit", async (submitEvent) => {
       //SUBMIT LOGIC
       submitEvent.preventDefault();
+
       const formData = new FormData(createBrandNewForm);
+
+      createBrandNewButton.disabled = true;
+      createBrandNewButton.innerText = "Creating listing...";
+
       try {
         const response = await fetch("/admin/createBrandNew", {
           method: "POST",
@@ -163,7 +192,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 
-  els.tradeInFormButton.addEventListener("click", (click) => {
+  els.tradeInFormButton.addEventListener("click", (clickEvent) => {
     formContainer.innerHTML = `<h1
             class="font-bold text-center text-2xl w-full border-b-2 border-b-[#e3173e]"
           >
@@ -253,7 +282,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             </div>
             <!-- TRANSMISSION -->
             <div class="flex flex-col">
-              <label class="font-bold px-2 pt-2">TRANSMISSION</label>
+              <label class="font-bold px-2 pt-2">Transmission</label>
               <select
                 name="transmission"
                 class="rounded-lg p-2 border-1 border-[#343a40]">
@@ -290,7 +319,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             </div>
             <input id="newStatus" name="newStatus" type="hidden" value="true" />
             <button
-              id="createButton"
+              id="createTradeInButton"
               type="submit"
               class="relative overflow-hidden bg-[#e3173e] w-full tracking-widest p-2 rounded-lg font-bold text-[#f1f3f5] active:bg-[#ff2d4f] hover:cursor-pointer hover:bg-[#e3173e] hover:scale-103 ease-in-out duration-150 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-[#f1f3f5]/35 before:via-transparent before:to-transparent"
             >
@@ -299,11 +328,15 @@ document.addEventListener("DOMContentLoaded", async () => {
           </form>`;
 
     const createTradeInForm = document.getElementById("createTradeInForm");
+    const createTradeInButton = document.getElementById("createTradeInButton");
 
     createTradeInForm.addEventListener("submit", async (submitEvent) => {
       submitEvent.preventDefault();
 
       const formData = new FormData(createTradeInForm);
+
+      createTradeInButton.disabled = true;
+      createTradeInButton.innerText = "Creating listing...";
 
       try {
         const response = await fetch("/admin/createTradeIn", {
@@ -322,17 +355,151 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 
-  // GET ALL BRAND NEW VEHICLES
-  const getAllBrandNewItems = async () => {
+  //GET ALL BRAND NEW VEHICLES
+  const getAllBrandNewListings = async () => {
     try {
       const brandNewListingsResponse = await fetch(
-        "/api/getAllBrandNewListings",
+        `${getEndPoints.brandNewListings}`,
       );
       const brandNewListingsData = await brandNewListingsResponse.json();
 
-      //POPULATE THE CONTENT AREA!!!!!
+      els.dashboardPostedContentArea.innerHTML = "";
+
+      if (brandNewListingsData.length === 0) {
+        els.dashboardPostedContentArea.innerHTML = `<div class="mb-15 w-full flex justify-center"><p class="font-bold text-md">No brand new postings to load</p></div>`;
+      } else {
+        for (const brandNewListing of brandNewListingsData) {
+          const postingCard = `<article
+              id="${brandNewListing._id}"
+              data-type="brandNewItem"
+              class="w-full relative bg-[#f1f3f5] text-[#343a40] rounded-xl shadow-xl"
+            >
+              <img
+                src="${brandNewListing.imageUrl}"
+                class="md:h-100 w-full object-cover rounded-tl-xl rounded-tr-xl"
+              />
+              <div id="vehicle-card-text" class="p-8 flex flex-col gap-2">
+                <div
+                  id="vehicle-year-and-make"
+                  class="flex flex-col md:flex-row text-md font-bold text-[#343a40] tracking-wide w-fit text-center md:text-start rounded-lg"
+                >
+                  <h1>${brandNewListing.year}&nbsp;</h1>
+                  <h1>${brandNewListing.make}</h1>
+                </div>
+                <h1
+                  id="vehicle-model"
+                  class="flex text-xl font-bold text-[#343a40] tracking-wide w-fit text-center md:text-start rounded-lg"
+                >
+                  ${brandNewListing.model}
+                </h1>
+                <h2 id="vehicle-vin">VIN ${brandNewListing.vin}</h2>
+                <div
+                  id="vehicle-stats"
+                  class="flex flex-col md:flex-row text-md"
+                >
+                  <p>
+                    ${brandNewListing.drive}
+                    <span class="hidden md:inline-block">|</span>
+                    ${brandNewListing.transmission}
+                    <span class="hidden md:inline-block">|</span>
+                    ${brandNewListing.odometer}
+                  </p>
+                </div>
+                <p
+                  id="vehicle-description"
+                  class="italic tracking-wide text-lg pt-2"
+                >
+                  ${brandNewListing.description}
+                </p>
+              </div>
+              <div
+                class="deleteButton bg-radial border border-[#343a40] from-[#f1f3f5] from-30% to-slate-300 px-2 py-1 text-[#e3173e] rounded-full text-2xl md:text-3xl font-bold absolute top-2 md:top-4 md:right-4 right-4 hover:cursor-pointer"
+              >
+                X
+              </div>
+            </article>`;
+          els.dashboardPostedContentArea.insertAdjacentHTML(
+            "beforeend",
+            postingCard,
+          );
+        }
+      }
     } catch (error) {
       console.log(`Error retrieving brand new vehicles: ${error}`);
+    }
+  };
+
+  //GET ALL TRADE IN VEHICLES
+  const getAllTradeInListings = async () => {
+    try {
+      const tradeInListingsResponse = await fetch(
+        `${getEndPoints.tradeInListings}`,
+      );
+      const tradeInListingsData = await tradeInListingsResponse.json();
+
+      els.dashboardPostedContentArea.innerHTML = "";
+
+      if (tradeInListingsData.length === 0) {
+        els.dashboardPostedContentArea.innerHTML = `<div class="mb-15 w-full flex justify-center"><p class="font-bold text-md">No trade in postings to load</p></div>`;
+      } else {
+        for (const tradeInListing of tradeInListingsData) {
+          const postingCard = `<article
+              id="${tradeInListing._id}"
+              data-type="tradeInItem"
+              class="w-full relative bg-[#f1f3f5] text-[#343a40] rounded-xl shadow-xl"
+            >
+              <img
+                src="${tradeInListing.imageUrl}"
+                class="md:h-100 w-full object-cover rounded-tl-xl rounded-tr-xl"
+              />
+              <div id="vehicle-card-text" class="p-8 flex flex-col gap-2">
+                <div
+                  id="vehicle-year-and-make"
+                  class="flex flex-col md:flex-row text-md font-bold text-[#343a40] tracking-wide w-fit text-center md:text-start rounded-lg"
+                >
+                  <h1>${tradeInListing.year}&nbsp;</h1>
+                  <h1>${tradeInListing.make}</h1>
+                </div>
+                <h1
+                  id="vehicle-model"
+                  class="flex text-xl font-bold text-[#343a40] tracking-wide w-fit text-center md:text-start rounded-lg"
+                >
+                  ${tradeInListing.model}
+                </h1>
+                <h2 id="vehicle-vin">VIN ${tradeInListing.vin}</h2>
+                <div
+                  id="vehicle-stats"
+                  class="flex flex-col md:flex-row text-md"
+                >
+                  <p>
+                    ${tradeInListing.drive}
+                    <span class="hidden md:inline-block">|</span>
+                    ${tradeInListing.transmission}
+                    <span class="hidden md:inline-block">|</span>
+                    ${tradeInListing.odometer}
+                  </p>
+                </div>
+                <p
+                  id="vehicle-description"
+                  class="italic tracking-wide text-lg pt-2"
+                >
+                  ${tradeInListing.description}
+                </p>
+              </div>
+              <div
+                class="deleteButton bg-radial border border-[#343a40] from-[#f1f3f5] from-30% to-slate-300 px-2 py-1 text-[#e3173e] rounded-full text-2xl md:text-3xl font-bold absolute top-2 md:top-4 md:right-4 right-4 hover:cursor-pointer"
+              >
+                X
+              </div>
+            </article>`;
+          els.dashboardPostedContentArea.insertAdjacentHTML(
+            "beforeend",
+            postingCard,
+          );
+        }
+      }
+    } catch (error) {
+      alert(`Error getting trade in listings: ${error}`);
     }
   };
 
@@ -342,39 +509,50 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   //GET ALL BLOG CONTENT
   const getAllBlogPosts = async () => {
-    const response = await fetch("/api/getAllBlogPosts");
-    const responseData = await response.json();
+    try {
+      const response = await fetch(`${getEndPoints.blogPostings}`);
+      const responseData = await response.json();
 
-    for (const blog of responseData) {
-      const blogContent = ` <article
-              id="${blog._id}"
-              class="w-full relative text-[#f1f3f5] bg-[#343a40] rounded-xl shadow-xl"
-            >
-              <img
-                src="${blog.imageURL}"
-                class="md:h-64 w-full object-cover rounded-tl-xl rounded-tr-xl mr-8"
-              />
-              <div id="post-text" class="p-8 flex flex-col gap-2">
-                <h1
-                  id="post-title"
-                  class="text-2xl font-bold text-[#e3173e] tracking-wide bg-[#f1f3f5] w-fit text-center md:text-start rounded-lg p-2"
-                >
-                  ${blog.title}
-                </h1>
-                <p id="post-body" class="italic tracking-wide text-xl pt-2">
-                  ${blog.body}
-                </p>
-              </div>
-              <div
-          class="deleteButton bg-radial border border-[#343a40] from-[#f1f3f5] from-30% to-slate-300 px-2 py-1 text-[#e3173e] rounded-full text-2xl md:text-3xl font-bold absolute top-2 md:top-4 md:right-4 right-4 hover:cursor-pointer"
-        >
-          X
-        </div>
-            </article>`;
-      els.dashboardPostedContentArea.insertAdjacentHTML(
-        "beforeend",
-        blogContent,
-      );
+      dashboardPostedContentArea.innerHTML = "";
+
+      if (responseData.length === 0) {
+        dashboardPostedContentArea.innerHTML = `<div class="mb-15 w-full flex justify-center"><p class="font-bold text-md">No blog posts to load</p></div>`;
+      } else {
+        for (const blog of responseData) {
+          const blogContent = ` <article
+                id="${blog._id}"
+                data-type="blogPost"
+                class="w-full relative text-[#f1f3f5] bg-[#343a40] rounded-xl shadow-xl"
+              >
+                <img
+                  src="${blog.imageURL}"
+                  class="md:h-100 w-full object-cover rounded-tl-xl rounded-tr-xl mr-8"
+                />
+                <div id="post-text" class="p-8 flex flex-col gap-2">
+                  <h1
+                    id="post-title"
+                    class="text-2xl font-bold text-[#e3173e] tracking-wide bg-[#f1f3f5] w-fit text-center md:text-start rounded-lg p-2"
+                  >
+                    ${blog.title}
+                  </h1>
+                  <p id="post-body" class="italic tracking-wide text-xl pt-2">
+                    ${blog.body}
+                  </p>
+                </div>
+                <div
+            class="deleteButton bg-radial border border-[#343a40] from-[#f1f3f5] from-30% to-slate-300 px-2 py-1 text-[#e3173e] rounded-full text-2xl md:text-3xl font-bold absolute top-2 md:top-4 md:right-4 right-4 hover:cursor-pointer"
+          >
+            X
+          </div>
+              </article>`;
+          els.dashboardPostedContentArea.insertAdjacentHTML(
+            "beforeend",
+            blogContent,
+          );
+        }
+      }
+    } catch (error) {
+      console.log(`Error getting blog posts: ${error}`);
     }
   };
 
@@ -383,6 +561,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     submitEvent.preventDefault();
 
     const formData = new FormData(els.createPostForm);
+
+    postBlogButton.disabled = true;
+    postBlogButton.innerText = "POSTING...";
 
     try {
       const response = await fetch("/admin/createBlog", {
@@ -396,16 +577,26 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       els.createPostForm.reset();
 
-      await resetBlogContent(els.dashboardPostedContentArea);
+      await resetPostContent("blogPost");
     } catch (error) {
       alert(`There was an error creating this blog post: ${error}`);
     }
+
+    postBlogButton.disabled = false;
+    postBlogButton.innerText = "POST";
   });
 
-  //REFRESH BLOG CONTENT
-  const resetBlogContent = async () => {
+  //REFRESH POST CONTENT
+  const resetPostContent = async (postType) => {
     els.dashboardPostedContentArea.innerHTML = "";
-    await getAllBlogPosts();
+
+    if (postType === "blogPost") {
+      await getAllBlogPosts();
+    } else if (postType === "brandNewItem") {
+      await getAllBrandNewListings();
+    } else if (postType === "tradeInItem") {
+      await getAllTradeInListings();
+    }
     //Requery for array of new delete buttons after blog content refresh
     const deleteButtons = document.querySelectorAll(".deleteButton");
     setDeleteButtonEvents(deleteButtons);
@@ -414,38 +605,79 @@ document.addEventListener("DOMContentLoaded", async () => {
   //DELETE BUTTON EVENT LISTENERS
   const setDeleteButtonEvents = (deleteButtons) => {
     deleteButtons.forEach((button) => {
-      const blogId = button.closest("article").id;
-
+      const article = button.closest("article");
+      const postId = article.id;
+      const postType = article.dataset.type;
       button.addEventListener("click", async (clickEvent) => {
         //Confirm user's choice
-        const confirmed = confirm(
-          "Are you sure you want to remove this blog post?",
-        );
+        const confirmed = confirm("Are you sure you want to remove this post?");
         if (!confirmed) return;
 
         try {
-          const response = await fetch(`/admin/deleteBlog/${blogId}`, {
-            method: "delete",
-          });
+          const response = await fetch(
+            `${deleteEndPoints[postType]}/${postId}`,
+            {
+              method: "delete",
+            },
+          );
 
           const responseData = await response.json();
 
           alert(responseData.message);
-
-          await resetBlogContent(els.dashboardPostedContentArea);
+          console.log("Resetting post content");
+          await resetPostContent(postType);
         } catch (error) {
-          console.log(error);
+          alert(error);
         }
       });
     });
   };
 
-  await getAllBlogPosts();
+  //-------------------------
+  //POSTED CONTENT AREA
+  //-------------------------
 
-  //Grab delete buttons after rendering blog posts
-  const dynamicEls = {
-    deleteButtons: document.querySelectorAll(".deleteButton"),
+  //POSTED CONTENT HEADER BUTTONS
+  const postedContentHeaderButtons = [
+    els.postedBrandNewButton,
+    els.postedTradeInButton,
+    els.postedBlogsButton,
+  ];
+
+  //VISUAL UPDATE ON ACTIVE HEADER BUTTONS
+  const setActiveHeaderButtons = (activeButton) => {
+    postedContentHeaderButtons.forEach((button) => {
+      button.classList.remove("underline", "italic");
+    });
+    activeButton.classList.add("underline", "italic");
   };
 
-  setDeleteButtonEvents(dynamicEls.deleteButtons);
+  //POSTED BLOGS HEADER BUTTON LISTENER
+  els.postedBlogsButton.addEventListener("click", async (clickEvent) => {
+    setActiveHeaderButtons(els.postedBlogsButton);
+    await getAllBlogPosts();
+    const deleteButtons = document.querySelectorAll(".deleteButton");
+    setDeleteButtonEvents(deleteButtons);
+  });
+
+  //POSTED TRADE INS BUTTON LISTENER
+  els.postedBrandNewButton.addEventListener("click", async (clickEvent) => {
+    setActiveHeaderButtons(els.postedBrandNewButton);
+    await getAllBrandNewListings();
+    const deleteButtons = document.querySelectorAll(".deleteButton");
+    setDeleteButtonEvents(deleteButtons);
+  });
+
+  //POSTED BRAND NEW BUTTON LISTENER
+  els.postedTradeInButton.addEventListener("click", async (clickEvent) => {
+    setActiveHeaderButtons(els.postedTradeInButton);
+    await getAllTradeInListings();
+    const deleteButtons = document.querySelectorAll(".deleteButton");
+    setDeleteButtonEvents(deleteButtons);
+  });
+
+  //DEFUALT TO POSTED BLOG CONTENT ON PAGE LOAD
+  await getAllBlogPosts();
+  const onLoadDeleteButtons = document.querySelectorAll(".deleteButton");
+  setDeleteButtonEvents(onLoadDeleteButtons);
 });
