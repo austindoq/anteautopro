@@ -58,8 +58,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   // USER EVENTS ==============================================
 
   //MOBILE NAV BUTTON TOGGLE VISIBILITY
-  els.dropMenuButton.addEventListener("click", (click) => {
-    click.stopPropagation();
+  els.dropMenuButton.addEventListener("click", (clickEvent) => {
+    clickEvent.stopPropagation();
     els.dropMenu.classList.toggle("hidden");
 
     if (!els.dropMenu.classList.contains("hidden")) {
@@ -70,10 +70,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   //MOBILE CLICK OUT OF MENU CLOSE
-  document.addEventListener("click", (click) => {
+  document.addEventListener("click", (clickEvent) => {
     if (
       !els.dropMenu.classList.contains("hidden") &&
-      !els.dropMenu.contains(click.target)
+      !els.dropMenu.contains(clickEvent.target)
     ) {
       els.dropMenu.classList.add("hidden");
     }

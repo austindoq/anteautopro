@@ -61,12 +61,12 @@
           class="flex text-center items-center justify-center text-2xl"
         >
           <a
-            href="/inventory.html"
+            href="/inventory.html?type=brandNewListings"
             class="bg-[#e9ecef] text-[#1985b4] px-2 rounded-l-lg border-r-1 border-[#343a40] flex items-center hover:cursor-pointer"
             >Brand New</a
           >
           <a
-            href="/inventory.html"
+            href="/inventory.html?type=tradeInListings"
             class="bg-[#e9ecef] text-[#e3173e] px-2 rounded-r-lg border-l-1 border-[#343a40] flex items-center hover:cursor-pointer"
             >Trade-Ins</a
           >
@@ -113,11 +113,8 @@
             ></div>
             <a
               href="/faq.html"
-              class="hover:cursor-pointer w-full flex items-center text-2xl text-[#e3173e]"
-              ><img
-                src="/assets/icons/about-selected.svg"
-                class="size-5 mr-2"
-              />FAQ</a
+              class="hover:cursor-pointer w-full flex items-center text-2xl"
+              ><img src="/assets/icons/about.svg" class="size-5 mr-2" />FAQ</a
             >
           </div>
         </div>
@@ -142,16 +139,15 @@
           /></a>
           <a
             href="/faq.html"
-            class="hover:cursor-pointer italic flex items-center text-2xl text-[#e3173e]"
-            >FAQ
-            <img src="/assets/icons/about-selected.svg" class="size-5 mx-0.5"
+            class="hover:cursor-pointer italic flex items-center text-2xl"
+            >FAQ <img src="/assets/icons/about.svg" class="size-5 mx-0.5"
           /></a>
         </div>
       </div>
     </nav>
     <main>
       <section id="inventory-area" class="w-full flex justify-center my-8">
-        <div id="inventory-area-inner" class="w-[95%] md:max-w-4xl">
+        <div id="inventory-area-inner" class="w-[95%] md:max-w-7xl">
           <h1
             id="section-header"
             class="text-5xl mb-4 font-bold underline decoration-[#1985b4]"
@@ -160,7 +156,7 @@
           </h1>
           <div
             id="inventoryCardArea"
-            class="flex flex-col w-full gap-8 border-[#343a40] rounded-lg p-4 shadow-xl"
+            class="flex flex-col w-full gap-4 md:grid md:grid-cols-3 rounded-lg"
           ></div>
         </div>
       </section>
