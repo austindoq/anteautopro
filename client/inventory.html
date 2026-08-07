@@ -145,20 +145,27 @@
         </div>
       </div>
     </nav>
-    <main>
-      <section id="inventory-area" class="w-full flex justify-center my-8">
-        <div id="inventory-area-inner" class="w-[95%] md:max-w-7xl">
+    <main class="flex justify-center">
+      <section id="inventory-area" class="w-[95%] md:max-w-7xl flex flex-col gap-2 my-8">
+        <div id="section-header-area" class="w-full flex flex-col gap-2">
           <h1
-            id="section-header"
-            class="text-5xl mb-4 font-bold underline decoration-[#1985b4]"
+          id="section-header-title"
+          class="text-5xl font-bold underline decoration-[#1985b4]"
           >
-            Inventory
-          </h1>
-          <div
-            id="inventoryCardArea"
-            class="flex flex-col w-full gap-4 md:grid md:grid-cols-3 rounded-lg"
-          ></div>
+          Inventory
+        </h1>
+        <div id="search-bar-container" class="w-full">
+          <input id="search-bar" class="p-2 w-full md:max-w-[50%] border-1 border-[#343a40] rounded-lg" placeholder="Search by vehicle make, model, or year"></input>
         </div>
+        <div id="search-terms" class="flex items-center gap-2">
+          <p class="font-semibold">Current search:</p>
+          <p id="current-search-term" class="border-1 rounded-lg p-2">Trade-Ins</p>
+        </div>
+      </div>
+        <div
+          id="inventoryCardArea"
+          class="flex flex-col w-full gap-4 md:grid md:grid-cols-3 rounded-lg"
+        ></div>
       </section>
     </main>
     <footer
@@ -174,14 +181,14 @@
         >
           <div id="email-group" class="flex gap-2 items-center justify-start">
             <img src="/assets/icons/contact.svg" class="size-10" />
-            <span class="text-[#e3173e] text-5xl mt-2">•</span>
+            <span class="text-[#e3173e] text-5xl mt-2 hidden md:inlineblock">•</span>
             <p id="contact-email" class="text-xl min-w-0 break-all">
               athompson@vancouverhonda.com
             </p>
           </div>
           <div id="phone-group" class="flex gap-2 justify-start items-center">
             <img src="./assets/icons/phone.svg" class="size-10" />
-            <span class="text-[#e3173e] text-5xl mt-2">•</span>
+            <span class="text-[#e3173e] text-5xl mt-2 hidden md:inline-block">•</span>
             <p id="contact-phone" class="text-xl">236-979-4947</p>
           </div>
         </div>

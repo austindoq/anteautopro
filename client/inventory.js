@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 src="${tradeInListing.imageUrl}"
                 class="md:h-100 w-full object-cover rounded-tl-xl rounded-tr-xl"
               />
-              <div id="vehicle-card-text" class="p-8 flex flex-col gap-2">
+              <div id="vehicle-card-text" class="p-8 flex flex-col">
                 <div
                   id="vehicle-year-and-make"
                   class="flex flex-col md:flex-row text-md font-bold text-[#343a40] tracking-wide w-fit text-center md:text-start rounded-lg"
@@ -102,17 +102,17 @@ document.addEventListener("DOMContentLoaded", async () => {
                 >
                   ${tradeInListing.model}
                 </h1>
-                <h2 id="vehicle-vin">VIN ${tradeInListing.vin}</h2>
+                <h2 id="vehicle-vin"><span class="font-semibold">VIN:</span> ${tradeInListing.vin}</h2>
                 <div
                   id="vehicle-stats"
                   class="flex flex-col md:flex-row text-md"
                 >
                   <p>
                     ${tradeInListing.drive}
-                    <span class="hidden md:inline-block">|</span>
+                    <span>|</span>
                     ${tradeInListing.transmission}
-                    <span class="hidden md:inline-block">|</span>
-                    ${tradeInListing.odometer}
+                    <span>|</span>
+                    ${tradeInListing.odometer} kms 
                   </p>
                 </div>
                 <p
