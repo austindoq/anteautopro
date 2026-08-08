@@ -154,12 +154,13 @@
           >
           Inventory
         </h1>
-        <div id="search-bar-container" class="w-full">
-          <input id="search-bar" class="p-2 w-full md:max-w-[50%] border-1 border-[#343a40] rounded-lg" placeholder="Search by vehicle make, model, or year"></input>
+        <div id="search-bar-container" class="w-full flex gap-1">
+          <input id="search-bar" class="p-2 w-full md:max-w-[50%] border border-[#343a40] rounded-lg" placeholder="Search by vehicle make, model, or year"></input>
+          <button id="search-button" class="p-2 rounded-md w-fit border border-[#343a40] hover:cursor-pointer tracking-wider font-semibold">Search</button>
         </div>
         <div id="search-terms" class="flex items-center gap-2">
           <p class="font-semibold">Current search:</p>
-          <p id="current-search-term" class="border-1 rounded-lg p-2">Trade-Ins</p>
+          <p id="current-search-term" class="border-1 rounded-lg px-2 py-1">Trade-Ins</p>
         </div>
       </div>
         <div
@@ -181,7 +182,7 @@
         >
           <div id="email-group" class="flex gap-2 items-center justify-start">
             <img src="/assets/icons/contact.svg" class="size-10" />
-            <span class="text-[#e3173e] text-5xl mt-2 hidden md:inlineblock">•</span>
+            <span class="text-[#e3173e] text-5xl mt-2 hidden md:inline-block">•</span>
             <p id="contact-email" class="text-xl min-w-0 break-all">
               athompson@vancouverhonda.com
             </p>

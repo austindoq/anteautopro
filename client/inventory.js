@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     inventoryCardArea: document.getElementById("inventoryCardArea"),
     dropMenuButton: document.getElementById("dropMenuButton"),
     dropMenu: document.getElementById("dropMenu"),
+    searchBar: document.getElementById("search-bar"),
+    // searchButton: document.getElementById("search-button")
+    currentSearchTerm: document.getElementById("current-search-term"),
   };
 
   //GET ENDPOINTS
@@ -33,7 +36,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 src="${brandNewListing.imageUrl}"
                 class="md:h-100 w-full object-cover rounded-tl-xl rounded-tr-xl"
               />
-              <div id="vehicle-card-text" class="p-8 flex flex-col">
+              <div id="vehicle-card-text" class="px-8 py-4 flex flex-col">
                 <div
                   id="vehicle-year-and-make"
                   class="flex flex-col md:flex-row text-md font-bold text-[#343a40] tracking-wide w-fit text-center md:text-start rounded-lg"
@@ -88,7 +91,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 src="${tradeInListing.imageUrl}"
                 class="md:h-100 w-full object-cover rounded-tl-xl rounded-tr-xl"
               />
-              <div id="vehicle-card-text" class="p-8 flex flex-col">
+              <div id="vehicle-card-text" class="px-8 py-4 flex flex-col">
                 <div
                   id="vehicle-year-and-make"
                   class="flex flex-col md:flex-row text-md font-bold text-[#343a40] tracking-wide w-fit text-center md:text-start rounded-lg"
@@ -108,11 +111,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                   class="flex flex-col md:flex-row text-md"
                 >
                   <p>
-                    ${tradeInListing.drive}
+                    ${tradeInListing.drive.toUpperCase()}
                     <span>|</span>
-                    ${tradeInListing.transmission}
+                    ${tradeInListing.transmission[0].toUpperCase() + tradeInListing.transmission.slice(1)}
                     <span>|</span>
-                    ${tradeInListing.odometer} kms 
+                    ${tradeInListing.odometer} Kms 
                   </p>
                 </div>
                 <p
