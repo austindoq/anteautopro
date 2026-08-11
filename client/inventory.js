@@ -4,17 +4,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     dropMenuButton: document.getElementById("dropMenuButton"),
     dropMenu: document.getElementById("dropMenu"),
     searchBar: document.getElementById("search-bar"),
-    // searchButton: document.getElementById("search-button")
-    currentSearchTerm: document.getElementById("current-search-term"),
+    searchButton: document.getElementById("search-button"),
+    currentSearchTerm: document.getElementById("currentSearchTerm"),
+    currentSearchResultTotal: document.getElementById(
+      "currentSearchResultTotal",
+    ),
   };
 
   //GET ENDPOINTS
   const getEndPoints = {
     brandNewListings: "/api/getAllBrandNewListings",
     tradeInListings: "/api/getAllTradeInListings",
+    getSearchListings: "/api/getSearchListings",
   };
 
-  //LOAD CONTENT BASED ON PARAMS
+  //LOAD DEFAULT PAGE CONTENT BASED ON PARAMS
   const getContentPageLoad = async () => {
     const params = new URLSearchParams(window.location.search);
     const contentType = params.get("type");
@@ -23,7 +27,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       try {
         const brandNewListings = await fetch(`${getEndPoints[contentType]}`);
         const brandNewListingsData = await brandNewListings.json();
+        const totalListings = brandNewListingsData.length;
 
+        els.currentSearchTerm.innerHTML = "Brand New";
+        els.currentSearchResultTotal.innerHTML = totalListings;
         els.inventoryCardArea.innerHTML = "";
 
         for (const brandNewListing of brandNewListingsData) {
@@ -36,10 +43,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                 src="${brandNewListing.imageUrl}"
                 class="md:h-100 w-full object-cover rounded-tl-xl rounded-tr-xl"
               />
-              <div id="vehicle-card-text" class="px-8 py-4 flex flex-col">
+              <div id="vehicle-card-text" class="p-4 flex flex-col gap-2 border-y-2 border-y-[#1985b4] border-x-2 border-x-[#1985b4] rounded-b-xl">
                 <div
                   id="vehicle-year-and-make"
-                  class="flex flex-col md:flex-row text-md font-bold text-[#343a40] tracking-wide w-fit text-center md:text-start rounded-lg"
+                  class="flex text-md font-bold text-[#343a40] tracking-wide w-full text-center md:text-start rounded-lg"
                 >
                   <h1>${brandNewListing.year}&nbsp;</h1>
                   <h1>${brandNewListing.make}</h1>
@@ -63,10 +70,18 @@ document.addEventListener("DOMContentLoaded", async () => {
                 </div>
                 <p
                   id="vehicle-description"
-                  class="italic tracking-wide text-lg pt-2"
+                  class="italic tracking-wide text-lg"
                 >
                   ${brandNewListing.description}
                 </p>
+                <div
+          id="partition"
+          class="w-full h-[1px] mx-auto bg-[#343a40] "
+                ></div>
+                <div id="vehicle-pricing-area" class="w-full flex justify-between">
+                    <p class="text-xl">Selling price:</p>
+                    <p id="vehiclePrice" class=" text-[#1985b4] text-2xl">$1300</p>
+                </div>
               </div>
             </article>`;
           els.inventoryCardArea.insertAdjacentHTML("beforeend", postingCard);
@@ -78,7 +93,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       try {
         const tradeInListings = await fetch(`${getEndPoints[contentType]}`);
         const tradeInListingsData = await tradeInListings.json();
+        const totalListings = tradeInListingsData.length;
 
+        els.currentSearchTerm.innerHTML = "Trade-Ins";
+        els.currentSearchResultTotal.innerHTML = totalListings;
         els.inventoryCardArea.innerHTML = "";
 
         for (const tradeInListing of tradeInListingsData) {
@@ -91,10 +109,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                 src="${tradeInListing.imageUrl}"
                 class="md:h-100 w-full object-cover rounded-tl-xl rounded-tr-xl"
               />
-              <div id="vehicle-card-text" class="px-8 py-4 flex flex-col">
+              <div id="vehicle-card-text" class="p-4 flex flex-col gap-2 border-y-2 border-y-[#1985b4] border-x-2 border-x-[#1985b4] rounded-b-xl">
                 <div
                   id="vehicle-year-and-make"
-                  class="flex flex-col md:flex-row text-md font-bold text-[#343a40] tracking-wide w-fit text-center md:text-start rounded-lg"
+                  class="flex text-md font-bold text-[#343a40] tracking-wide w-full text-center md:text-start rounded-lg"
                 >
                   <h1>${tradeInListing.year}&nbsp;</h1>
                   <h1>${tradeInListing.make}</h1>
@@ -120,10 +138,18 @@ document.addEventListener("DOMContentLoaded", async () => {
                 </div>
                 <p
                   id="vehicle-description"
-                  class="italic tracking-wide text-lg pt-2"
+                  class="italic tracking-wide text-lg"
                 >
                   ${tradeInListing.description}
                 </p>
+                <div
+          id="partition"
+          class="w-full h-[1px] mx-auto bg-[#343a40] "
+                ></div>
+                <div id="vehicle-pricing-area" class="w-full flex justify-between">
+                    <p class="text-xl">Selling price:</p>
+                    <p id="vehiclePrice" class=" text-[#1985b4] text-2xl">$1300</p>
+                </div>
               </div>
             </article>`;
           els.inventoryCardArea.insertAdjacentHTML("beforeend", postingCard);
@@ -134,7 +160,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   };
 
+  // ==============================================
   //USER EVENTS
+  // ==============================================
+
   //MOBILE NAV BUTTON TOGGLE VISIBILITY
   els.dropMenuButton.addEventListener("click", (clickEvent) => {
     clickEvent.stopPropagation();
@@ -158,6 +187,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     els.dropMenuButton.classList.remove("scale-95", "text-[#e3173e]");
   });
+
+  // ==============================================
+  //SEARCH FUNCTIONS
+  // ==============================================
+
+  //USER SEARCH
+  const getUserSearchResults = async () => {
+    //search
+  };
 
   await getContentPageLoad();
 });
