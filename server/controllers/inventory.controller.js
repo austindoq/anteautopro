@@ -1,6 +1,7 @@
 import brandNewModel from "../models/brandNew.model.js";
 import tradeInModel from "../models/tradeIn.model.js";
 import cloudinary from "../config/cloudinary.js";
+import { model } from "mongoose";
 
 //Save Brand New Inventory Item
 export const createBrandNewInventoryItem = async (req, res) => {
@@ -198,5 +199,41 @@ export const getAllBrandNewMostRecent = async (req, res) => {
     return res.status(500).json({
       message: `There was an error retrieving brand new vehicles from database: ${error}`,
     });
+  }
+};
+
+//GET User Search Results
+export const getSearchListings = async (req, res) => {
+  let { search } = req.query;
+  search = search.toLowerCase().trim();
+  const { contentType } = req.params;
+
+  //QUERYABLE FIELDS AND REGEX SEARCH CASE INSENSITIVE
+  const searchQuery = {
+    $or: [
+      { make: { $regex: search, $options: "i" } },
+      { model: { $regex: search, $options: "i" } },
+      { year: { $regex: search, $options: "i" } },
+    ],
+  };
+
+  if (contentType === "brandNewListings") {
+    try {
+      const results = await brandNewModel.find(searchQuery);
+      return res.status(200).send(results);
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ message: `Error retrieving listings: ${error}` });
+    }
+  } else if (contentType === "tradeInListings") {
+    try {
+      const results = await tradeInModel.find(searchQuery);
+      return res.status(200).send(results);
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ message: `Error retrieving listings: ${error}` });
+    }
   }
 };

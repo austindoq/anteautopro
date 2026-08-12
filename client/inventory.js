@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         els.inventoryCardArea.innerHTML = "";
 
         for (const brandNewListing of brandNewListingsData) {
-          const postingCard = `<article
+          const vehicleCard = `<article
               id="${brandNewListing._id}"
               data-type="brandNewItem"
               class="w-full relative bg-[#f1f3f5] text-[#343a40] rounded-xl shadow-xl"
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 </div>
               </div>
             </article>`;
-          els.inventoryCardArea.insertAdjacentHTML("beforeend", postingCard);
+          els.inventoryCardArea.insertAdjacentHTML("beforeend", vehicleCard);
         }
       } catch (error) {
         console.log(`Error while getting listings: ${error}`);
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         els.inventoryCardArea.innerHTML = "";
 
         for (const tradeInListing of tradeInListingsData) {
-          const postingCard = `<article
+          const vehicleCard = `<article
               id="${tradeInListing._id}"
               data-type="tradeInItem"
               class="w-full relative bg-[#f1f3f5] text-[#343a40] rounded-xl shadow-xl"
@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 </div>
               </div>
             </article>`;
-          els.inventoryCardArea.insertAdjacentHTML("beforeend", postingCard);
+          els.inventoryCardArea.insertAdjacentHTML("beforeend", vehicleCard);
         }
       } catch (error) {
         console.log(`Error while getting listings: ${error}`);
@@ -192,10 +192,93 @@ document.addEventListener("DOMContentLoaded", async () => {
   //SEARCH FUNCTIONS
   // ==============================================
 
-  //USER SEARCH
-  const getUserSearchResults = async () => {
-    //search
+  //GET USER SEARCH RESULTS
+  const getUserSearchResults = async (query, contentType) => {
+    try {
+      const searchResponse = await fetch(
+        `/api/getSearchListings/${contentType}?search=${query}`,
+      );
+      const searchData = await searchResponse.json();
+
+      els.currentSearchTerm.innerHTML = query;
+      els.currentSearchResultTotal.innerHTML = searchData.length;
+      els.inventoryCardArea.innerHTML = "";
+
+      if (searchData.length === 0) {
+        els.inventoryCardArea.innerHTML = `<div class="w-full flex justify-center"><p>There are no vehicles that match your search.</p></div>`;
+      } else {
+        for (const vehicle of searchData) {
+          const vehicleCard = `<article
+              id="${vehicle._id}"
+              class="w-full bg-[#f1f3f5] text-[#343a40] rounded-xl shadow-xl"
+            >
+              <img
+                src="${vehicle.imageUrl}"
+                class="md:h-100 w-full object-cover rounded-tl-xl rounded-tr-xl"
+              />
+              <div id="vehicle-card-text" class="p-4 flex flex-col gap-2 border-y-2 border-y-[#1985b4] border-x-2 border-x-[#1985b4] rounded-b-xl">
+                <div
+                  id="vehicle-year-and-make"
+                  class="flex text-md font-bold text-[#343a40] tracking-wide w-full text-center md:text-start rounded-lg"
+                >
+                  <h1>${vehicle.year}&nbsp;</h1>
+                  <h1>${vehicle.make}</h1>
+                </div>
+                <h1
+                  id="vehicle-model"
+                  class="flex text-xl font-bold text-[#343a40] tracking-wide w-fit text-center md:text-start rounded-lg"
+                >
+                  ${vehicle.model}
+                </h1>
+                <h2 id="vehicle-vin"><span class="font-semibold">VIN:</span> ${vehicle.vin}</h2>
+                <div
+                  id="vehicle-stats"
+                  class="flex flex-col md:flex-row text-md"
+                >
+                  <p>
+                    ${vehicle.drive.toUpperCase()}
+                    <span>|</span>
+                    ${vehicle.transmission[0].toUpperCase() + vehicle.transmission.slice(1)}
+                  </p>
+                </div>
+                <p
+                  id="vehicle-description"
+                  class="italic tracking-wide text-lg"
+                >
+                  ${vehicle.description}
+                </p>
+                <div
+          id="partition"
+          class="w-full h-[1px] mx-auto bg-[#343a40] "
+                ></div>
+                <div id="vehicle-pricing-area" class="w-full flex justify-between">
+                    <p class="text-xl">Selling price:</p>
+                    <p id="vehiclePrice" class=" text-[#1985b4] text-2xl">$1300</p>
+                </div>
+              </div>
+            </article>`;
+          els.inventoryCardArea.insertAdjacentHTML("beforeend", vehicleCard);
+        }
+      }
+    } catch (error) {
+      console.log(
+        `There has been an error retrieving search results: ${error}`,
+      );
+    }
   };
+
+  //SEARCH BAR LISTENER
+  els.searchButton.addEventListener("click", async (clickEvent) => {
+    const query = els.searchBar.value;
+    const params = new URLSearchParams(window.location.search);
+    const contentType = params.get("type");
+
+    if (query === "") {
+      return;
+    } else {
+      await getUserSearchResults(query, contentType);
+    }
+  });
 
   await getContentPageLoad();
 });

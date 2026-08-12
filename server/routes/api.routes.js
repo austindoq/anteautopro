@@ -8,6 +8,7 @@ import {
 import {
   getAllBrandNewListings,
   getAllTradeInListings,
+  getSearchListings,
 } from "../controllers/inventory.controller.js";
 const router = Router();
 
@@ -18,5 +19,5 @@ router.get("/mostRecentBlogPost", mostRecentBlogPost);
 // router.get("/mostRecentListings");
 router.get("/getAllBrandNewListings", getAllBrandNewListings);
 router.get("/getAllTradeInListings", getAllTradeInListings);
-// router.get("/getSearchListings", getSearchListings);
+router.get("/getSearchListings/:contentType", getSearchListings);
 export default router;
