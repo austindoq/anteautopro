@@ -9,6 +9,7 @@ import {
   getAllBrandNewListings,
   getAllTradeInListings,
   getSearchListings,
+  mostRecentTradeIns,
 } from "../controllers/inventory.controller.js";
 const router = Router();
 
@@ -16,7 +17,7 @@ router.post("/consultation", createConsultationLead);
 router.post("/appraisal", createAppraisalLead);
 router.get("/getAllBlogPosts", getAllBlogPosts);
 router.get("/mostRecentBlogPost", mostRecentBlogPost);
-// router.get("/mostRecentListings");
+router.get("/mostRecentTradeIns", mostRecentTradeIns);
 router.get("/getAllBrandNewListings", getAllBrandNewListings);
 router.get("/getAllTradeInListings", getAllTradeInListings);
 router.get("/getSearchListings/:contentType", getSearchListings);

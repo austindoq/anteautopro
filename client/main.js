@@ -23,6 +23,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       "#appraisalModal #modal-inner .closeButton",
     ),
     selectButtons: document.querySelectorAll("select"),
+    mostRecentTradeInsArea: document.getElementById("mostRecentTradeInsArea"),
+    mostRecentTradeInsSection: document.getElementById(
+      "mostRecentTradeInsSection",
+    ),
   };
 
   //POPULATE MOST RECENT BLOG POST
@@ -53,6 +57,87 @@ document.addEventListener("DOMContentLoaded", async () => {
     els.blogContainer.innerHTML = mostRecentBlogPost;
   }
 
+  //GET MOST RECENT TRADE-INS
+  async function getMostRecentTradeIns() {
+    try {
+      const recentResult = await fetch("/api/mostRecentTradeIns");
+      const recentResultData = await recentResult.json();
+
+      //Define grid based on result quantity
+      if (recentResultData.length === 2) {
+        els.mostRecentTradeInsArea.classList.remove("md:grid-cols-3");
+        els.mostRecentTradeInsArea.classList.add("md:grid-cols-2");
+      } else if (recentResultData.length === 1) {
+        els.mostRecentTradeInsArea.classList.remove(
+          "md:grid-cols-3",
+          "md:grid",
+        );
+        els.mostRecentTradeInsArea.classList.add("md:w-2xl");
+      } else if (recentResultData.length === 0) {
+        els.mostRecentTradeInsSection.classList.add("hidden");
+      }
+
+      for (const tradeInListing of recentResultData) {
+        const vehicleCard = `<article
+              id="${tradeInListing._id}"
+              data-type="tradeInItem"
+              class="w-full relative bg-[#f1f3f5] text-[#343a40] rounded-xl shadow-xl"
+            >
+              <img
+                src="${tradeInListing.imageUrl}"
+                class="md:h-100 w-full object-cover rounded-tl-xl rounded-tr-xl"
+              />
+              <div id="vehicle-card-text" class="p-4 flex flex-col gap-2 border-y-2 border-y-[#1985b4] border-x-2 border-x-[#1985b4] rounded-b-xl">
+                <div
+                  id="vehicle-year-and-make"
+                  class="flex text-md font-bold text-[#343a40] tracking-wide w-full text-center md:text-start rounded-lg"
+                >
+                  <h1>${tradeInListing.year}&nbsp;</h1>
+                  <h1>${tradeInListing.make}</h1>
+                </div>
+                <h1
+                  id="vehicle-model"
+                  class="flex text-xl font-bold text-[#343a40] tracking-wide w-fit text-center md:text-start rounded-lg"
+                >
+                  ${tradeInListing.model}
+                </h1>
+                <h2 id="vehicle-vin"><span class="font-semibold">VIN:</span> ${tradeInListing.vin}</h2>
+                <div
+                  id="vehicle-stats"
+                  class="flex flex-col md:flex-row text-md"
+                >
+                  <p>
+                    ${tradeInListing.drive.toUpperCase()}
+                    <span>|</span>
+                    ${tradeInListing.transmission[0].toUpperCase() + tradeInListing.transmission.slice(1)}
+                    <span>|</span>
+                    ${tradeInListing.odometer} Kms 
+                  </p>
+                </div>
+                <p
+                  id="vehicle-description"
+                  class="italic tracking-wide text-lg"
+                >
+                  ${tradeInListing.description}
+                </p>
+                <div
+          id="partition"
+          class="w-full h-[1px] mx-auto bg-[#343a40] "
+                ></div>
+                <div id="vehicle-pricing-area" class="w-full flex justify-between">
+                    <p class="text-xl">Selling price:</p>
+                    <p id="vehiclePrice" class=" text-[#1985b4] text-2xl">$1300</p>
+                </div>
+              </div>
+            </article>`;
+        els.mostRecentTradeInsArea.insertAdjacentHTML("beforeend", vehicleCard);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  await getMostRecentTradeIns();
   await getMostRecentBlog();
 
   // USER EVENTS ==============================================

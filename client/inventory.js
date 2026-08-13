@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     currentSearchResultTotal: document.getElementById(
       "currentSearchResultTotal",
     ),
+    contentTypeHeader: document.getElementById("contentTypeHeader"),
   };
 
   //GET ENDPOINTS
@@ -29,7 +30,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         const brandNewListingsData = await brandNewListings.json();
         const totalListings = brandNewListingsData.length;
 
-        els.currentSearchTerm.innerHTML = "Brand New";
+        els.contentTypeHeader.innerHTML = "New";
+        els.currentSearchTerm.classList.add("hidden");
         els.currentSearchResultTotal.innerHTML = totalListings;
         els.inventoryCardArea.innerHTML = "";
 
@@ -95,7 +97,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         const tradeInListingsData = await tradeInListings.json();
         const totalListings = tradeInListingsData.length;
 
-        els.currentSearchTerm.innerHTML = "Trade-Ins";
+        els.contentTypeHeader.innerHTML = "Trade-In";
+        els.currentSearchTerm.classList.add("hidden");
         els.currentSearchResultTotal.innerHTML = totalListings;
         els.inventoryCardArea.innerHTML = "";
 
@@ -200,6 +203,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       );
       const searchData = await searchResponse.json();
 
+      els.currentSearchTerm.classList.remove("hidden");
       els.currentSearchTerm.innerHTML = query;
       els.currentSearchResultTotal.innerHTML = searchData.length;
       els.inventoryCardArea.innerHTML = "";
@@ -274,7 +278,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const contentType = params.get("type");
 
     if (query === "") {
-      return;
+      getContentPageLoad();
     } else {
       await getUserSearchResults(query, contentType);
     }

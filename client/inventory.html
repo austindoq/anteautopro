@@ -152,11 +152,12 @@
           id="section-header-title"
           class="text-5xl font-bold underline decoration-[#1985b4]"
           >
-          Inventory
+          <span id="contentTypeHeader"></span>&nbsp;Inventory
         </h1>
         <div id="search-bar-container" class="w-full flex gap-1">
           <input id="search-bar" class="p-2 w-full md:max-w-[50%] border border-[#343a40] rounded-lg" placeholder="Search by vehicle make, model, or year"></input>
-          <button id="search-button" class="p-2 rounded-md w-fit border border-[#343a40] hover:cursor-pointer tracking-wider font-semibold">Search</button>
+          <button id="search-button" class="p-2 rounded-md w-fit border border-[#343a40] hover:cursor-pointer tracking-wider font-semibold">Search <img src=""></button>
+        <!-- ADd IMAGE TO SEARCH BAR -->
         </div>
         <div
           id="partition"
@@ -165,7 +166,7 @@
         <div id="search-term-data-area" class="w-full flex justify-between items-center">
           <div id="search-terms" class="flex items-center gap-2">
             <p class="font-semibold">Search:</p>
-            <p id="currentSearchTerm" class="border-2 rounded-lg px-2 py-1"></p>
+            <p id="currentSearchTerm" class="border-2 rounded-lg px-1 py-0.5"></p>
           </div>
           <p class="font-semibold">Results: <span class="text-[#1985b4]">(<span id="currentSearchResultTotal"></span>)</span></p>
         </div>

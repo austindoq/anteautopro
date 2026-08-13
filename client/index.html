@@ -164,7 +164,30 @@
         </div>
       </section>
     </header>
-    <main class="bg-radial from-[#f1f3f5] from-30% to-slate-300 flex flex-col">
+    <main
+      class="bg-radial from-[#f1f3f5] from-30% to-slate-300 flex items-center flex-col"
+    >
+      <section
+        id="mostRecentTradeInsSection"
+        class="flex flex-col items-center md:justify-center mt-8 mb-8 w-[95%] md:max-w-7xl"
+      >
+        <div
+          id="recentTradeInsHeader"
+          class="w-full flex justify-between text-xl md:text-3xl border-b-2"
+        >
+          <h1 class="font-semibold">Recent Trade-Ins</h1>
+          <a
+            href="/inventory.html?type=tradeInListings"
+            class="relative overflow-hidden hover:cursor-pointer font-bold bg-[#1985b4] text-[#f1f3f5] px-2 rounded-t-xl text-center tracking-wide active:bg-[#26b5ee] hover:scale-105 hover:-translate-y-[0.075rem] ease-in-out duration-150 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-[#f1f3f5]/35 before:via-transparent before:to-transparent md:-translate-x-1"
+          >
+            See More
+          </a>
+        </div>
+        <div
+          id="mostRecentTradeInsArea"
+          class="flex flex-col gap-4 md:grid md:grid-cols-3 mt-4"
+        ></div>
+      </section>
       <section
         id="testimonials"
         class="flex justify-center mt-8 md:mt-16 mb-8 text-[#343a40]"
@@ -312,9 +335,7 @@
             id="blog-headers"
             class="flex justify-between px-4 text-xl md:text-3xl"
           >
-            <h1 class="hover:cursor-pointer font-semibold">
-              Latest On The Market
-            </h1>
+            <h1 class="font-semibold">Latest On The Market</h1>
             <a
               href="/blog.html"
               class="relative overflow-hidden hover:cursor-pointer font-bold bg-[#1985b4] text-[#f1f3f5] px-2 rounded-t-xl text-center tracking-wide active:bg-[#26b5ee] hover:scale-105 hover:-translate-y-[0.075rem] ease-in-out duration-150 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-[#f1f3f5]/35 before:via-transparent before:to-transparent"
@@ -327,7 +348,7 @@
               class="w-full text-[#f1f3f5] bg-[#343a40] rounded-xl"
             >
               <img
-                src="/assets/images/blog_image_placeholder.jpg"
+                src="/assets/images/hero-bg.jpg"
                 class="h-48 md:h-64 w-full object-cover rounded-tl-xl rounded-tr-xl mr-8"
               />
               <div id="post-text" class="p-8 flex flex-col gap-2">
@@ -335,26 +356,27 @@
                   id="post-title"
                   class="text-2xl font-bold text-[#e3173e] tracking-wide bg-[#f1f3f5] w-fit text-center md:text-start rounded-lg p-2"
                 >
-                  The 2026 Honda Civic!
+                  The 2026 Honda Passport
                 </h1>
                 <p id="post-body" class="italic tracking-wide text-xl py-2">
-                  Discover the 2026 Honda Civic—where style, efficiency, and
-                  innovation come together in one exceptional compact sedan. At
-                  our dealership, we're excited to introduce the latest Civic,
-                  featuring a refreshed design, advanced driver-assistance
-                  technology, and a refined interior built for comfort and
-                  connectivity. Whether you're commuting through the city or
-                  heading out on a weekend adventure, the 2026 Civic delivers
-                  responsive performance, impressive fuel economy, and the
-                  reliability Honda is known for. With a modern infotainment
-                  system, enhanced safety features, and a sleek, athletic
-                  appearance, this Civic is designed to elevate every drive.
-                  Available in a variety of trims to suit your lifestyle and
-                  budget, the 2026 Honda Civic continues its tradition of
-                  offering outstanding value without compromise. Visit our
-                  showroom today to experience the next generation of Civic for
-                  yourself and see why it remains one of Canada's most popular
-                  vehicles year after year.
+                  Discover the 2026 Honda Passport—where rugged capability meets
+                  everyday comfort in one standout midsize SUV. At our
+                  dealership, we're excited to introduce the latest Passport,
+                  featuring bold new styling, advanced driver-assistance
+                  technology, and a spacious interior built for both family life
+                  and adventure. Whether you're navigating city streets or
+                  heading off the beaten path, the 2026 Passport delivers
+                  confident all-terrain performance, generous cargo space, and
+                  the reliability Honda is known for. With a modern infotainment
+                  system, enhanced safety features, and a commanding, athletic
+                  stance, this Passport is designed to handle whatever the
+                  road—or the trail—throws your way. Available in a variety of
+                  trims to suit your lifestyle and budget, the 2026 Honda
+                  Passport continues its tradition of offering outstanding
+                  capability without compromise. Visit our showroom today to
+                  experience the next generation of Passport for yourself and
+                  see why it remains one of Canada's most trusted midsize SUVs
+                  year after year.
                 </p>
               </div>
             </article>
