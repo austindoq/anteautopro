@@ -169,16 +169,16 @@
     >
       <section
         id="mostRecentTradeInsSection"
-        class="flex flex-col items-center md:justify-center mt-8 mb-8 w-[95%] md:max-w-7xl"
+        class="flex flex-col items-center md:justify-center mt-8 md:mt-16 mb-8 w-[95%] md:max-w-7xl"
       >
         <div
           id="recentTradeInsHeader"
-          class="w-full flex justify-between text-xl md:text-3xl border-b-2"
+          class="w-full flex justify-between text-xl md:text-3xl border-b-2 border-[#343a40] px-2"
         >
-          <h1 class="font-semibold">Recent Trade-Ins</h1>
+          <h1 class="font-semibold text-[#343a40]">Recent Trade-Ins</h1>
           <a
             href="/inventory.html?type=tradeInListings"
-            class="relative overflow-hidden hover:cursor-pointer font-bold bg-[#1985b4] text-[#f1f3f5] px-2 rounded-t-xl text-center tracking-wide active:bg-[#26b5ee] hover:scale-105 hover:-translate-y-[0.075rem] ease-in-out duration-150 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-[#f1f3f5]/35 before:via-transparent before:to-transparent md:-translate-x-1"
+            class="relative overflow-hidden hover:cursor-pointer font-bold bg-[#1985b4] text-[#f1f3f5] px-2 rounded-t-xl text-center tracking-wide active:bg-[#26b5ee] hover:scale-105 hover:-translate-y-[0.075rem] ease-in-out duration-150 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-[#f1f3f5]/35 before:via-transparent before:to-transparent"
           >
             See More
           </a>
@@ -188,6 +188,10 @@
           class="flex flex-col gap-4 md:grid md:grid-cols-3 mt-4"
         ></div>
       </section>
+      <div
+        id="partition"
+        class="mt-8 mb-8 w-[80%] h-[2px] mx-auto bg-gradient-to-r from-transparent via-[#1985b4] to-transparent"
+      ></div>
       <section
         id="testimonials"
         class="flex justify-center mt-8 md:mt-16 mb-8 text-[#343a40]"
@@ -209,6 +213,16 @@
                 Ante went out of his way to research the Tacoma model — as well
                 as provide full descriptive videos of the truck on the lot.
                 <span class="text-3xl text-[#1985b4]">"</span>
+                <div
+                  id="review-rating"
+                  class="flex gap-1 justify-center w-full"
+                >
+                  <img src="/assets/icons/star.svg" class="size-8" />
+                  <img src="/assets/icons/star.svg" class="size-8" />
+                  <img src="/assets/icons/star.svg" class="size-8" />
+                  <img src="/assets/icons/star.svg" class="size-8" />
+                  <img src="/assets/icons/star.svg" class="size-8" />
+                </div>
               </h1>
               <div>
                 <h2 class="text-[#1985b4] font-semibold text-2xl">
@@ -238,6 +252,13 @@
                 awesome car in my name less than 12 hours later.
                 <span class="text-3xl text-[#1985b4]">"</span>
               </h1>
+              <div id="review-rating" class="flex gap-1 justify-center w-full">
+                <img src="/assets/icons/star.svg" class="size-8" />
+                <img src="/assets/icons/star.svg" class="size-8" />
+                <img src="/assets/icons/star.svg" class="size-8" />
+                <img src="/assets/icons/star.svg" class="size-8" />
+                <img src="/assets/icons/star.svg" class="size-8" />
+              </div>
               <div>
                 <h2 class="text-[#1985b4] font-semibold text-2xl">Erin</h2>
                 <p class="text-[#1985b4] text-xl">Facebook Marketplace</p>
@@ -259,6 +280,13 @@
                 rushing me.
                 <span class="text-3xl text-[#1985b4]">"</span>
               </h1>
+              <div id="review-rating" class="flex gap-1 justify-center w-full">
+                <img src="/assets/icons/star.svg" class="size-8" />
+                <img src="/assets/icons/star.svg" class="size-8" />
+                <img src="/assets/icons/star.svg" class="size-8" />
+                <img src="/assets/icons/star.svg" class="size-8" />
+                <img src="/assets/icons/star.svg" class="size-8" />
+              </div>
               <div>
                 <h2 class="text-[#1985b4] font-semibold text-2xl">H P</h2>
                 <a
@@ -335,7 +363,7 @@
             id="blog-headers"
             class="flex justify-between px-4 text-xl md:text-3xl"
           >
-            <h1 class="font-semibold">Latest On The Market</h1>
+            <h1 class="font-semibold text-[#343a40]">Latest On The Market</h1>
             <a
               href="/blog.html"
               class="relative overflow-hidden hover:cursor-pointer font-bold bg-[#1985b4] text-[#f1f3f5] px-2 rounded-t-xl text-center tracking-wide active:bg-[#26b5ee] hover:scale-105 hover:-translate-y-[0.075rem] ease-in-out duration-150 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-[#f1f3f5]/35 before:via-transparent before:to-transparent"

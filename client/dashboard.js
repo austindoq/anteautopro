@@ -654,6 +654,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   //POSTED BLOGS HEADER BUTTON LISTENER
   els.postedBlogsButton.addEventListener("click", async (clickEvent) => {
+    els.dashboardPostedContentArea.classList.remove(
+      "md:grid",
+      "md:grid-cols-3",
+    );
     setActiveHeaderButtons(els.postedBlogsButton);
     await getAllBlogPosts();
     const deleteButtons = document.querySelectorAll(".deleteButton");
@@ -662,6 +666,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   //POSTED TRADE INS BUTTON LISTENER
   els.postedBrandNewButton.addEventListener("click", async (clickEvent) => {
+    els.dashboardPostedContentArea.classList.add("md:grid", "md:grid-cols-3");
     setActiveHeaderButtons(els.postedBrandNewButton);
     await getAllBrandNewListings();
     const deleteButtons = document.querySelectorAll(".deleteButton");
@@ -670,6 +675,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   //POSTED BRAND NEW BUTTON LISTENER
   els.postedTradeInButton.addEventListener("click", async (clickEvent) => {
+    els.dashboardPostedContentArea.classList.add("md:grid", "md:grid-cols-3");
     setActiveHeaderButtons(els.postedTradeInButton);
     await getAllTradeInListings();
     const deleteButtons = document.querySelectorAll(".deleteButton");

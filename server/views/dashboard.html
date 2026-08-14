@@ -23,22 +23,46 @@
       </div>
       <div
         id="nav-options"
-        class="flex gap-4 md:gap-8 justify-evenly md:justify-normal"
+        class="flex gap-2 md:gap-4 justify-evenly md:justify-normal"
       >
+        <div
+          id="nav-options-browse-types"
+          class="flex text-center items-center justify-center text-2xl"
+        >
+          <a
+            href="/inventory.html?type=brandNewListings"
+            class="bg-[#e9ecef] text-[#1985b4] px-2 rounded-l-lg border-r-1 border-[#343a40] flex items-center hover:cursor-pointer"
+            >Brand New</a
+          >
+          <a
+            href="/inventory.html?type=tradeInListings"
+            class="bg-[#e9ecef] text-[#e3173e] px-2 rounded-r-lg border-l-1 border-[#343a40] flex items-center hover:cursor-pointer"
+            >Trade-Ins</a
+          >
+        </div>
         <a
           href="/index.html"
           class="hover:cursor-pointer flex items-center text-2xl text-[#e9ecef]"
-          >Home <img src="/assets/icons/home.svg" class="size-7 mx-0.5"
+          >Home
+          <img
+            src="/assets/icons/home.svg"
+            class="size-7 mx-0.5 hidden md:inline-block"
         /></a>
         <a
           href="/blog.html"
           class="hover:cursor-pointer flex items-center text-2xl text-[#e9ecef]"
-          >Blog <img src="/assets/icons/car.svg" class="size-7 mx-0.5"
+          >Blog
+          <img
+            src="/assets/icons/car.svg"
+            class="size-7 mx-0.5 hidden md:inline-block"
         /></a>
         <a
           href="/admin/logout"
           class="hover:cursor-pointer flex items-center text-2xl text-[#e9ecef]"
-          >Logout <img src="/assets/icons/logout.svg" class="size-6 mx-0.5"
+          >Logout
+          <img
+            src="/assets/icons/logout.svg"
+            class="size-6 mx-0.5 hidden md:inline-block"
         /></a>
       </div>
     </nav>
@@ -138,7 +162,7 @@
           id="dashboard-database-content-area-inner"
           class="w-full max-w-[95%] md:max-w-5xl"
         >
-          <div id="section-headers" class="flex flex-col mb-15 items-center">
+          <div id="section-headers" class="flex flex-col mb-8 items-center">
             <div class="gap-2 flex w-full justify-evenly">
               <button
                 id="postedBrandNewButton"
