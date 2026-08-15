@@ -157,18 +157,17 @@
         <div id="search-bar-container" class="w-full flex gap-1">
           <input id="search-bar" class="p-2 w-full md:max-w-[50%] border border-[#343a40] rounded-lg" placeholder="Search by vehicle make, model, or year"></input>
           <button id="search-button" class="p-2 rounded-md w-fit border border-[#343a40] hover:cursor-pointer tracking-wider font-semibold">Search <img src=""></button>
-        <!-- ADd IMAGE TO SEARCH BAR -->
         </div>
         <div
           id="partition"
           class="w-full h-[1px] mx-auto bg-[#343a40] "
         ></div>
-        <div id="search-term-data-area" class="w-full flex justify-between items-center">
-          <div id="search-terms" class="flex items-center gap-2">
-            <p class="font-semibold">Search:</p>
-            <p id="currentSearchTerm" class="border-2 rounded-lg px-1 py-0.5"></p>
+        <div id="search-term-data-area" class="max-w-full flex justify-between items-center">
+          <div id="search-terms" class="min-w-0 flex items-center gap-1">
+            <p class="font-semibold shrink-0">Search:</p>
+            <p id="currentSearchTerm" class="min-w-0 border-2 rounded-lg px-1 py-0.5 truncate"></p>
           </div>
-          <p class="font-semibold">Results: <span class="text-[#1985b4]">(<span id="currentSearchResultTotal"></span>)</span></p>
+          <p class="font-semibold shrink-0">Results: <span class="text-[#1985b4]">(<span id="currentSearchResultTotal"></span>)</span></p>
         </div>
       </div>
         <div
