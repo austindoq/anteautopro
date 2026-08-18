@@ -14,6 +14,7 @@ export const createBrandNewInventoryItem = async (req, res) => {
     vin,
     description,
     newStatus,
+    price,
   } = req.body;
   const imageUrl = req.file.secure_url;
   const imagePublicId = req.file.public_id;
@@ -27,7 +28,8 @@ export const createBrandNewInventoryItem = async (req, res) => {
     !drive ||
     !transmission ||
     !vin ||
-    !description
+    !description ||
+    !price
   ) {
     return res
       .status(400)
@@ -45,6 +47,7 @@ export const createBrandNewInventoryItem = async (req, res) => {
       transmission,
       vin,
       description,
+      price,
       newStatus,
     });
     return res
@@ -93,6 +96,7 @@ export const createTradeInInventoryItem = async (req, res) => {
     transmission,
     odometer,
     description,
+    price,
     newStatus,
   } = req.body;
   const imageUrl = req.file.secure_url;
@@ -108,7 +112,8 @@ export const createTradeInInventoryItem = async (req, res) => {
     !transmission ||
     !vin ||
     !odometer ||
-    !description
+    !description ||
+    !price
   ) {
     return res
       .status(400)
@@ -127,6 +132,7 @@ export const createTradeInInventoryItem = async (req, res) => {
       vin,
       odometer,
       description,
+      price,
       newStatus,
     });
     return res

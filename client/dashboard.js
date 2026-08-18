@@ -372,16 +372,16 @@ document.addEventListener("DOMContentLoaded", async () => {
           const postingCard = `<article
               id="${brandNewListing._id}"
               data-type="brandNewItem"
-              class="w-full relative bg-[#f1f3f5] text-[#343a40] rounded-xl shadow-xl"
+              class="w-full h-full flex flex-col relative bg-[#f1f3f5] text-[#343a40] rounded-xl shadow-xl"
             >
               <img
                 src="${brandNewListing.imageUrl}"
                 class="md:h-100 w-full object-cover rounded-tl-xl rounded-tr-xl"
               />
-              <div id="vehicle-card-text" class="p-8 flex flex-col gap-2">
+              <div id="vehicle-card-text" class="flex-1 p-4 flex flex-col gap-2 border-y-2 border-y-[#1985b4] border-x-2 border-x-[#1985b4] rounded-b-xl">
                 <div
                   id="vehicle-year-and-make"
-                  class="flex flex-col md:flex-row text-md font-bold text-[#343a40] tracking-wide w-fit text-center md:text-start rounded-lg"
+                  class="flex text-md font-bold text-[#343a40] tracking-wide w-full text-center md:text-start rounded-lg"
                 >
                   <h1>${brandNewListing.year}&nbsp;</h1>
                   <h1>${brandNewListing.make}</h1>
@@ -392,26 +392,35 @@ document.addEventListener("DOMContentLoaded", async () => {
                 >
                   ${brandNewListing.model}
                 </h1>
-                <h2 id="vehicle-vin">VIN ${brandNewListing.vin}</h2>
+                <h2 id="vehicle-vin"><span class="font-semibold">VIN:</span> ${brandNewListing.vin}</h2>
                 <div
                   id="vehicle-stats"
                   class="flex flex-col md:flex-row text-md"
                 >
                   <p>
-                    ${brandNewListing.drive}
-                    <span class="hidden md:inline-block">|</span>
-                    ${brandNewListing.transmission}
-                    <span class="hidden md:inline-block">|</span>
-                    ${brandNewListing.odometer}
+                    ${brandNewListing.drive.toUpperCase()}
+                    <span>|</span>
+                    ${brandNewListing.transmission[0].toUpperCase() + brandNewListing.transmission.slice(1)}
+                    <span>|</span>
+                    ${brandNewListing.odometer} Kms 
                   </p>
                 </div>
                 <p
                   id="vehicle-description"
-                  class="italic tracking-wide text-lg pt-2"
+                  class="italic tracking-wide text-lg"
                 >
                   ${brandNewListing.description}
                 </p>
-              </div>
+                <div id="vehicle-pricing-area" class="w-full mt-auto flex flex-col justify-between">
+                  <div
+          id="partition"
+          class="w-full h-[1px] mx-auto bg-[#343a40] "
+                ></div>
+                  <div class="flex justify-between">
+                    <p class="text-xl">Selling price:</p>
+                    <p id="vehiclePrice" class=" text-[#1985b4] text-2xl">$1300</p>
+                  </div>
+                </div>
               <div
                 class="deleteButton bg-radial border border-[#343a40] from-[#f1f3f5] from-30% to-slate-300 px-2 py-1 text-[#e3173e] rounded-full text-2xl md:text-3xl font-bold absolute top-2 md:top-4 md:right-4 right-4 hover:cursor-pointer"
               >
@@ -446,16 +455,16 @@ document.addEventListener("DOMContentLoaded", async () => {
           const postingCard = `<article
               id="${tradeInListing._id}"
               data-type="tradeInItem"
-              class="w-full relative bg-[#f1f3f5] text-[#343a40] rounded-xl shadow-xl"
+              class="w-full h-full flex flex-col relative bg-[#f1f3f5] text-[#343a40] rounded-xl shadow-xl"
             >
               <img
                 src="${tradeInListing.imageUrl}"
                 class="md:h-100 w-full object-cover rounded-tl-xl rounded-tr-xl"
               />
-              <div id="vehicle-card-text" class="p-8 flex flex-col gap-2">
+              <div id="vehicle-card-text" class="flex-1 p-4 flex flex-col gap-2 border-y-2 border-y-[#1985b4] border-x-2 border-x-[#1985b4] rounded-b-xl">
                 <div
                   id="vehicle-year-and-make"
-                  class="flex flex-col md:flex-row text-md font-bold text-[#343a40] tracking-wide w-fit text-center md:text-start rounded-lg"
+                  class="flex text-md font-bold text-[#343a40] tracking-wide w-full text-center md:text-start rounded-lg"
                 >
                   <h1>${tradeInListing.year}&nbsp;</h1>
                   <h1>${tradeInListing.make}</h1>
@@ -466,30 +475,40 @@ document.addEventListener("DOMContentLoaded", async () => {
                 >
                   ${tradeInListing.model}
                 </h1>
-                <h2 id="vehicle-vin">VIN ${tradeInListing.vin}</h2>
+                <h2 id="vehicle-vin"><span class="font-semibold">VIN:</span> ${tradeInListing.vin}</h2>
                 <div
                   id="vehicle-stats"
                   class="flex flex-col md:flex-row text-md"
                 >
                   <p>
-                    ${tradeInListing.drive}
-                    <span class="hidden md:inline-block">|</span>
-                    ${tradeInListing.transmission}
-                    <span class="hidden md:inline-block">|</span>
-                    ${tradeInListing.odometer}
+                    ${tradeInListing.drive.toUpperCase()}
+                    <span>|</span>
+                    ${tradeInListing.transmission[0].toUpperCase() + tradeInListing.transmission.slice(1)}
+                    <span>|</span>
+                    ${tradeInListing.odometer} Kms 
                   </p>
                 </div>
                 <p
                   id="vehicle-description"
-                  class="italic tracking-wide text-lg pt-2"
+                  class="italic tracking-wide text-lg"
                 >
                   ${tradeInListing.description}
                 </p>
-              </div>
-              <div
+                <div id="vehicle-pricing-area" class="w-full mt-auto flex flex-col justify-between">
+                  <div
+          id="partition"
+          class="w-full h-[1px] mx-auto bg-[#343a40] "
+                ></div>
+                  <div class="flex justify-between">
+                    <p class="text-xl">Selling price:</p>
+                    <p id="vehiclePrice" class=" text-[#1985b4] text-2xl">$1300</p>
+                  </div>
+                </div>
+                  <div
                 class="deleteButton bg-radial border border-[#343a40] from-[#f1f3f5] from-30% to-slate-300 px-2 py-1 text-[#e3173e] rounded-full text-2xl md:text-3xl font-bold absolute top-2 md:top-4 md:right-4 right-4 hover:cursor-pointer"
               >
                 X
+              </div>
               </div>
             </article>`;
           els.dashboardPostedContentArea.insertAdjacentHTML(
@@ -655,9 +674,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   //POSTED BLOGS HEADER BUTTON LISTENER
   els.postedBlogsButton.addEventListener("click", async (clickEvent) => {
     els.dashboardPostedContentArea.classList.remove(
-      "md:grid",
+      "grid-cols-1",
+      "grid",
       "md:grid-cols-3",
     );
+    els.dashboardPostedContentArea.classList.add("flex", "flex-col");
+
     setActiveHeaderButtons(els.postedBlogsButton);
     await getAllBlogPosts();
     const deleteButtons = document.querySelectorAll(".deleteButton");
@@ -666,7 +688,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   //POSTED TRADE INS BUTTON LISTENER
   els.postedBrandNewButton.addEventListener("click", async (clickEvent) => {
-    els.dashboardPostedContentArea.classList.add("md:grid", "md:grid-cols-3");
+    els.dashboardPostedContentArea.classList.remove("flex", "flex-col");
+    els.dashboardPostedContentArea.classList.add(
+      "grid-cols-1",
+      "grid",
+      "md:grid-cols-3",
+    );
     setActiveHeaderButtons(els.postedBrandNewButton);
     await getAllBrandNewListings();
     const deleteButtons = document.querySelectorAll(".deleteButton");
@@ -675,7 +702,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   //POSTED BRAND NEW BUTTON LISTENER
   els.postedTradeInButton.addEventListener("click", async (clickEvent) => {
-    els.dashboardPostedContentArea.classList.add("md:grid", "md:grid-cols-3");
+    els.dashboardPostedContentArea.classList.remove("flex", "flex-col");
+    els.dashboardPostedContentArea.classList.add(
+      "grid-cols-1",
+      "grid",
+      "md:grid-cols-3",
+    );
     setActiveHeaderButtons(els.postedTradeInButton);
     await getAllTradeInListings();
     const deleteButtons = document.querySelectorAll(".deleteButton");
