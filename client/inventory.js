@@ -38,14 +38,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         for (const brandNewListing of brandNewListingsData) {
           const vehicleCard = `<article
               id="${brandNewListing._id}"
-              data-type="brandNewItem"
-              class="w-full relative bg-[#f1f3f5] text-[#343a40] rounded-xl shadow-xl"
+              data-type="tradeInItem"
+              class="w-full h-full flex flex-col bg-[#f1f3f5] text-[#343a40] rounded-xl shadow-xl"
             >
               <img
                 src="${brandNewListing.imageUrl}"
                 class="md:h-100 w-full object-cover rounded-tl-xl rounded-tr-xl"
               />
-              <div id="vehicle-card-text" class="p-4 flex flex-col gap-2 border-y-2 border-y-[#1985b4] border-x-2 border-x-[#1985b4] rounded-b-xl">
+              <div id="vehicle-card-text" class="flex-1 p-4 flex flex-col gap-2 border-y-2 border-y-[#1985b4] border-x-2 border-x-[#1985b4] rounded-b-xl">
                 <div
                   id="vehicle-year-and-make"
                   class="flex text-md font-bold text-[#343a40] tracking-wide w-full text-center md:text-start rounded-lg"
@@ -66,23 +66,25 @@ document.addEventListener("DOMContentLoaded", async () => {
                 >
                   <p>
                     ${brandNewListing.drive.toUpperCase()}
-                    <span>|</span>
+                    <span class="text-[#1985b4]">|</span>
                     ${brandNewListing.transmission[0].toUpperCase() + brandNewListing.transmission.slice(1)}
                   </p>
                 </div>
                 <p
                   id="vehicle-description"
-                  class="italic tracking-wide text-lg"
+                  class="text-lg"
                 >
                   ${brandNewListing.description}
                 </p>
-                <div
+                <div id="vehicle-pricing-area" class="w-full mt-auto flex flex-col justify-between">
+                  <div
           id="partition"
           class="w-full h-[1px] mx-auto bg-[#343a40] "
                 ></div>
-                <div id="vehicle-pricing-area" class="w-full flex justify-between">
+                  <div class="flex justify-between">
                     <p class="text-xl">Selling price:</p>
-                    <p id="vehiclePrice" class=" text-[#1985b4] text-2xl">$1300</p>
+                    <p id="vehiclePrice" class=" text-[#1985b4] text-2xl">$${brandNewListing.price}</p>
+                  </div>
                 </div>
               </div>
             </article>`;
@@ -106,13 +108,13 @@ document.addEventListener("DOMContentLoaded", async () => {
           const vehicleCard = `<article
               id="${tradeInListing._id}"
               data-type="tradeInItem"
-              class="w-full relative bg-[#f1f3f5] text-[#343a40] rounded-xl shadow-xl"
+              class="w-full h-full flex flex-col bg-[#f1f3f5] text-[#343a40] rounded-xl shadow-xl"
             >
               <img
                 src="${tradeInListing.imageUrl}"
                 class="md:h-100 w-full object-cover rounded-tl-xl rounded-tr-xl"
               />
-              <div id="vehicle-card-text" class="p-4 flex flex-col gap-2 border-y-2 border-y-[#1985b4] border-x-2 border-x-[#1985b4] rounded-b-xl">
+              <div id="vehicle-card-text" class="flex-1 p-4 flex flex-col gap-2 border-y-2 border-y-[#1985b4] border-x-2 border-x-[#1985b4] rounded-b-xl">
                 <div
                   id="vehicle-year-and-make"
                   class="flex text-md font-bold text-[#343a40] tracking-wide w-full text-center md:text-start rounded-lg"
@@ -133,25 +135,27 @@ document.addEventListener("DOMContentLoaded", async () => {
                 >
                   <p>
                     ${tradeInListing.drive.toUpperCase()}
-                    <span>|</span>
+                    <span class="text-[#1985b4]">|</span>
                     ${tradeInListing.transmission[0].toUpperCase() + tradeInListing.transmission.slice(1)}
-                    <span>|</span>
+                    <span class="text-[#1985b4]">|</span>
                     ${tradeInListing.odometer} Kms 
                   </p>
                 </div>
                 <p
                   id="vehicle-description"
-                  class="italic tracking-wide text-lg"
+                  class="text-lg"
                 >
                   ${tradeInListing.description}
                 </p>
-                <div
+                <div id="vehicle-pricing-area" class="w-full mt-auto flex flex-col justify-between">
+                  <div
           id="partition"
           class="w-full h-[1px] mx-auto bg-[#343a40] "
                 ></div>
-                <div id="vehicle-pricing-area" class="w-full flex justify-between">
+                  <div class="flex justify-between">
                     <p class="text-xl">Selling price:</p>
-                    <p id="vehiclePrice" class=" text-[#1985b4] text-2xl">$1300</p>
+                    <p id="vehiclePrice" class=" text-[#1985b4] text-2xl">$${tradeInListing.price}</p>
+                  </div>
                 </div>
               </div>
             </article>`;
@@ -214,13 +218,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         for (const vehicle of searchData) {
           const vehicleCard = `<article
               id="${vehicle._id}"
-              class="w-full bg-[#f1f3f5] text-[#343a40] rounded-xl shadow-xl"
+              data-type="tradeInItem"
+              class="w-full h-full flex flex-col bg-[#f1f3f5] text-[#343a40] rounded-xl shadow-xl"
             >
               <img
                 src="${vehicle.imageUrl}"
                 class="md:h-100 w-full object-cover rounded-tl-xl rounded-tr-xl"
               />
-              <div id="vehicle-card-text" class="p-4 flex flex-col gap-2 border-y-2 border-y-[#1985b4] border-x-2 border-x-[#1985b4] rounded-b-xl">
+              <div id="vehicle-card-text" class="flex-1 p-4 flex flex-col gap-2 border-y-2 border-y-[#1985b4] border-x-2 border-x-[#1985b4] rounded-b-xl">
                 <div
                   id="vehicle-year-and-make"
                   class="flex text-md font-bold text-[#343a40] tracking-wide w-full text-center md:text-start rounded-lg"
@@ -243,21 +248,25 @@ document.addEventListener("DOMContentLoaded", async () => {
                     ${vehicle.drive.toUpperCase()}
                     <span>|</span>
                     ${vehicle.transmission[0].toUpperCase() + vehicle.transmission.slice(1)}
+                    <span>|</span>
+                    ${vehicle.odometer} Kms 
                   </p>
                 </div>
                 <p
                   id="vehicle-description"
-                  class="italic tracking-wide text-lg"
+                  class="text-lg"
                 >
                   ${vehicle.description}
                 </p>
-                <div
+                <div id="vehicle-pricing-area" class="w-full mt-auto flex flex-col justify-between">
+                  <div
           id="partition"
           class="w-full h-[1px] mx-auto bg-[#343a40] "
                 ></div>
-                <div id="vehicle-pricing-area" class="w-full flex justify-between">
+                  <div class="flex justify-between">
                     <p class="text-xl">Selling price:</p>
-                    <p id="vehiclePrice" class=" text-[#1985b4] text-2xl">$1300</p>
+                    <p id="vehiclePrice" class=" text-[#1985b4] text-2xl">$${vehicle.price}</p>
+                  </div>
                 </div>
               </div>
             </article>`;

@@ -139,8 +139,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                 class="rounded-lg p-2 border-1 border-[#343a40]"
               />
             </div>
-            <div>
-              <label class="font-bold px-2 pt-2">Body</label
+            <div class="flex flex-col">
+              <label class="font-bold px-2 pt-2">Price $</label>
+              <input name="price" type="number" placeholder="23500" required class="rounded-lg p-2 border-1 border-[#343a40]"/>
+            </div>
+            <div class="mt-2">
+              <label class="font-bold px-2 pt-2">Description</label
               ><textarea
                 id="description"
                 required
@@ -305,8 +309,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                 class="rounded-lg p-2 border-1 border-[#343a40]"
               />
             </div>
-            <div>
-              <label class="font-bold px-2 pt-2">Body</label
+            <div class="flex flex-col">
+              <label class="font-bold px-2 pt-2">Price $</label>
+              <input name="price" type="number" placeholder="23500" required class="rounded-lg p-2 border-1 border-[#343a40]"/>
+            </div>
+            <div class="mt-2">
+              <label class="font-bold px-2 pt-2">Description</label
               ><textarea
                 id="description"
                 required
@@ -399,15 +407,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                 >
                   <p>
                     ${brandNewListing.drive.toUpperCase()}
-                    <span>|</span>
+                    <span class="text-[#1985b4]">|</span>
                     ${brandNewListing.transmission[0].toUpperCase() + brandNewListing.transmission.slice(1)}
-                    <span>|</span>
-                    ${brandNewListing.odometer} Kms 
                   </p>
                 </div>
                 <p
                   id="vehicle-description"
-                  class="italic tracking-wide text-lg"
+                  class="text-lg"
                 >
                   ${brandNewListing.description}
                 </p>
@@ -418,7 +424,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 ></div>
                   <div class="flex justify-between">
                     <p class="text-xl">Selling price:</p>
-                    <p id="vehiclePrice" class=" text-[#1985b4] text-2xl">$1300</p>
+                    <p id="vehiclePrice" class=" text-[#1985b4] text-2xl">$${brandNewListing.price}</p>
                   </div>
                 </div>
               <div
@@ -482,15 +488,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                 >
                   <p>
                     ${tradeInListing.drive.toUpperCase()}
-                    <span>|</span>
+                    <span class="text-[#1985b4]">|</span>
                     ${tradeInListing.transmission[0].toUpperCase() + tradeInListing.transmission.slice(1)}
-                    <span>|</span>
+                    <span class="text-[#1985b4]">|</span>
                     ${tradeInListing.odometer} Kms 
                   </p>
                 </div>
                 <p
                   id="vehicle-description"
-                  class="italic tracking-wide text-lg"
+                  class="text-lg"
                 >
                   ${tradeInListing.description}
                 </p>
@@ -501,7 +507,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 ></div>
                   <div class="flex justify-between">
                     <p class="text-xl">Selling price:</p>
-                    <p id="vehiclePrice" class=" text-[#1985b4] text-2xl">$1300</p>
+                    <p id="vehiclePrice" class=" text-[#1985b4] text-2xl">$${tradeInListing.price}</p>
                   </div>
                 </div>
                   <div
