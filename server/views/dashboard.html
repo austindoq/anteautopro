@@ -19,12 +19,9 @@
       class="sticky top-0 z-100 flex flex-col md:flex-row md:justify-between font-bold text-[#e9ecef] tracking-widest md:tracking-wider bg-[#343a40] py-2 px-4 w-full border-b-2 border-b-[#e3173e]"
     >
       <div class="text-4xl bold italic flex justify-center">
-        <h1 class="text-center md:text-start">Ante's Admin Dashboard</h1>
+        <h1 class="text-center md:text-start">Ante's Dashboard</h1>
       </div>
-      <div
-        id="nav-options"
-        class="flex gap-2 md:gap-4 justify-evenly md:justify-normal"
-      >
+      <div id="nav-options" class="flex gap-2 justify-evenly md:justify-normal">
         <div
           id="nav-options-browse-types"
           class="flex text-center items-center justify-center text-2xl"
@@ -40,30 +37,99 @@
             >Trade-Ins</a
           >
         </div>
-        <a
-          href="/index.html"
-          class="hover:cursor-pointer flex items-center text-2xl text-[#e9ecef]"
-          >Home
-          <img
-            src="/assets/icons/home.svg"
-            class="size-7 mx-0.5 hidden md:inline-block"
-        /></a>
-        <a
-          href="/blog.html"
-          class="hover:cursor-pointer flex items-center text-2xl text-[#e9ecef]"
-          >Blog
-          <img
-            src="/assets/icons/car.svg"
-            class="size-7 mx-0.5 hidden md:inline-block"
-        /></a>
-        <a
-          href="/admin/logout"
-          class="hover:cursor-pointer flex items-center text-2xl text-[#e9ecef]"
-          >Logout
-          <img
-            src="/assets/icons/logout.svg"
-            class="size-6 mx-0.5 hidden md:inline-block"
-        /></a>
+        <div id="mobileNav" class="md:hidden relative">
+          <button id="dropMenuButton" class="text-4xl ease-in-out duration-150">
+            ≡
+          </button>
+          <div
+            id="dropMenu"
+            class="absolute hidden min-w-max -right-1 top-0 z-0 mt-12.5 flex flex-col gap-4 p-8 bg-[#343a40] rounded-b-lg border-b-1 border-l-1 border-r-1 border-[#e9ecef]"
+          >
+            <a
+              href="/index.html"
+              class="hover:cursor-pointer flex items-center text-2xl text-[#e9ecef]"
+            >
+              <img src="/assets/icons/home.svg" class="size-7 mr-0.5" />Home</a
+            >
+            <div
+              id="partition"
+              class="h-[2px] w-full mx-auto bg-gradient-to-r from-transparent via-[#e9ecef] to-transparent"
+            ></div>
+            <a
+              href="/blog.html"
+              class="hover:cursor-pointer w-full flex items-center text-2xl text-[#e9ecef]"
+              ><img src="/assets/icons/car.svg" class="size-7 mr-1" />Blog</a
+            >
+            <div
+              id="partition"
+              class="h-[2px] w-full mx-auto bg-gradient-to-r from-transparent via-[#e9ecef] to-transparent"
+            ></div>
+            <a
+              href="/contact.html"
+              class="hover:cursor-pointer w-full flex items-center text-2xl text-[#e9ecef]"
+            >
+              <img
+                src="/assets/icons/contact.svg"
+                class="size-7 -ml-0.5 mr-1"
+              />Contact</a
+            >
+            <div
+              id="partition"
+              class="h-[2px] w-full mx-auto bg-gradient-to-r from-transparent via-[#e9ecef] to-transparent"
+            ></div>
+            <a
+              href="/faq.html"
+              class="hover:cursor-pointer w-full flex items-center text-2xl text-[#e9ecef]"
+              ><img src="/assets/icons/about.svg" class="size-5 mr-2" />FAQ</a
+            >
+            <div
+              id="partition"
+              class="h-[2px] w-full mx-auto bg-gradient-to-r from-transparent via-[#e9ecef] to-transparent"
+            ></div>
+            <a
+              href="/admin/logout"
+              class="hover:cursor-pointer flex items-center text-2xl text-[#e9ecef]"
+            >
+              <img
+                src="/assets/icons/logout.svg"
+                class="size-6 mx-0.5 md:inline-block"
+              />Logout</a
+            >
+          </div>
+        </div>
+        <div id="desktopNav" class="hidden md:flex gap-4">
+          <a
+            href="/index.html"
+            class="hover:cursor-pointer flex items-center text-2xl text-[#e9ecef]"
+            >Home
+            <img
+              src="/assets/icons/home.svg"
+              class="hidden md:inline-block size-7"
+          /></a>
+          <a
+            href="/blog.html"
+            class="hover:cursor-pointer flex items-center text-2xl text-[#e9ecef]"
+            >Blog<img src="/assets/icons/car.svg" class="size-7 mr-0.5"
+          /></a>
+          <a
+            href="/contact.html"
+            class="hover:cursor-pointer flex items-center text-2xl text-[#e9ecef]"
+            >Contact <img src="/assets/icons/contact.svg" class="size-7 mx-0.5"
+          /></a>
+          <a
+            href="/faq.html"
+            class="hover:cursor-pointer italic flex items-center text-2xl text-[#e9ecef]"
+            >FAQ <img src="/assets/icons/about.svg" class="size-5 mx-0.5"
+          /></a>
+          <a
+            href="/admin/logout"
+            class="hover:cursor-pointer flex items-center text-2xl text-[#e9ecef]"
+            >Logout
+            <img
+              src="/assets/icons/logout.svg"
+              class="size-6 mx-0.5 hidden md:inline-block"
+          /></a>
+        </div>
       </div>
     </nav>
     <main

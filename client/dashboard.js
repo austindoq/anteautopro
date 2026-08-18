@@ -1,5 +1,7 @@
 //STATIC ELEMENTS
 const els = {
+  dropMenuButton: document.getElementById("dropMenuButton"),
+  dropMenu: document.getElementById("dropMenu"),
   createPostForm: document.getElementById("createPostForm"),
   image: document.getElementById("image"),
   title: document.getElementById("title"),
@@ -33,6 +35,32 @@ const getEndPoints = {
 
 //PAGE LOGIC
 document.addEventListener("DOMContentLoaded", async () => {
+  // USER EVENTS ==============================================
+
+  //MOBILE NAV BUTTON TOGGLE VISIBILITY
+  els.dropMenuButton.addEventListener("click", (clickEvent) => {
+    clickEvent.stopPropagation();
+    els.dropMenu.classList.toggle("hidden");
+
+    if (!els.dropMenu.classList.contains("hidden")) {
+      els.dropMenuButton.classList.add("scale-95", "text-[#e3173e]");
+    } else {
+      els.dropMenuButton.classList.remove("scale-95", "text-[#e3173e]");
+    }
+  });
+
+  //MOBILE CLICK OUT OF MENU CLOSE
+  document.addEventListener("click", (clickEvent) => {
+    if (
+      !els.dropMenu.classList.contains("hidden") &&
+      !els.dropMenu.contains(clickEvent.target)
+    ) {
+      els.dropMenu.classList.add("hidden");
+    }
+
+    els.dropMenuButton.classList.remove("scale-95", "text-[#e3173e]");
+  });
+
   //-------------------------
   //INVENTORY FUNCTIONS
   //-------------------------
